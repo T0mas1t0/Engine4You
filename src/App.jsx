@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Loading from './pages/Loading';
 //import Loading from "./pages/Loading";
 const LazyHome = React.lazy(() => import("./pages/HomePage"));
+const LazyCarPage = React.lazy(() => import("./pages/CarPage"));
 
 export default function App() {
 
@@ -13,6 +14,13 @@ export default function App() {
         element={
           <React.Suspense fallback={<Loading />}>
             <LazyHome />
+          </React.Suspense>
+        }
+      />
+      <Route path='/carPage'
+        element={
+          <React.Suspense fallback={<Loading />}>
+            <LazyCarPage />
           </React.Suspense>
         }
       />
