@@ -7,11 +7,14 @@ import GenericList from "../components/GenericList";
 function Home() {
     return (<>
         <Nav />
-        <SimpleSearch />
-        <CarrousselSearch />
-        <GenericList />
+        <div className="welcome">
 
-    </>);
+            <SimpleSearch />
+            {/*<CarrousselSearch />
+        <GenericList />*/}
+        </div>
+    </>
+    );
 }
 
 export default Home;

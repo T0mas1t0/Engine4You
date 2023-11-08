@@ -8,7 +8,7 @@ function Nav() {
         <header>
             <img src={Logo} alt="logoFCT"></img>
             <nav>
-                <NavLink to={/*Put uri of page you want*/Empty}>Home</NavLink>
+                <NavLink to={"/"}>Home</NavLink>
                 <NavLink to={/*Put uri of page you want*/Empty}>Cars</NavLink>
                 <NavLink to={/*Put uri of page you want*/Empty}>More</NavLink>
                 <NavLink to={/*Put uri of page you want*/Empty}>Help</NavLink>

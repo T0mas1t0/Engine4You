@@ -15,12 +15,14 @@ body {
 
 header {
   padding: 5px;
+  height: 77px;
   background: repeating-linear-gradient(45deg, #444cf7 25%, transparent 25%, transparent 75%, #444cf7 75%, #444cf7),
     repeating-linear-gradient(45deg, #444cf7 25%, #e5e5f7 25%, #e5e5f7 75%, #444cf7 75%, #444cf7);
 
   /*background-color: var(--secondary);*/
   display: flex;
   justify-content: space-between;
+  position: sticky;
 }
 
 header img {
@@ -69,4 +71,18 @@ nav a:hover:after {
   color: #fff;
   transform-origin: left;
   transform: scaleX(1);
+}
+
+.welcome {
+  position: relative;
+  top: 10vh;
+}
+
+.simple-search {
+  position: absolute;
+  background: var(--secondary);
+  left: 10vh;
+  height: 400px;
+  width: 300px;
+  border-radius: 25px;
 }
