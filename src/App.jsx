@@ -9,6 +9,8 @@ const LazyCarPage = React.lazy(() => import("./pages/CarPage"));
 export default function App() {
 
   return (
+    <>
+    <Nav />
     <Routes>
       <Route path='/'
         element={
@@ -25,6 +27,7 @@ export default function App() {
         }
       />
     </Routes>
+    </>
 
 
 

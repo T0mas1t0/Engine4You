@@ -6,7 +6,6 @@ import GenericList from "../components/GenericList";
 
 function Home() {
     return (<>
-        <Nav />
         <div className="welcome">
 
             <SimpleSearch />
