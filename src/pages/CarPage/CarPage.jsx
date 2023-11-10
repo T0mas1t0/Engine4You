@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../../components/CarSpecsTabs';
 import carPhoto from '../../assets/TeslaModel3_LR.png';
+import { Carpenter } from "@mui/icons-material";
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -15,18 +16,31 @@ import carPhoto from '../../assets/TeslaModel3_LR.png';
   }));
 
 const Car = {
+    photo:"TeslaModel3_LR.png",
     model:"Tesla Model 3 LR",
     price:"48.600",
     motorInfo:{
-        motor:"Eletric",
-        gearBox:"1-Speed Auto",
-        traccion:"AWD",
-        Range:"629 km",
-        Consumption:"14,6 kW/h",
-        CO2emissions:"0 g/km",
-        aceleration:"4,4s",
-        Power:"366 kW",
-        TopSpeed:"201 km/h",
+        motor:{
+            title:"Motor",
+            description:"Eletric"
+        },
+        gearBox:{
+            title:"Gear Box",
+            description:"1-Speed Auto"
+        },
+        traccion:{
+            title:"Traccion",
+            description:"AWD"
+        },
+        Range:{
+            title:"Range",
+            description:"629 km"
+        },
+        Consumption:{title:"Consumption",description:"14,6 kW/h"},
+        CO2emissions:{title:"CO2emissions",description:"0 g/km"},
+        aceleration:{title:"aceleration",description:"4,4s"},
+        Power:{title:"Power",description:"366 kW"},
+        TopSpeed:{title:"Top speed",description:"201 km/h"},
     },
     equipment:{
         InfotainmentSystem:{

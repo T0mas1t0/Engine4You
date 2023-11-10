@@ -44,13 +44,13 @@ function MotorInfo(props) {
                     </Grid>
                     <Grid container spacing={2}>
                     <Grid xs={4}>
-                        <span><b>{info.motor}</b></span>
+                        <span><b>{info.motor.description}</b></span>
                     </Grid>
                     <Grid xs={4}>
-                        <span><b>{info.gearBox}</b></span>
+                        <span><b>{info.gearBox.description}</b></span>
                     </Grid>
                     <Grid xs={4}>
-                        <span><b>{info.traccion}</b></span>
+                        <span><b>{info.traccion.description}</b></span>
                     </Grid>
                     </Grid>
 
@@ -61,9 +61,9 @@ function MotorInfo(props) {
 
             <Grid>
                 <Grid container spacing={2}>
-                    <Grid xs={4}>{info.Range}</Grid>
-                    <Grid xs={4}>{info.Consumption}</Grid>
-                    <Grid xs={4}>{info.CO2emissions}</Grid>
+                    <Grid xs={4}>{info.Range.description}</Grid>
+                    <Grid xs={4}>{info.Consumption.description}</Grid>
+                    <Grid xs={4}>{info.CO2emissions.description}</Grid>
                 </Grid>
                 <Grid container spacing={2}>
                     <Grid xs={4}><b>Range</b></Grid>
@@ -74,9 +74,9 @@ function MotorInfo(props) {
 
             <Grid>
                 <Grid container spacing={2}>
-                    <Grid xs={4}>{info.aceleration}</Grid>
-                    <Grid xs={4}>{info.Power}</Grid>
-                    <Grid xs={4}>{info.TopSpeed}</Grid>
+                    <Grid xs={4}>{info.aceleration.description}</Grid>
+                    <Grid xs={4}>{info.Power.description}</Grid>
+                    <Grid xs={4}>{info.TopSpeed.description}</Grid>
                 </Grid>
                 <Grid container spacing={2}>
                     <Grid xs={4}><b>0-100 km/h</b></Grid>

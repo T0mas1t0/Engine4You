@@ -13,7 +13,7 @@ function Nav() {
                 <NavLink to={/*Put uri of page you want*/Empty}>More</NavLink>
                 <NavLink to={/*Put uri of page you want*/Empty}>Help</NavLink>
                 <NavLink to={/*Put uri of page you want*/Empty}>About</NavLink>
-                <NavLink to={/*Put uri of page you want*/Empty}>Compare</NavLink>
+                <NavLink to={"/compare"}>Compare</NavLink>
             </nav>
         </header>
     );
