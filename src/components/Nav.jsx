@@ -7,7 +7,7 @@ function Nav() {
     return (
         <header>
             <img src={Logo} alt="logoFCT"/>
-            <nav>
+            <nav id="navBar">
                 <NavLink to={"/"}>Home</NavLink>
                 <NavLink to={"/carPage"}>Cars</NavLink>
                 <NavLink to={/*Put uri of page you want*/Empty}>More</NavLink>
