@@ -55,7 +55,7 @@ function ComparePage() {
           
         </Box>
         <Tooltip title="Add Car to Compare" placement="top">
-            <Fab sx={fabStyle} aria-label='Add' color="primary">
+            <Fab sx={fabStyle} aria-label='Add' variant="extended">
                 <AddIcon />
             </Fab>
         </Tooltip>

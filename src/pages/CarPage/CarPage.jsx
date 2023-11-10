@@ -8,6 +8,15 @@ import carPhoto from '../../assets/TeslaModel3_LR.png';
 import { Carpenter } from "@mui/icons-material";
 import {Car1,Car2} from '../../mockData/mockData';
 
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
+
+const fabStyle = {
+    position: 'fixed',
+    bottom: 16,
+    right: 16,
+  };
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -42,6 +51,11 @@ function CarPage() {
                 </Grid>
             </Box>
         </div>
+
+        <Fab sx={fabStyle} variant="extended">
+            <AddIcon sx={{ mr: 1 }} />
+            Add to compare
+        </Fab>
 
         </>
   );
