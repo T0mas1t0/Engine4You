@@ -25,7 +25,7 @@ function CarPage() {
 
         <div>
             <center>
-                <h1>{Car1.model} ({Car1.price})</h1>
+                <h1>{Car1.model} ({Car1.price} €)</h1>
             </center>
 
             <Box sx={{ flexGrow: 1, marginTop: 10 }}>
