@@ -4,7 +4,7 @@ import Nav from './components/Nav';
 import Loading from './pages/Loading';
 //import Loading from "./pages/Loading";
 const LazyHome = React.lazy(() => import("./pages/HomePage"));
-const LazyCarPage = React.lazy(() => import("./pages/CarPage"));
+const LazyCarPage = React.lazy(() => import("./pages/CarPage/CarPage"));
 
 export default function App() {
 
