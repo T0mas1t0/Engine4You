@@ -17,30 +17,26 @@ import gearBox from '../../assets/caixa_vel.png';
     color: theme.palette.text.secondary,
   }));
 
-function Charging() {
-
+function Charging(props) {
+  const [info, setInfo] = React.useState(props.info);
+  console.log(info);
     return (
         <>
 
         <Item sx={{minHeight:'350px'}} elevation="0">
-            <Grid container spacing={2} sx={{marginTop:'10px'}}>
-                
-                <Grid xs={4}>
-                <p> <b>Charging with Supercharger</b> <br/>max./ 250kW</p>
-                </Grid>
-                <Grid xs={4}>
-                <p> <b>Charging speed:</b> <br/>Up to 282 km in 15 minutes</p>
-                </Grid>
-                <Grid xs={4}>
-                <p> <b>Type of payment: </b> <br/>Pay as you use</p>
-                </Grid>
-                
+            <Grid container spacing={4} sx={{marginTop:'10px'}}>
+            
+              {Object.keys(info).map((category, index) => (
+                <>
+                  <Grid xs={4} key={index}>
+                    <p>
+                      <b>{info[category].name}:</b><br/>{info[category].data}
+                    </p>
+                  </Grid>
+                  </>
+              ))}
+
             </Grid>
-
-
-          
-        
-                
         </Item>
 
         </>
@@ -48,3 +44,16 @@ function Charging() {
 }
 
 export default Charging;
+
+/*
+
+<Grid xs={4}>
+                <p> <b>Max Charging Power:</b> <br/>{info.MaxChargingPower}</p>
+                </Grid>
+                <Grid xs={4}>
+                <p> <b>Charging speed:</b> <br/>{info.ChargingSpeed}</p>
+                </Grid>
+                <Grid xs={4}>
+                <p> <b>Type of payment: </b> <br/>{info.TypeOfPayment}</p>
+                </Grid>
+                */

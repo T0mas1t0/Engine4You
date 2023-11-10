@@ -17,8 +17,9 @@ import gearBox from '../../assets/caixa_vel.png';
     color: theme.palette.text.secondary,
   }));
 
-function Equipment() {
-
+function Equipment(props) {
+  const [info, setInfo] = React.useState(props.info);
+  console.log(info);
     return (
         <>
 
@@ -28,27 +29,20 @@ function Equipment() {
                 <Grid xs={1}></Grid>
                 
             </Grid>
-                <h3>Infotainment System</h3>
-                <hr/>
-                <p>Front Display 15,4"</p>
-                <p>Rear Display 8''</p>
-                <p>Google Maps</p>
-                <p>Netflix, Disney Plus, ...</p>
-                <p>Spotify</p>
+            <div>
+              {Object.keys(info).map((category, index) => (
+                <section key={index}>
+                  <h2>{info[category].name}</h2>
+                  <hr/>
+                  <p>
+                    {info[category].list.map((item, itemIndex) => (
+                      <li key={itemIndex}>{item}</li>
+                    ))}
+                  </p>
+                </section>
+              ))}
+            </div>
                 
-                <h3>Sound System</h3>
-                <hr/>
-                <p>Premium Sound</p>
-                <p>17 speakers</p>
-
-                <h3>Driving support system</h3>
-                <hr/>
-                <p>Auto Pilot Sound</p>
-
-                <h3>passenger compartment</h3>
-                <hr/>
-                <p>Heated and Ventilated seats</p>
-                <p>Wireless charging</p>
                 
         </Item>
 

@@ -17,29 +17,26 @@ import gearBox from '../../assets/caixa_vel.png';
     color: theme.palette.text.secondary,
   }));
 
-function Warranty() {
-
+function Warranty(props) {
+  const [info, setInfo] = React.useState(props.info);
+  console.log(info);
     return (
         <>
 
         <Item sx={{minHeight:'350px'}} elevation="0">
-            <Grid container spacing={2} sx={{marginTop:'10px'}}>
-              <Grid xs={4}>
-                <p> <b>Vehicle basics:</b> <br/>4 years or 80,000 km, whichever comes first</p>
-                </Grid>
-                <Grid xs={4}>
-                <p> <b>Battery and drive unit:</b> <br/>8 years or 192,000 km, whichever comes first</p>
-                </Grid>
-                <Grid xs={4}>
-                
-                </Grid>
-                
+            <Grid container spacing={4} sx={{marginTop:'10px'}}>
+            
+              {Object.keys(info).map((category, index) => (
+                <>
+                  <Grid xs={4} key={index}>
+                    <p>
+                      <b>{info[category].title}:</b><br/>{info[category].description}
+                    </p>
+                  </Grid>
+                  </>
+              ))}
+
             </Grid>
-
-
-          
-        
-                
         </Item>
 
         </>

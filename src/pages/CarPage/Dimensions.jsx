@@ -17,8 +17,9 @@ import gearBox from '../../assets/caixa_vel.png';
     color: theme.palette.text.secondary,
   }));
 
-function Dimensions() {
-
+function Dimensions(props) {
+  const [info, setInfo] = React.useState(props.info);
+  console.log(info);
     return (
         <>
 
@@ -26,18 +27,18 @@ function Dimensions() {
             <Grid container spacing={2} sx={{marginTop:'10px'}}>
                 <Grid xs={4}>
                 <p><b>Overall width:</b></p>
-                <p> - Mirrors folded: 1933 mm</p>
-                <p> - Extended mirrors: 2089 mm</p>
+                <p> - Mirrors folded: {info.OverallWidth.MirrorsFolded}</p>
+                <p> - Extended mirrors: {info.OverallWidth.ExtendedMirrors}</p>
                 </Grid>
                 <Grid xs={4}>
-                <p> - <b>Total length:</b> 4720mm</p>
-                <p> - <b>Total height:</b> 1441mm</p>
-                <p> - <b>Ground clearance:</b> 138mm</p>
+                <p> - <b>Total length:</b> {info.MirrorsFolded}</p>
+                <p> - <b>Total height:</b> {info.TotalHeight}</p>
+                <p> - <b>Ground clearance:</b> {info.GroundClearance}</p>
                 </Grid>
                 <Grid xs={4}>
-                <p> - <b>Seats:</b> 5 adults</p>
-                <p> - <b>Load:</b> 682 liters</p>
-                <p> - <b>Weight:</b> 1828 kg</p>
+                <p> - <b>Seats:</b> {info.Seats}</p>
+                <p> - <b>Load:</b> {info.Load}</p>
+                <p> - <b>Weight:</b> {info.Weight}</p>
                 </Grid>
                 
             </Grid>

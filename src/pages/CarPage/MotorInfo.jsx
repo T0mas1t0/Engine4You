@@ -17,7 +17,9 @@ import gearBox from '../../assets/caixa_vel.png';
     color: theme.palette.text.secondary,
   }));
 
-function MotorInfo() {
+function MotorInfo(props) {
+  
+    const [info, setInfo] = React.useState(props.info);
 
     return (
         <>
@@ -42,13 +44,13 @@ function MotorInfo() {
                     </Grid>
                     <Grid container spacing={2}>
                     <Grid xs={4}>
-                        <span><b>Eletric</b></span>
+                        <span><b>{info.motor}</b></span>
                     </Grid>
                     <Grid xs={4}>
-                        <span><b>1-Speed Auto</b></span>
+                        <span><b>{info.gearBox}</b></span>
                     </Grid>
                     <Grid xs={4}>
-                        <span><b>AWD</b></span>
+                        <span><b>{info.traccion}</b></span>
                     </Grid>
                     </Grid>
 
@@ -59,9 +61,9 @@ function MotorInfo() {
 
             <Grid>
                 <Grid container spacing={2}>
-                    <Grid xs={4}>629km</Grid>
-                    <Grid xs={4}>14,6 kW/h</Grid>
-                    <Grid xs={4}>0 g/km</Grid>
+                    <Grid xs={4}>{info.Range}</Grid>
+                    <Grid xs={4}>{info.Consumption}</Grid>
+                    <Grid xs={4}>{info.CO2emissions}</Grid>
                 </Grid>
                 <Grid container spacing={2}>
                     <Grid xs={4}><b>Range</b></Grid>
@@ -72,9 +74,9 @@ function MotorInfo() {
 
             <Grid>
                 <Grid container spacing={2}>
-                    <Grid xs={4}>4,4s</Grid>
-                    <Grid xs={4}>366 KW</Grid>
-                    <Grid xs={4}>201 km/h</Grid>
+                    <Grid xs={4}>{info.aceleration}</Grid>
+                    <Grid xs={4}>{info.Power}</Grid>
+                    <Grid xs={4}>{info.TopSpeed}</Grid>
                 </Grid>
                 <Grid container spacing={2}>
                     <Grid xs={4}><b>0-100 km/h</b></Grid>
