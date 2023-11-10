@@ -17,31 +17,65 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function CarCompareInfo(props) {
-    const [info, setInfo] = React.useState(props.info.motorInfo);
+    const [equipment, setEquipment] = React.useState(props.info.equipment);
+    const [motorInfo, setMotorInfo] = React.useState(props.info.motorInfo);
+    const [dimensions, setDimensions] = React.useState(props.info.dimensions);
+    
+
     console.log("CompareInfo Page");
-    console.log(info);
+    //console.log(info);
     return (
         <>
             <center>
-                <h1>{info.model}</h1>
-                
-                {
-                    (props.info.photo==="TeslaModel3_LR.png")?
-                    <img src={carPhoto1} height={"150"} width={"250px"}/>
-                    :
-                    <img src={carPhoto2} height={"150"} width={"250px"}/>
-                }
+                <h1>{props.info.model}</h1>
+
+                <div>
+                  {
+                      (props.info.photo==="TeslaModel3_LR.png")?
+                      <img src={carPhoto1} height={"150px"} width={"260px"}/>
+                      :
+                      <img src={carPhoto2} height={"150px"} width={"260px"}/>
+                  }
+                </div>
+
                 
 
-                {Object.keys(info).map((category, index) => (
+                {Object.keys(motorInfo).map((category, index) => (
                     <>
                   
                     <p>
-                      <b>{info[category].title}:</b><br/>{info[category].description}
+                      <b>{motorInfo[category].title}:</b><br/>{motorInfo[category].description}
                     </p>
                   
                   </>
-              ))}
+                ))}
+
+                {Object.keys(equipment).map((category, index) => (
+                    <>
+                  
+                    <p>
+                      <b>{equipment[category].name}:</b>
+                    </p>
+                    <p>
+                      {equipment[category].list.map((item, itemIndex) => (
+                        <li key={itemIndex}>{item}</li>
+                      ))}
+                    </p>
+                  
+                  </>
+                ))}
+
+                {Object.keys(dimensions).map((category, index) => (
+                    <>
+                  
+                    <p>
+                      <b>{dimensions[category].title}:</b><br/>{dimensions[category].description}
+                    </p>
+                  
+                  </>
+                ))}
+
+               
                 
             </center>
         </>

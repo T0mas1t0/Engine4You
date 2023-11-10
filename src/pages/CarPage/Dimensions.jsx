@@ -27,26 +27,22 @@ function Dimensions(props) {
             <Grid container spacing={2} sx={{marginTop:'10px'}}>
                 <Grid xs={4}>
                 <p><b>Overall width:</b></p>
-                <p> - Mirrors folded: {info.OverallWidth.MirrorsFolded}</p>
-                <p> - Extended mirrors: {info.OverallWidth.ExtendedMirrors}</p>
+                <p> - Mirrors folded: {info.MirrorsFolded.description}</p>
+                <p> - Extended mirrors: {info.ExtendedMirrors.description}</p>
                 </Grid>
                 <Grid xs={4}>
-                <p> - <b>Total length:</b> {info.MirrorsFolded}</p>
-                <p> - <b>Total height:</b> {info.TotalHeight}</p>
-                <p> - <b>Ground clearance:</b> {info.GroundClearance}</p>
+                <p> - <b>Total length:</b> {info.TotalLength.description}</p>
+                <p> - <b>Total height:</b> {info.TotalHeight.description}</p>
+                <p> - <b>Ground clearance:</b> {info.GroundClearance.description}</p>
                 </Grid>
                 <Grid xs={4}>
-                <p> - <b>Seats:</b> {info.Seats}</p>
-                <p> - <b>Load:</b> {info.Load}</p>
-                <p> - <b>Weight:</b> {info.Weight}</p>
+                <p> - <b>Seats:</b> {info.Seats.description}</p>
+                <p> - <b>Load:</b> {info.Load.description}</p>
+                <p> - <b>Weight:</b> {info.Weight.description}</p>
                 </Grid>
                 
             </Grid>
 
-
-          
-        
-                
         </Item>
 
         </>
