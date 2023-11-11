@@ -27,14 +27,14 @@ function CarCompareInfo(props) {
     return (
         <>
             <center>
-                <h1>{props.info.model}</h1>
+                <h1 >{props.info.model}</h1>
 
                 <div>
                   {
                       (props.info.photo==="TeslaModel3_LR.png")?
-                      <img src={carPhoto1} height={"150px"} width={"260px"}/>
+                      <img src={carPhoto1} style={{ height: "auto", width: "100%" }}/>
                       :
-                      <img src={carPhoto2} height={"150px"} width={"260px"}/>
+                      <img src={carPhoto2} style={{ height: "auto", width: "100%" }}/>
                   }
                 </div>
 

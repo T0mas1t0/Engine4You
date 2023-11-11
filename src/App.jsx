@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
-import Nav from './components/Nav';
+import NavAppBar from './components/NavAppBar';
 import Loading from './pages/Loading';
 //import Loading from "./pages/Loading";
 const LazyHome = React.lazy(() => import("./pages/HomePage"));
@@ -12,7 +12,8 @@ export default function App() {
 
   return (
     <>
-    <Nav />
+    
+    <NavAppBar/>
     <Routes>
       <Route path='/'
         element={
