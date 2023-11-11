@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
+
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -16,18 +17,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 import {Car1,Car2} from '../mockData/mockData';
 import carPhoto1 from '../assets/TeslaModel3_LR.png';
 import carPhoto2 from '../assets/VOLVO_EX30.png';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+
 import Grid from '@mui/material/Unstable_Grid2';
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
 
 function Nav() {
     const [state, setState] = React.useState({

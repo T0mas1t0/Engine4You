@@ -14,7 +14,7 @@ import Fab from '@mui/material/Fab';
 const fabStyle = {
     position: 'fixed',
     bottom: 16,
-    right: 16,
+    left: 16,
   };
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -39,13 +39,13 @@ function CarPage() {
 
             <Box sx={{ flexGrow: 1, marginTop: 10 }}>
                 <Grid container spacing={2}>
-                <Grid xs={10} md={6}>
+                <Grid xs={12} md={6} lg={6}>
                     <center>
                         <img src={carPhoto} width={"80%"}/>
                     </center>
         
                 </Grid>
-                <Grid xs={10} md={5}>
+                <Grid xs={12} md={6} lg={6}>
                     <CarSpecsTabs info={Car1}/>
                 </Grid>
                 </Grid>
