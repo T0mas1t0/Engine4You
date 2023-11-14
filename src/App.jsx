@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import NavAppBar from './components/NavAppBar';
 import Loading from './pages/Loading';
 //import Loading from "./pages/Loading";
-const LazyHome = React.lazy(() => import("./pages/HomePage"));
+const LazyHome = React.lazy(() => import("./pages/HomePage2"));
 const LazyCarPage = React.lazy(() => import("./pages/CarPage/CarPage"));
 const LazyComparePage = React.lazy(() => import("./pages/ComparePage/ComparePage"));
 
