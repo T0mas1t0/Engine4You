@@ -16,7 +16,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
-function Search() {
+function SearchAdvanced() {
     return (
         <Box sx={{ flexGrow: 1}}>
           <center>
@@ -43,4 +43,4 @@ function Search() {
     );
 }
 
-export default Search;
+export default SearchAdvanced;
