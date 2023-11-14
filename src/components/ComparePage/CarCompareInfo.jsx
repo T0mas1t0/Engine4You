@@ -1,25 +1,14 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
+/* eslint-disable react/prop-types */
+
+import {useState} from 'react';
 import carPhoto1 from '../../assets/TeslaModel3_LR.png';
 import carPhoto2 from '../../assets/VOLVO_EX30.png';
 
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-
-function CarCompareInfo(props) {
-    const [equipment, setEquipment] = React.useState(props.info.equipment);
-    const [motorInfo, setMotorInfo] = React.useState(props.info.motorInfo);
-    const [dimensions, setDimensions] = React.useState(props.info.dimensions);
+function CarCompareInfo({info}) {
+    const [equipment] = useState(info.equipment);
+    const [motorInfo] = useState(info.motorInfo);
+    const [dimensions] = useState(info.dimensions);
     
 
     console.log("CompareInfo Page");
@@ -27,11 +16,11 @@ function CarCompareInfo(props) {
     return (
         <>
             <center>
-                <h1 >{props.info.model}</h1>
+                <h1 >{info.model}</h1>
 
                 <div>
                   {
-                      (props.info.photo==="TeslaModel3_LR.png")?
+                      (info.photo==="TeslaModel3_LR.png")?
                       <img src={carPhoto1} style={{ height: "auto", width: "100%" }}/>
                       :
                       <img src={carPhoto2} style={{ height: "auto", width: "100%" }}/>
@@ -40,7 +29,7 @@ function CarCompareInfo(props) {
 
                 
 
-                {Object.keys(motorInfo).map((category, index) => (
+                {Object.keys(motorInfo).map((category) => (
                     <>
                   
                     <p>
@@ -50,7 +39,7 @@ function CarCompareInfo(props) {
                   </>
                 ))}
 
-                {Object.keys(equipment).map((category, index) => (
+                {Object.keys(equipment).map((category) => (
                     <>
                   
                     <p>
@@ -65,7 +54,7 @@ function CarCompareInfo(props) {
                   </>
                 ))}
 
-                {Object.keys(dimensions).map((category, index) => (
+                {Object.keys(dimensions).map((category) => (
                     <>
                   
                     <p>

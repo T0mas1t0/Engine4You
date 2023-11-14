@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import {useState} from "react";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -18,7 +19,7 @@ import gearBox from '../../assets/caixa_vel.png';
   }));
 
 function Equipment(props) {
-  const [info, setInfo] = React.useState(props.info);
+  const [info] = useState(props.info);
   console.log(info);
     return (
         <>
