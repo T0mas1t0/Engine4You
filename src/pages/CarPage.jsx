@@ -65,7 +65,7 @@ function CarPage() {
         
                 </Grid>
                 <Grid xs={12} md={6} lg={6}>
-                    <CarSpecsTabs info={car}/>
+                    <CarSpecsTabs car={car}/>
                 </Grid>
                 </Grid>
             </Box>

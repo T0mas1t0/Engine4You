@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect,useState} from "react";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -18,8 +18,13 @@ import gearBox from '../../assets/caixa_vel.png';
   }));
 
 function Warranty(props) {
-  const [info, setInfo] = React.useState(props.info);
-  console.log(info);
+  const [info,setInfo] = useState(props.info);
+  
+  useEffect(() => {
+    setInfo(props.info);
+  }, [props]);
+
+
     return (
         <>
 

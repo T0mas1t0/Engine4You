@@ -57,7 +57,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
   
 
-export default function CarSpecsTabs(props) {
+export default function CarSpecsTabs({car}) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -68,7 +68,7 @@ export default function CarSpecsTabs(props) {
 
     
 
-  }, [props]);
+  }, [car]);
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -82,23 +82,23 @@ export default function CarSpecsTabs(props) {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <MotorInfo info={props.info.motorInfo}/>
+        <MotorInfo info={car.motorInfo}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Equipment info={props.info.equipment}/>
+        <Equipment info={car.equipment}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Dimensions info={props.info.dimensions}/>
+        <Dimensions info={car.dimensions}/>
       </CustomTabPanel>
       {
-        props.info.charging.active &&
+        car.charging.active &&
         <CustomTabPanel value={value} index={3}>
-          <Charging info={props.info.charging.elements}/>
+          <Charging info={car.charging.elements}/>
         </CustomTabPanel>
       }
       
       <CustomTabPanel value={value} index={4}>
-        <Warranty  info={props.info.warranty}/>
+        <Warranty  info={car.warranty}/>
       </CustomTabPanel>
     </Box>
   );
