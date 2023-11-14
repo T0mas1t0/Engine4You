@@ -22,7 +22,7 @@ export default function App() {
           </React.Suspense>
         }
       />
-      <Route path='/carPage'
+      <Route path='/carPage/:id'
         element={
           <React.Suspense fallback={<Loading />}>
             <LazyCarPage />

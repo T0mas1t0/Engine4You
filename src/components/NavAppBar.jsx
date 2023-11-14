@@ -18,7 +18,7 @@ import { NavLink } from "react-router-dom"
 import ComparatorDrawerInfo from '../pages/ComparatorDrawerInfo';
 import {Car1,Car2} from '../mockData/mockData';
 
-const pages = [{name:'Home',url:'/'}, {name:'Car',url:'/carPage'}, {name:'Comparator',url:'/compare'}];
+const pages = [{name:'Home',url:'/'}, {name:'Car',url:'/carPage/1'}, {name:'Comparator',url:'/compare'}];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);

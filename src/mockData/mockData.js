@@ -1,4 +1,5 @@
 export const Car1 = {
+    id:"1",
     photo:"TeslaModel3_LR.png",
     model:"Tesla Model 3 LR",
     price:"48.600",
@@ -87,6 +88,7 @@ export const Car1 = {
 }
 
 export const Car2 = {
+    id:"2",
     photo:"VOLVO_EX30.png",
     model:"VOLVO EX30",
     price:"37.800",

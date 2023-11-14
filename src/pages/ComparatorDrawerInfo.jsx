@@ -12,6 +12,7 @@ import Stack from '@mui/material/Stack';
 import carPhoto1 from '../assets/TeslaModel3_LR.png';
 import carPhoto2 from '../assets/VOLVO_EX30.png';
 import Tooltip from '@mui/material/Tooltip';
+import { NavLink } from "react-router-dom"
 
 import Grid from '@mui/material/Unstable_Grid2';
 
@@ -36,6 +37,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
 
   
 
+  
   useEffect(() => {
     console.log("UseEffect");
     console.log(list);
@@ -46,8 +48,6 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
 
   }, [list]);
 
-
-  
 
   return (
     <>
@@ -93,7 +93,13 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
                     <Grid xs={3}>
                       <Stack spacing={0}>
                       <Tooltip title="More info">
-                        <Button><VisibilityIcon/></Button>
+                        <Button>
+                        <NavLink key={index} to={"/carPage/"+list[category].id} sx={{ my: 2, color: 'white', display: 'block', mr:10 }}>
+                        <VisibilityIcon/>
+                        </NavLink>
+                        
+                        
+                        </Button>
                       </Tooltip>
                       <Tooltip title="Remove from List">
                       <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState,useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -58,11 +58,17 @@ const Item = styled(Paper)(({ theme }) => ({
   
 
 export default function CarSpecsTabs(props) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+
+    
+
+  }, [props]);
 
   return (
     <Box sx={{ width: '100%' }}>
