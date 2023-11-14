@@ -1,4 +1,7 @@
-import React from 'react'
+
+/* eslint-disable react/prop-types */
+
+import {useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
 
 import Button from '@mui/material/Button';
@@ -19,6 +22,31 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 
 export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList}) {
+
+  const [list, setList] = useState([]);
+
+  function handleRemoveCar(index){
+    console.log("handleRemoveCar");
+    console.log(list);
+    console.log(index);
+    var tmp = list;
+    tmp.splice(index, 1);
+    setList(tmp.splice(index, 1));
+  }
+
+  
+
+  useEffect(() => {
+    console.log("UseEffect");
+    console.log(list);
+    console.log(comparatorList);
+    if(list.length==0){
+      setList(comparatorList);
+    }
+
+  }, [list]);
+
+
   
 
   return (
@@ -26,7 +54,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
     <Box
       sx={{ width: "600px" }}
       
-      onClick={toggleDrawer(anchor, false)}
+      //onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
      
@@ -37,7 +65,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
       <Divider />
       <List>
       
-        {Object.keys(comparatorList).map((category, index) => (
+        {Object.keys(list).map((category, index) => (
 
 
           <>
@@ -46,7 +74,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
                     <Grid xs={5}>
                     
                         {
-                            (comparatorList[category].photo==="TeslaModel3_LR.png")?
+                            (list[category].photo==="TeslaModel3_LR.png")?
                             <img src={carPhoto1} height={"90%"} width={"100%"}/>
                             :
                             <img src={carPhoto2} height={"90%"} width={"100%"}/>
@@ -56,9 +84,9 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
                     <Grid xs={4}>
 
                       <Stack spacing={0}>
-                        <b>{comparatorList[category].model}</b>
-                        <p>{comparatorList[category].price} €</p>
-                        {comparatorList[category].motorInfo.motor.description}
+                        <b>{list[category].model}</b>
+                        <p>{list[category].price} €</p>
+                        {list[category].motorInfo.motor.description}
                       </Stack>
                     
                     </Grid>
@@ -68,7 +96,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList
                         <Button><VisibilityIcon/></Button>
                       </Tooltip>
                       <Tooltip title="Remove from List">
-                      <Button color="error"><ClearIcon/></Button>
+                      <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>
                       </Tooltip>
                       
                       </Stack>

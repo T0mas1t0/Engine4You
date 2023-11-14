@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState,Fragment,useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -21,7 +21,7 @@ import {Car1,Car2} from '../mockData/mockData';
 const pages = [{name:'Home',url:'/'}, {name:'Car',url:'/carPage'}, {name:'Comparator',url:'/compare'}];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -31,9 +31,14 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     right: false,
   });
+
+  useEffect(() => {
+    setComparatorList([Car1,Car2]);
+    console.log("INICIO: "+comparatorList);
+  }, []);
 
 const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -43,9 +48,10 @@ const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
   };
 
-const comparatorList=[Car1,Car2];
-  console.log(comparatorList);
+  const [comparatorList, setComparatorList] = useState([]);
 
+
+  
 
 const list = (anchor) => (
     <ComparatorDrawerInfo anchor={anchor} toggleDrawer={toggleDrawer} comparatorList={comparatorList}/>
@@ -133,7 +139,7 @@ const list = (anchor) => (
 
           </nav>
           <Badge badgeContent={comparatorList.length} color="primary">
-            <React.Fragment key={'right'}>
+            <Fragment key={'right'}>
               <Button onClick={toggleDrawer('right', true)}>
                   <ListAltIcon/>
               </Button>
@@ -145,7 +151,7 @@ const list = (anchor) => (
               >
                   {list('right')}
               </Drawer>
-            </React.Fragment>
+            </Fragment>
           </Badge>
         </Toolbar>
       </Container>
