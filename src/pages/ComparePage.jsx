@@ -24,7 +24,6 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-import {Car1,Car2} from '../mockData/mockData';
 
 
 function ComparePage() {
@@ -41,8 +40,6 @@ function ComparePage() {
     }
 
   }, []);
-
-    //const compareList=[Car1,Car2];
 
     return (
         <>

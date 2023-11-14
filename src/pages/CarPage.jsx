@@ -6,7 +6,7 @@ import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
 import carPhoto1 from '../assets/TeslaModel3_LR.png';
 import carPhoto2 from '../assets/VOLVO_EX30.png';
 
-import {Car1,Car2} from '../mockData/mockData';
+import {Cars} from '../mockData/mockData';
 
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
@@ -23,7 +23,7 @@ const fabStyle = {
 function CarPage() {
 
     const {id} = useParams();
-    const [car,setCar] = useState(Car1);
+    const [car,setCar] = useState(Cars[0]);
 
     const [open, setOpen] = useState(false);
     const [txt, setText] = useState("");
@@ -39,12 +39,7 @@ function CarPage() {
 
     useEffect(() => {
         console.log("ID: "+id);
-        if(id==1){
-            setCar(Car1);
-        }
-        else{
-            setCar(Car2);
-        }
+        setCar(Cars[id]);
         console.log(car);
     
       }, [car,id]);
@@ -110,7 +105,7 @@ function CarPage() {
                 <Grid xs={12} md={6} lg={6}>
                     <center>
                         {
-                            id==1?
+                            id==0?
                             <img src={carPhoto1} width={"80%"}/>
                             :
                             <img src={carPhoto2} width={"80%"}/>
