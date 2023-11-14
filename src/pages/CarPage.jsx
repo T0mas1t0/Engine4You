@@ -3,9 +3,9 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import CarSpecsTabs from '../../components/CarSpecsTabs';
-import carPhoto from '../../assets/TeslaModel3_LR.png';
-import {Car1,Car2} from '../../mockData/mockData';
+import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
+import carPhoto from '../assets/TeslaModel3_LR.png';
+import {Car1,Car2} from '../mockData/mockData';
 
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';

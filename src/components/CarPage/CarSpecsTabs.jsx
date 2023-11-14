@@ -6,12 +6,11 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
-import MotorInfo from '../pages/CarPage/MotorInfo';
-import Equipment from '../pages/CarPage/Equipment';
-import Dimensions from '../pages/CarPage/Dimensions';
-import Charging from '../pages/CarPage/Charging';
-import Warranty from '../pages/CarPage/Warranty';
+import MotorInfo from './MotorInfo';
+import Equipment from './Equipment';
+import Dimensions from './Dimensions';
+import Charging from './Charging';
+import Warranty from './Warranty';
 
 
 

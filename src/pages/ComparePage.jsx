@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-import CarCompareInfo from './CarCompareInfo';
+import CarCompareInfo from '../components/ComparePage/CarCompareInfo';
 import Tooltip from '@mui/material/Tooltip';
 
 import Fab from '@mui/material/Fab';
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-import {Car1,Car2} from '../../mockData/mockData';
+import {Car1,Car2} from '../mockData/mockData';
 
 
 function ComparePage() {
