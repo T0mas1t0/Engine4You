@@ -37,7 +37,7 @@ function CarPage() {
         }
         console.log(car);
     
-      }, [car]);
+      }, [car,id]);
 
 
 
