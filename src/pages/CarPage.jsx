@@ -1,8 +1,6 @@
 
-import React, { useState ,useEffect} from "react";
-import { styled } from '@mui/material/styles';
+import { useState ,useEffect} from "react";
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
 import carPhoto1 from '../assets/TeslaModel3_LR.png';
@@ -13,6 +11,7 @@ import {Car1,Car2} from '../mockData/mockData';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { useParams } from 'react-router-dom';
+import SimpleSnackbar from "../components/SimpleSnackbar";
 
 const fabStyle = {
     position: 'fixed',
@@ -26,8 +25,19 @@ function CarPage() {
     const {id} = useParams();
     const [car,setCar] = useState(Car1);
 
-    useEffect(() => {
+    const [open, setOpen] = useState(false);
+    const [txt, setText] = useState("");
+    const [severityType, setSeverityType] = useState("");
 
+    const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+    useEffect(() => {
         console.log("ID: "+id);
         if(id==1){
             setCar(Car1);
@@ -40,7 +50,51 @@ function CarPage() {
       }, [car,id]);
 
 
+    function addToCompare(){
+        
+        
 
+        var list = localStorage.getItem("compareList");
+        if(list==null){
+            console.log(car);
+            localStorage.setItem("compareList",JSON.stringify([car]));
+        }
+        else{
+            var oldlist = JSON.parse(localStorage.getItem("compareList"));
+            var tmp= [];
+            if(tmp.length==4){
+                setText("A lista encontra-se cheia! (max.: 4 carros) ");
+                setOpen(true);
+                setSeverityType("error");
+            }
+            else{
+                if(verifyList(oldlist)){
+                    setText("Adicionado à Lista de comparação com Sucesso!");
+                    setOpen(true);
+                    setSeverityType("success");
+                    oldlist.push(car);
+                    localStorage.setItem("compareList",JSON.stringify(oldlist));
+                }
+                else{
+                    setText("Carro já se encontra na lista!");
+                    setOpen(true);
+                    setSeverityType("error");
+                }
+            }
+            
+        }
+        console.log(car);
+    }
+
+    function verifyList(oldlist){
+        for(var i = 0;i<oldlist.length;i++){
+            if(oldlist[i].id==car.id){
+                return false;
+            }
+        }
+        
+        return true;
+    }
 
 
     return (
@@ -71,11 +125,11 @@ function CarPage() {
             </Box>
         </div>
 
-        <Fab sx={fabStyle} variant="extended">
+        <Fab sx={fabStyle} variant="extended" onClick={addToCompare}>
             <AddIcon sx={{ mr: 1 }} />
             Add to compare
         </Fab>
-
+        <SimpleSnackbar text={txt} handleClose={handleClose} open={open} severityType={severityType}/>
         </>
   );
 }

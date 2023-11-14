@@ -22,31 +22,29 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 
 
-export default function ComparatorDrawerInfo({anchor,toggleDrawer,comparatorList}) {
+export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
 
   const [list, setList] = useState([]);
 
   function handleRemoveCar(index){
-    console.log("handleRemoveCar");
-    console.log(list);
-    console.log(index);
-    var tmp = list;
+
+    var oldlist = JSON.parse(localStorage.getItem("compareList"));
+    var tmp = oldlist;
     tmp.splice(index, 1);
-    setList(tmp.splice(index, 1));
+    localStorage.setItem("compareList",JSON.stringify(tmp));
+    setList(tmp);
+
   }
 
   
-
-  
   useEffect(() => {
-    console.log("UseEffect");
-    console.log(list);
-    console.log(comparatorList);
-    if(list.length==0){
-      setList(comparatorList);
+    var list = localStorage.getItem("compareList");
+    if(list!=null){
+      setList(JSON.parse(list));
     }
 
-  }, [list]);
+
+  }, []);
 
 
   return (

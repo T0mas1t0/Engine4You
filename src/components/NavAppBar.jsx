@@ -11,12 +11,10 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import Badge from '@mui/material/Badge';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from "../assets/Logo.jpg"
 import { NavLink } from "react-router-dom"
 import ComparatorDrawerInfo from '../pages/ComparatorDrawerInfo';
-import {Car1,Car2} from '../mockData/mockData';
 
 const pages = [{name:'Home',url:'/'}, {name:'Car',url:'/carPage/1'}, {name:'Comparator',url:'/compare'}];
 
@@ -36,8 +34,8 @@ function ResponsiveAppBar() {
   });
 
   useEffect(() => {
-    setComparatorList([Car1,Car2]);
-    console.log("INICIO: "+comparatorList);
+    setComparatorList([]);
+
   }, []);
 
 const toggleDrawer = (anchor, open) => (event) => {
@@ -49,7 +47,6 @@ const toggleDrawer = (anchor, open) => (event) => {
   };
 
   const [comparatorList, setComparatorList] = useState([]);
-
 
   
 
@@ -138,7 +135,6 @@ const list = (anchor) => (
           
 
           </nav>
-          <Badge badgeContent={comparatorList.length} color="primary">
             <Fragment key={'right'}>
               <Button onClick={toggleDrawer('right', true)}>
                   <ListAltIcon/>
@@ -152,10 +148,12 @@ const list = (anchor) => (
                   {list('right')}
               </Drawer>
             </Fragment>
-          </Badge>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
 export default ResponsiveAppBar;
+
+
+//<Badge badgeContent={JSON.parse(localStorage.getItem("compareList")).length} color="primary"></Badge>

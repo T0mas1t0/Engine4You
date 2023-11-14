@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useEffect,useState} from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -29,7 +29,20 @@ import {Car1,Car2} from '../mockData/mockData';
 
 function ComparePage() {
 
-    const compareList=[Car1,Car2];
+  const [compareList,setCompareList] = useState([]);
+
+  useEffect(() => {
+
+    var oldlist = JSON.parse(localStorage.getItem("compareList"));
+    console.log("var list");
+    console.log(oldlist);
+    if(oldlist!=null){
+      setCompareList(oldlist);
+    }
+
+  }, []);
+
+    //const compareList=[Car1,Car2];
 
     return (
         <>
