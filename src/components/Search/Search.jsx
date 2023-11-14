@@ -15,9 +15,21 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import SearchAdvanced from './SearchAdvanced';
 
 function Search() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
     return (
+      <>
         <Box sx={{ flexGrow: 1}}>
           <center>
           <Card sx={{ backgroundColor:"#e0e0eb", height:"400px",width:"380px" }}>
@@ -29,17 +41,21 @@ function Search() {
                 InputProps={{
                   startAdornment: 
                   <IconButton aria-label="delete">
-                    <SearchIcon />
+                    <SearchIcon/>
                   </IconButton>,
                 }}
               />
             </CardContent>
             <CardActions>
-              <Button size="small">Advanced Search</Button>
+              <Button variant="outlined" onClick={handleClickOpen}>
+                Advanced
+              </Button>
             </CardActions>
           </Card>
           </center>
         </Box>
+        <SearchAdvanced open={open} handleClose={handleClose}/>
+        </>
     );
 }
 
