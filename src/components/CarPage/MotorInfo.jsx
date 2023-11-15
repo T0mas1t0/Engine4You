@@ -32,7 +32,7 @@ function MotorInfo(props) {
             <Grid container spacing={2} sx={{marginTop:'10px',marginBottom:'10px'}}>
                 <Grid xs={1} md={0}></Grid>
                 <Grid xs={10} md={12}>
-                    <Item sx={{height:"100px",borderRadius:"25px"}} elevation="3">
+                    <Item sx={{minHeight:"100px",borderRadius:"25px"}} elevation="3">
 
 
                     <Grid container spacing={2}>
