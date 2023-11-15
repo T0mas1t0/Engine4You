@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import {useState} from 'react';
-import carPhoto1 from '../../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../../assets/VOLVO_EX30.png';
-
 
 function CarCompareInfo({info}) {
     const [equipment] = useState(info.equipment);
@@ -19,12 +16,7 @@ function CarCompareInfo({info}) {
                 <h1 >{info.model}</h1>
 
                 <div>
-                  {
-                      (info.photo==="TeslaModel3_LR.png")?
-                      <img src={carPhoto1} style={{ height: "auto", width: "100%" }}/>
-                      :
-                      <img src={carPhoto2} style={{ height: "auto", width: "100%" }}/>
-                  }
+                  <img src={info.photo} style={{ height: "auto", width: "100%" }}/>
                 </div>
 
                 
