@@ -103,7 +103,7 @@ function CarPage() {
                 <Grid container spacing={2}>
                 <Grid xs={12} md={6} lg={6}>
                     <center>
-                    <img src={car.photo} width={"80%"}/>
+                    <img id="carPhoto" src={car.photo} />
                     </center>
         
                 </Grid>

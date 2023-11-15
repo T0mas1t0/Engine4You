@@ -80,7 +80,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                 
                     <Grid xs={5}>
                     
-                          <img src={list[category].photo} height={"90%"} width={"100%"}/>
+                          <img id="carPhoto" src={list[category].photo} />
                           
                     </Grid>
                     <Grid xs={4}>

@@ -17,7 +17,7 @@ function CarCompareInfo({info}) {
                   <h3 id="PriceCompare">{info.price} €</h3>
                 </div>
                 <div >
-                  <img id="PhotoCompare" src={info.photo} style={{ height: "auto", width: "90%" }}/>
+                  <img id="carPhoto" src={info.photo} />
                 </div>
             </div>
                 

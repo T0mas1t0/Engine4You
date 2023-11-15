@@ -45,7 +45,7 @@ function ListPage({carsData,title}){
       {
         accessorKey: 'photo', //access nested data with dot notation
         header: 'Photo',
-        Cell: ({ cell }) => <img src={cell.getValue()} width={"70%"}/>, 
+        Cell: ({ cell }) => <img id="carPhoto" src={cell.getValue()}/>, 
         size: 100,  
       },
       {

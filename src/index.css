@@ -16,15 +16,17 @@ body {
   margin: 0;
 }
 
+#carPhoto{
+  height: auto;
+  width: 100%;
+}
+
 @media (max-width: 900px) {
   #TitlesCompare {
     font-size: 1rem;
   }
   #PriceCompare{
     font-size: 0.8rem;
-  }
-  #PhotoCompare{
-    width: 100% !important;
   }
 }
 
