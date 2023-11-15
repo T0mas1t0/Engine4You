@@ -55,7 +55,9 @@ export default function SearchAdvanced({open,handleClose}) {
     console.log(value[1]);
     console.log(selectedBrands);
     console.log(engineType);
+
     const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
+    
     localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
 
     setOpenDialog(true);

@@ -19,6 +19,8 @@ import SearchAdvanced from './SearchAdvanced';
 import {Cars} from '../../mockData/mockData';
 import Autocomplete from '@mui/material/Autocomplete';
 import { styled as St, lighten, darken } from '@mui/system';
+import { NavLink } from "react-router-dom"
+
 
 const GroupHeader = St('div')(({ theme }) => ({
   position: 'sticky',
@@ -65,32 +67,67 @@ function Search() {
     };
   });
 
+  function getId(nomeModelo){
+
+    return Cars.find((car) => `${car.brand} ${car.model}` === nomeModelo).id;
+  
+  }
+ 
+
+  const [selectedCar, setSelectedCar] = useState(null);
+
+  const handleCarSelect = (event, value) => {
+    setSelectedCar(value);
+  };
   
 
     return (
       <>
+
         <Box sx={{ flexGrow: 1}}>
           <center>
-          <Card sx={{ backgroundColor:"#e0e0eb",width:"380px" }}>
+          <Card sx={{ backgroundColor:"#e0e0eb",width:"380px", borderRadius:"35px" }}>
             <CardContent sx={{height:"350px"}}>
+              <h2>Find your car</h2>
 
               <Autocomplete
                 id="grouped-demo"
+                freeSolo
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
                 groupBy={(option) => option.firstLetter}
                 getOptionLabel={(option) => option.brand+" "+option.model}
                 sx={{ m: 1, width:"90%" }}
-                renderInput={(params) => <TextField {...params} label="Search Car" />}
+                onChange={handleCarSelect}
+                renderInput={(params) => (
+                    <TextField {...params} label="Search Car" sx={{ paddingRight: '40px' }} />
+                )}
                 renderGroup={(params) => (
                   <li key={params.key}>
                     <GroupHeader>{params.group}</GroupHeader>
-                    <GroupItems>{params.children}</GroupItems>
+                    <NavLink  to={"/carPage/"+getId(params.children[0].key)} sx={{ textDecoration:"none !important",my: 2, color: 'white', display: 'block', mr:10 }}>
+                      <GroupItems style={{ textDecoration: "none", display: 'inline-block', color:'black' }}>{params.children}</GroupItems>
+                    </NavLink>
+                    
                   </li>
                 )}
               />
             </CardContent>
 
             <CardActions  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',margin:2 }}>
+              
+            {
+              selectedCar==null || selectedCar=={} || selectedCar==undefined?
+                <Button variant="outlined">
+                  <SearchIcon/>
+                </Button>
+              :
+              <NavLink  to={"/carPage/"+selectedCar.id} sx={{ my: 2, display: 'block', mr:10 }}>
+                <Button variant="outlined" sx={{marginRight:1}}>
+                  <SearchIcon/>
+                </Button>
+              </NavLink>
+            }
+                  
               <Button variant="outlined" onClick={handleClickOpen}>
                 Advanced Search
               </Button>
@@ -104,3 +141,5 @@ function Search() {
 }
 
 export default Search;
+
+//
