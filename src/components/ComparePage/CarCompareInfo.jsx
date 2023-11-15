@@ -13,7 +13,7 @@ function CarCompareInfo({info}) {
     return (
         <>
             <center>
-                <h1 >{info.model}</h1>
+                <h1 >{info.brand} {info.model}</h1>
 
                 <div>
                   <img src={info.photo} style={{ height: "auto", width: "100%" }}/>
