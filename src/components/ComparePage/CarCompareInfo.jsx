@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import {useState} from 'react';
-import carPhoto1 from '../../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../../assets/VOLVO_EX30.png';
-
 
 function CarCompareInfo({info}) {
     const [equipment] = useState(info.equipment);
