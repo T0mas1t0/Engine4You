@@ -7,6 +7,7 @@ import photoMercedeClassA from '../assets/Mercedes_A_CLASS_AMG_2.jpg';
 
 export const Cars = [{
     id:"0",
+    brand:"Tesla",
     photo:photoTeslaModel3LR,
     model:"Tesla Model 3 LR",
     price:"48.600",
@@ -96,6 +97,7 @@ export const Cars = [{
 {
     id:"1",
     photo:photoVolvoX30,
+    brand:"VOLVO",
     model:"VOLVO EX30",
     price:"37.800",
     motorInfo:{
@@ -183,6 +185,7 @@ export const Cars = [{
 {
     id: "2",
     photo: photoGolfGTI,
+    brand:"Volkswagen",
     model: "GOLF 2.0 245 GTI",
     price: "35,000",
     motorInfo: {
@@ -254,6 +257,7 @@ export const Cars = [{
 {
     id: "3",
     photo: photoToyotaCamryHybrid,
+    brand:"Toyota",
     model: "Toyota Camry Hybrid XLE",
     price: "38,000",
     motorInfo: {
@@ -301,6 +305,7 @@ export const Cars = [{
   {
     id: "4",
     photo: photoBMW118I,
+    brand:"BMW",
     model: "BMW 1 Series 118i M Sport",
     price: "38,500",
     motorInfo: {
@@ -348,6 +353,7 @@ export const Cars = [{
   {
     id: "5",
     photo: photoMercedeClassA,
+    brand:"Mercedes",
     model: "Mercedes A-Class A250 AMG Line",
     price: "42,000",
     motorInfo: {
