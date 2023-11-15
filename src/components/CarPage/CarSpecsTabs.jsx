@@ -77,7 +77,7 @@ export default function CarSpecsTabs({car}) {
           <Tab label="Motor" {...a11yProps(0)} />
           <Tab label="Equipment" {...a11yProps(1)} />
           <Tab label="Dimensions" {...a11yProps(2)} />
-          <Tab label="Charging" {...a11yProps(3)} />
+          {car.charging.active && <Tab label="Charging" {...a11yProps(3)} />}
           <Tab label="Warranty" {...a11yProps(4)} />
         </Tabs>
       </Box>

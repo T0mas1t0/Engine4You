@@ -4,8 +4,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
 
-import carPhoto1 from '../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../assets/VOLVO_EX30.png';
 
 import {Cars} from '../mockData/mockData';
 

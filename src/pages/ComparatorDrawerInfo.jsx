@@ -9,8 +9,6 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 
-import carPhoto1 from '../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../assets/VOLVO_EX30.png';
 import Tooltip from '@mui/material/Tooltip';
 import { NavLink } from "react-router-dom"
 
@@ -71,13 +69,8 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                 
                     <Grid xs={5}>
                     
-                        {
-                            (list[category].photo==="TeslaModel3_LR.png")?
-                            <img src={carPhoto1} height={"90%"} width={"100%"}/>
-                            :
-                            <img src={carPhoto2} height={"90%"} width={"100%"}/>
-                        }
-                    
+                          <img src={list[category].photo} height={"90%"} width={"100%"}/>
+                          
                     </Grid>
                     <Grid xs={4}>
 
