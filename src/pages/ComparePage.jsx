@@ -5,9 +5,10 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarCompareInfo from '../components/ComparePage/CarCompareInfo';
 import Tooltip from '@mui/material/Tooltip';
-
+import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
 
 const fabStyle = {
   position: 'fixed',
@@ -43,9 +44,14 @@ function ComparePage() {
 
     return (
         <>
-        <center>
+        <div className="center-container">
             <h1>Car Comparator</h1>
-        </center>
+            <Tooltip title="Edit Compare List">
+              <Button>
+                <EditIcon />
+              </Button>
+            </Tooltip>
+        </div>
         <Box sx={{ marginTop:"20px"}}>
         
           <Grid container spacing={2}> 

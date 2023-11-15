@@ -7,18 +7,19 @@ function CarCompareInfo({info}) {
     const [motorInfo] = useState(info.motorInfo);
     const [dimensions] = useState(info.dimensions);
     
-
-    console.log("CompareInfo Page");
-    //console.log(info);
     return (
         <>
             <center>
-                <h1 >{info.brand} {info.model}</h1>
-
-                <div>
-                  <img src={info.photo} style={{ height: "auto", width: "100%" }}/>
+                
+            <div style={{height:"350px"}}>
+                <div style={{height:"100px"}}>
+                  <h2 id="TitlesCompare">{info.brand} {info.model}</h2>
+                  <h3 id="PriceCompare">{info.price} €</h3>
                 </div>
-
+                <div >
+                  <img id="PhotoCompare" src={info.photo} style={{ height: "auto", width: "90%" }}/>
+                </div>
+            </div>
                 
 
                 {Object.keys(motorInfo).map((category) => (
