@@ -21,6 +21,12 @@ body {
   width: 100%;
 }
 
+#FindMyCar{
+  background-color:#e0e0eb;
+  width:380px;
+  border-radius:35px;
+}
+
 @media (max-width: 900px) {
   #TitlesCompare {
     font-size: 1rem;

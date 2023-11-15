@@ -86,7 +86,7 @@ function Search() {
 
         <Box sx={{ flexGrow: 1}}>
           <center>
-          <Card sx={{ backgroundColor:"#e0e0eb",width:"380px", borderRadius:"35px" }}>
+          <Card id="FindMyCar">
             <CardContent /*sx={{height:"350px"}}*/>
               <h2>Find your car</h2>
 
@@ -121,7 +121,7 @@ function Search() {
                   <SearchIcon/>
                 </Button>
               :
-              <NavLink  to={"/carPage/"+selectedCar.id} sx={{ my: 2, display: 'block', mr:10 }}>
+              <NavLink  to={"/carPage/"+selectedCar.id} >
                 <Button variant="outlined" sx={{marginRight:1}}>
                   <SearchIcon/>
                 </Button>
