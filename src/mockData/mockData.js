@@ -172,6 +172,78 @@ export const Cars = [{
         
 
     }
+},
+{
+    id: "2",
+    photo: "GOLF_2.0_245_GTI.png",
+    model: "GOLF 2.0 245 GTI",
+    price: "35,000",
+    motorInfo: {
+        motor: {
+            title: "Motor",
+            description: "Gasoline"
+        },
+        gearBox: {
+            title: "Gear Box",
+            description: "6-Speed Manual"
+        },
+        traccion: {
+            title: "Traccion",
+            description: "FWD"
+        },
+        Range: {
+            title: "Range",
+            description: "Not Applicable"
+        },
+        Consumption: { title: "Consumption", description: "10.5 L/100km" },
+        CO2emissions: { title: "CO2emissions", description: "150 g/km" },
+        aceleration: { title: "aceleration", description: "6.2s" },
+        Power: { title: "Power", description: "245 kW" },
+        TopSpeed: { title: "Top speed", description: "250 km/h" },
+    },
+    equipment: {
+        InfotainmentSystem: {
+            name: "Infotainment System",
+            list: ["Touchscreen Display", "Apple CarPlay", "Android Auto", "Bluetooth"]
+        },
+        SoundSystem: {
+            name: "Sound System",
+            list: ["Premium Sound", "12 speakers"]
+        },
+        DrivingSupportSystem: {
+            name: "Driving support system",
+            list: ["Lane-Keeping Assist", "Adaptive Cruise Control", "Emergency Braking"]
+        },
+        PassengerCompartment: {
+            name: "Passenger compartment",
+            list: ["Heated seats", "Wireless charging", "USB ports"]
+        },
+    },
+    dimensions: {
+        MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1759 mm" },
+        ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "2027 mm" },
+        TotalLength: { title: "Total Length", description: "4268 mm" },
+        TotalHeight: { title: "Total Height", description: "1436 mm" },
+        GroundClearance: { title: "Ground Clearance", description: "140 mm" },
+        Seats: { title: "Seats", description: "5 seats" },
+        Load: { title: "Load", description: "380 liters" },
+        Weight: { title: "Weight", description: "1400 kg" },
+    },
+    charging: {
+        active: false, // Not applicable for gasoline cars
+        elements: {}
+    },
+    warranty: {
+        VehicleBasics: {
+            title: "Vehicle basics",
+            description: "3 years or 60,000 km, whichever comes first",
+        },
+        BatteryAndDriveUnit: {
+            title: "Battery and drive unit",
+            description: "Not Applicable",
+        }
+    }
 }
+
 ]
 

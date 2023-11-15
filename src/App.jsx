@@ -6,6 +6,7 @@ import Loading from './pages/Loading';
 const LazyHome = React.lazy(() => import("./pages/HomePage"));
 const LazyCarPage = React.lazy(() => import("./pages/CarPage"));
 const LazyComparePage = React.lazy(() => import("./pages/ComparePage"));
+const LazyListPage = React.lazy(() => import("./pages/ListPage"));
 
 
 export default function App() {
@@ -36,6 +37,14 @@ export default function App() {
             </React.Suspense>
           }
       />
+        <Route path='/list'
+          element={
+            <React.Suspense fallback={<Loading />}>
+              <LazyListPage />
+            </React.Suspense>
+          }
+      />
+      
     </Routes>
     </>
 
