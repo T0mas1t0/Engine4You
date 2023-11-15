@@ -46,7 +46,7 @@ const ListPage = () => {
       {
         accessorKey: 'model',
         header: 'model',
-        Cell: ({ cell }) => <h3>{cell.getValue()} </h3>,
+        accessorFn: (row) => `${row.brand} ${row.model}`,
         size: 110,
       },
       {

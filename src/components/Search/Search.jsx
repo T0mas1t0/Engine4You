@@ -69,26 +69,16 @@ function Search() {
       <>
         <Box sx={{ flexGrow: 1}}>
           <center>
-          <Card sx={{ backgroundColor:"#e0e0eb", height:"400px",width:"380px" }}>
-            <CardContent>
-              <TextField
-                label="Search Bar"
-                id="outlined-start-adornment"
-                sx={{ m: 1, width:"90%" }}
-                InputProps={{
-                  startAdornment: 
-                  <IconButton aria-label="delete">
-                    <SearchIcon/>
-                  </IconButton>,
-                }}
-              />
+          <Card sx={{ backgroundColor:"#e0e0eb",width:"380px" }}>
+            <CardContent sx={{height:"350px"}}>
+
               <Autocomplete
                 id="grouped-demo"
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
                 groupBy={(option) => option.firstLetter}
                 getOptionLabel={(option) => option.model}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="With categories" />}
+                sx={{ m: 1, width:"90%" }}
+                renderInput={(params) => <TextField {...params} label="Search Car" />}
                 renderGroup={(params) => (
                   <li key={params.key}>
                     <GroupHeader>{params.group}</GroupHeader>
@@ -97,9 +87,10 @@ function Search() {
                 )}
               />
             </CardContent>
-            <CardActions>
+
+            <CardActions  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',margin:2 }}>
               <Button variant="outlined" onClick={handleClickOpen}>
-                Advanced
+                Advanced Search
               </Button>
             </CardActions>
           </Card>

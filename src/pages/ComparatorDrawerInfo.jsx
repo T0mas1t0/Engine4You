@@ -75,7 +75,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                     <Grid xs={4}>
 
                       <Stack spacing={0}>
-                        <b>{list[category].model}</b>
+                        <b>{list[category].brand} {list[category].model}</b>
                         <p>{list[category].price} €</p>
                         {list[category].motorInfo.motor.description}
                       </Stack>

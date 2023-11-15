@@ -9,7 +9,7 @@ export const Cars = [{
     id:"0",
     brand:"Tesla",
     photo:photoTeslaModel3LR,
-    model:"Tesla Model 3 LR",
+    model:"Model 3 LR",
     price:"48.600",
     motorInfo:{
         motor:{
@@ -97,8 +97,8 @@ export const Cars = [{
 {
     id:"1",
     photo:photoVolvoX30,
-    brand:"VOLVO",
-    model:"VOLVO EX30",
+    brand:"Volvo",
+    model:"EX30",
     price:"37.800",
     motorInfo:{
         motor:{
@@ -258,7 +258,7 @@ export const Cars = [{
     id: "3",
     photo: photoToyotaCamryHybrid,
     brand:"Toyota",
-    model: "Toyota Camry Hybrid XLE",
+    model: "Camry Hybrid XLE",
     price: "38,000",
     motorInfo: {
       motor: { title: "Motor", description: "Hybrid" },
