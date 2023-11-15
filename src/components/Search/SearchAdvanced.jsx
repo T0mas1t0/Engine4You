@@ -10,7 +10,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
-
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 function valuetext(value) {
   return `${value}°C`;
@@ -51,6 +55,25 @@ export default function SearchAdvanced({open,handleClose}) {
                 getAriaValueText={valuetext}
               />
             </Box>
+            <FormControl>
+            
+              <FormLabel id="demo-row-radio-buttons-group-label">Engine type</FormLabel>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel value="Gasoline" control={<Radio />} label="Gasoline" />
+                <FormControlLabel value="Diesel" control={<Radio />} label="Diesel" />
+                <FormControlLabel value="Electric" control={<Radio />} label="Electric" />
+                <FormControlLabel value="Plug-in" control={<Radio />} label="Plug-in" />
+                <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />
+              </RadioGroup>
+
+            </FormControl>
+
+
+
           <DialogContentText>
             Em desenvolvimento....
           </DialogContentText>

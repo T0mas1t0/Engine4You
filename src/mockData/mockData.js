@@ -6,7 +6,7 @@ export const Cars = [{
     motorInfo:{
         motor:{
             title:"Motor",
-            description:"Eletric"
+            description:"Electric"
         },
         gearBox:{
             title:"Gear Box",
@@ -94,7 +94,7 @@ export const Cars = [{
     motorInfo:{
         motor:{
             title:"Motor",
-            description:"Eletric"
+            description:"Electric"
         },
         gearBox:{
             title:"Gear Box",
