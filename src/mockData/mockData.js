@@ -306,7 +306,7 @@ export const Cars = [{
     id: "4",
     photo: photoBMW118I,
     brand:"BMW",
-    model: "BMW 1 Series 118i M Sport",
+    model: "1 Series 118i M Sport",
     price: 38500,
     motorInfo: {
       motor: { title: "Motor", description: "Petrol" },
@@ -354,7 +354,7 @@ export const Cars = [{
     id: "5",
     photo: photoMercedeClassA,
     brand:"Mercedes",
-    model: "Mercedes A-Class A250 AMG Line",
+    model: "A-Class A250 AMG Line",
     price: 42000,
     motorInfo: {
       motor: { title: "Motor", description: "Petrol" },
