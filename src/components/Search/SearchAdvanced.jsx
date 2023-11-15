@@ -19,8 +19,16 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import {Cars} from '../../mockData/mockData';
+import { NavLink } from 'react-router-dom';
+import AlertDialog from './DialogAdvancedSearch';
 
 export default function SearchAdvanced({open,handleClose}) {
+
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
   
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -47,10 +55,10 @@ export default function SearchAdvanced({open,handleClose}) {
     console.log(value[1]);
     console.log(selectedBrands);
     console.log(engineType);
-
     const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
+    localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
 
-      console.log(filteredCars);
+    setOpenDialog(true);
   }
 
   const brandsList = [
@@ -79,6 +87,7 @@ export default function SearchAdvanced({open,handleClose}) {
 
 
   return (
+    <>
     <Fragment>
       
       <Dialog
@@ -154,10 +163,14 @@ export default function SearchAdvanced({open,handleClose}) {
             Cancel
           </Button>
           <Button onClick={() => SearchCars()} autoFocus>
+            
             Search
+            
           </Button>
         </DialogActions>
       </Dialog>
     </Fragment>
+    <AlertDialog open={openDialog} handleClose={handleCloseDialog}/>
+  </>
   );
 }
