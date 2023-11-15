@@ -41,6 +41,13 @@ export default function SearchAdvanced({open,handleClose}) {
 
   const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands) => {
 
+    if(targetMotor=="All"){
+      return cars.filter(car => 
+        minPrice <= car.price &&
+        car.price <= maxPrice &&
+        targetBrands.some(brand => brand.title === car.brand)
+      );
+    }
     return cars.filter(car => 
       minPrice <= car.price &&
       car.price <= maxPrice &&
@@ -57,7 +64,7 @@ export default function SearchAdvanced({open,handleClose}) {
     console.log(engineType);
 
     const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
-    
+
     localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
 
     setOpenDialog(true);
@@ -79,7 +86,7 @@ export default function SearchAdvanced({open,handleClose}) {
     setSelectedBrands(newValue);
   };
 
-  const [engineType, setEngineType] = useState('Gasoline');
+  const [engineType, setEngineType] = useState('All');
 
   const handleEngineTypeChange = (event) => {
     setEngineType(event.target.value);
@@ -135,11 +142,14 @@ export default function SearchAdvanced({open,handleClose}) {
                 value={engineType}
                 onChange={handleEngineTypeChange}
               >
+                <FormControlLabel value="All" control={<Radio />} label="All" />      
                 <FormControlLabel value="Gasoline" control={<Radio />} label="Gasoline" />
                 <FormControlLabel value="Diesel" control={<Radio />} label="Diesel" />
                 <FormControlLabel value="Electric" control={<Radio />} label="Electric" />
                 <FormControlLabel value="Plug-in" control={<Radio />} label="Plug-in" />
-                <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />                
+                <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />
+                <FormControlLabel value="GPL" control={<Radio />} label="GPL" />   
+                          
               </RadioGroup>
 
             </FormControl>

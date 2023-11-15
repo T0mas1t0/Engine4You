@@ -82,8 +82,7 @@ function ListPage({carsData,title}){
     }
     else{
         var oldlist = JSON.parse(localStorage.getItem("compareList"));
-        var tmp= [];
-        if(tmp.length==4){
+        if(oldlist.length>=4){
             setText("A lista encontra-se cheia! (max.: 4 carros) ");
             setOpen(true);
             setSeverityType("error");
