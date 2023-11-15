@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Logo from "../assets/Logo.jpg"
 import { NavLink } from "react-router-dom"
 
-import ComparatorDrawerInfo from '../pages/ComparatorDrawerInfo';
+import ComparatorDrawerInfo from './ComparatorDrawerInfo';
 
 const pages = [{name:'Home',url:'/'}, {name:'Car',url:'/carPage/1'}, {name:'Comparator',url:'/compare'}, {name: 'List' , url: '/list'}];
 

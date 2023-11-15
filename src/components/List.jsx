@@ -57,6 +57,7 @@ function ListPage({carsData,title}){
       {
         accessorKey: 'price', //normal accessorKey
         header: 'price',
+        Cell: ({ cell }) => <span>{cell.getValue()+" €"}</span>, 
         size: 10,
       },
       {

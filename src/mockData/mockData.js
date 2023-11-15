@@ -4,12 +4,13 @@ import photoGolfGTI from '../assets/GOLF_2.0_245_GTI.jpg';
 import photoToyotaCamryHybrid from '../assets/Camry-Hybrid-Ventura-Toyota.jpg';
 import photoBMW118I from '../assets/BMW_118I_M.jpg';
 import photoMercedeClassA from '../assets/Mercedes_A_CLASS_AMG_2.jpg';
+import TeslaModelY from '../assets/TeslaModelY_LR.png';
 
 export const Cars = [{
     id:"0",
     brand:"Tesla",
     photo:photoTeslaModel3LR,
-    model:"Model 3 LR",
+    model:"Model 3 Long Range",
     price:48600,
     motorInfo:{
         motor:{
@@ -398,6 +399,183 @@ export const Cars = [{
       BatteryAndDriveUnit: { title: "Battery and drive unit", description: "Not Applicable" },
     },
   },
+  {
+    id:"6",
+    brand:"Tesla",
+    photo:TeslaModelY,
+    model:"Model Y",
+    price:45490,
+    motorInfo:{
+        motor:{
+            title:"Motor",
+            description:"Electric"
+        },
+        gearBox:{
+            title:"Gear Box",
+            description:"1-Speed Auto"
+        },
+        traccion:{
+            title:"Traccion",
+            description:"RWD"
+        },
+        Range:{
+            title:"Range",
+            description:"455 km"
+        },
+        Consumption:{title:"Consumption",description:"15,7 kW/h"},
+        CO2emissions:{title:"CO2emissions",description:"0 g/km"},
+        aceleration:{title:"aceleration",description:"6,9s"},
+        Power:{title:"Power",description:"220 kW"},
+        TopSpeed:{title:"Top speed",description:"217 km/h"},
+    },
+    equipment:{
+        InfotainmentSystem:{
+            name:"Infotainment System",
+            list:["Front Display 15,4","Rear Display 8''","Google Maps","Netflix, Disney Plus, ...","Spotify"]
+        },
+        SoundSystem:{
+            name:"Sound System",
+            list:["Premium Sound","17 speakers"]
+        },
+        DrivingSupportSystem:{
+            name:"Driving support system",
+            list:["Full Self-Driving"]
+        },
+        PassengerCompartment:{
+            name:"Passenger compartment",
+            list:["Heated and Ventilated seats","Wireless charging","5 usb-C (65W)"]
+        },
+    },
+    dimensions:{
+        MirrorsFolded:{title:"Width (Mirrors Folded)",description:"2010 mm"},
+        ExtendedMirrors: {title:"Width (Extended Mirrors)",description:"2130 mm"},
+        TotalLength:{title:"Total Length",description:"4720mm"},
+        TotalHeight:{title:"Total Height",description:"1441mm"},
+        GroundClearance:{title:"GroundClearance",description:"138mm"},
+        Seats:{title:"Seats",description:"5 seats"},
+        Load:{title:"Load",description:"2158 liters"},
+        Weight:{title:"Weight",description:"1909 kg"},
+    },
+    
+    charging:{
+        active:true,
+        elements:{
+            MaxChargingPower:{
+                name:"Max Charging Power",
+                data:"170kW"
+            },
+            ChargingSpeed:{
+                name:"Charging Speed",
+                data:"Up to 282 km in 15 minutes"
+            },
+            TypeOfPayment:{
+                name:"Type Of Payment",
+                data:"Pay as you use"
+            },
+        }
 
+    },
+    warranty:{
+        VehicleBasics:{
+            title:"Vehicle basics",
+            description:"4 years or 80,000 km, whichever comes first",
+        },
+        BatteryAndDriveUnit:{
+            title:"Battery and drive unit",
+            description:"8 years or 192,000 km, whichever comes first",
+        }
+        
+
+    }
+},
+{
+    id:"7",
+    brand:"Tesla",
+    photo:TeslaModelY,
+    model:"Model Y Longe Range",
+    price:54490,
+    motorInfo:{
+        motor:{
+            title:"Motor",
+            description:"Electric"
+        },
+        gearBox:{
+            title:"Gear Box",
+            description:"1-Speed Auto"
+        },
+        traccion:{
+            title:"Traccion",
+            description:"AWD"
+        },
+        Range:{
+            title:"Range",
+            description:"533 km"
+        },
+        Consumption:{title:"Consumption",description:"16,9 kW/h"},
+        CO2emissions:{title:"CO2emissions",description:"0 g/km"},
+        aceleration:{title:"aceleration",description:"5,0s"},
+        Power:{title:"Power",description:"378 kW"},
+        TopSpeed:{title:"Top speed",description:"217 km/h"},
+    },
+    equipment:{
+        InfotainmentSystem:{
+            name:"Infotainment System",
+            list:["Front Display 15,4","Rear Display 8''","Google Maps","Netflix, Disney Plus, ...","Spotify"]
+        },
+        SoundSystem:{
+            name:"Sound System",
+            list:["Premium Sound","17 speakers"]
+        },
+        DrivingSupportSystem:{
+            name:"Driving support system",
+            list:["Full Self-Driving"]
+        },
+        PassengerCompartment:{
+            name:"Passenger compartment",
+            list:["Heated and Ventilated seats","Wireless charging","5 usb-C (65W)"]
+        },
+    },
+    dimensions:{
+        MirrorsFolded:{title:"Width (Mirrors Folded)",description:"2010 mm"},
+        ExtendedMirrors: {title:"Width (Extended Mirrors)",description:"2130 mm"},
+        TotalLength:{title:"Total Length",description:"4720mm"},
+        TotalHeight:{title:"Total Height",description:"1441mm"},
+        GroundClearance:{title:"GroundClearance",description:"138mm"},
+        Seats:{title:"Seats",description:"5 seats"},
+        Load:{title:"Load",description:"2158 liters"},
+        Weight:{title:"Weight",description:"2056 kg"},
+    },
+    
+    charging:{
+        active:true,
+        elements:{
+            MaxChargingPower:{
+                name:"Max Charging Power",
+                data:"250kW"
+            },
+            ChargingSpeed:{
+                name:"Charging Speed",
+                data:"Up to 282 km in 15 minutes"
+            },
+            TypeOfPayment:{
+                name:"Type Of Payment",
+                data:"Pay as you use"
+            },
+        }
+
+    },
+    warranty:{
+        VehicleBasics:{
+            title:"Vehicle basics",
+            description:"4 years or 80,000 km, whichever comes first",
+        },
+        BatteryAndDriveUnit:{
+            title:"Battery and drive unit",
+            description:"8 years or 192,000 km, whichever comes first",
+        }
+        
+
+    }
+},
 ]
 
