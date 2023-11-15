@@ -78,7 +78,7 @@ function Search() {
                 id="grouped-demo"
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
                 groupBy={(option) => option.firstLetter}
-                getOptionLabel={(option) => option.model}
+                getOptionLabel={(option) => option.brand+" "+option.model}
                 sx={{ m: 1, width:"90%" }}
                 renderInput={(params) => <TextField {...params} label="Search Car" />}
                 renderGroup={(params) => (
