@@ -3,6 +3,7 @@ import { useState ,useEffect} from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
+
 import carPhoto1 from '../assets/TeslaModel3_LR.png';
 import carPhoto2 from '../assets/VOLVO_EX30.png';
 
@@ -104,12 +105,7 @@ function CarPage() {
                 <Grid container spacing={2}>
                 <Grid xs={12} md={6} lg={6}>
                     <center>
-                        {
-                            id==0?
-                            <img src={carPhoto1} width={"80%"}/>
-                            :
-                            <img src={carPhoto2} width={"80%"}/>
-                        }
+                    <img src={car.photo} width={"80%"}/>
                     </center>
         
                 </Grid>

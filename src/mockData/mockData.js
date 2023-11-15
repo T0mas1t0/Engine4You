@@ -1,6 +1,10 @@
+import photoTeslaModel3LR from '../assets/TeslaModel3_LR.png';
+import photoVolvoX30 from '../assets/VOLVO_EX30.png';
+import photoGolfGTI from '../assets/GOLF_2.0_245_GTI.jpg';
+
 export const Cars = [{
     id:"0",
-    photo:"TeslaModel3_LR.png",
+    photo:photoTeslaModel3LR,
     model:"Tesla Model 3 LR",
     price:"48.600",
     motorInfo:{
@@ -88,7 +92,7 @@ export const Cars = [{
 },
 {
     id:"1",
-    photo:"VOLVO_EX30.png",
+    photo:photoVolvoX30,
     model:"VOLVO EX30",
     price:"37.800",
     motorInfo:{
@@ -175,7 +179,7 @@ export const Cars = [{
 },
 {
     id: "2",
-    photo: "GOLF_2.0_245_GTI.png",
+    photo: photoGolfGTI,
     model: "GOLF 2.0 245 GTI",
     price: "35,000",
     motorInfo: {
