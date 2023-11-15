@@ -19,12 +19,7 @@ function CarCompareInfo({info}) {
                 <h1 >{info.model}</h1>
 
                 <div>
-                  {
-                      (info.photo==="TeslaModel3_LR.png")?
-                      <img src={carPhoto1} style={{ height: "auto", width: "100%" }}/>
-                      :
-                      <img src={carPhoto2} style={{ height: "auto", width: "100%" }}/>
-                  }
+                  <img src={info.photo} style={{ height: "auto", width: "100%" }}/>
                 </div>
 
                 
