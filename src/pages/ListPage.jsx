@@ -46,7 +46,8 @@ const ListPage = () => {
       {
         accessorKey: 'model',
         header: 'model',
-        size: 10,
+        Cell: ({ cell }) => <h3>{cell.getValue()} </h3>,
+        size: 110,
       },
       {
         accessorKey: 'price', //normal accessorKey
@@ -128,8 +129,15 @@ const ListPage = () => {
             enableRowActions
             onPaginationChange={setPagination} //hoist pagination state to your state when it changes internally
             state={{ pagination }} //pass the pagination state to the table
+            positionActionsColumn="last"
+            displayColumnDefOptions={{
+              'mrt-row-actions': {
+                header: 'Actions', //change header text
+                size: 0.1, //make actions column wider
+              },
+            }}
             renderRowActions={({ row, table }) => (
-              <Box sx={{padding:0,margin:0}}>
+              <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '9px'}}>
               <Tooltip title= "Inspect car" arrow>
                 <IconButton
                     color="primary">

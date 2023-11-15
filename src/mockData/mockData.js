@@ -1,6 +1,9 @@
 import photoTeslaModel3LR from '../assets/TeslaModel3_LR.png';
 import photoVolvoX30 from '../assets/VOLVO_EX30.png';
 import photoGolfGTI from '../assets/GOLF_2.0_245_GTI.jpg';
+import photoToyotaCamryHybrid from '../assets/Camry-Hybrid-Ventura-Toyota.jpg';
+import photoBMW118I from '../assets/BMW_118I_M.jpg';
+import photoMercedeClassA from '../assets/Mercedes_A_CLASS_AMG_2.jpg';
 
 export const Cars = [{
     id:"0",
@@ -247,7 +250,148 @@ export const Cars = [{
             description: "Not Applicable",
         }
     }
-}
+},
+{
+    id: "3",
+    photo: photoToyotaCamryHybrid,
+    model: "Toyota Camry Hybrid XLE",
+    price: "38,000",
+    motorInfo: {
+      motor: { title: "Motor", description: "Hybrid" },
+      gearBox: { title: "Gear Box", description: "Continuously Variable Transmission (CVT)" },
+      traccion: { title: "Traccion", description: "FWD" },
+      Range: { title: "Range", description: "600 miles" },
+      Consumption: { title: "Consumption", description: "5.5 L/100km" },
+      CO2emissions: { title: "CO2emissions", description: "100 g/km" },
+      aceleration: { title: "aceleration", description: "7.8s" },
+      Power: { title: "Power", description: "178 kW" },
+      TopSpeed: { title: "Top speed", description: "125 mph" },
+    },
+    equipment: {
+      InfotainmentSystem: {
+        name: "Infotainment System",
+        list: ["Touchscreen Display", "Apple CarPlay", "Android Auto", "Bluetooth"],
+      },
+      SoundSystem: { name: "Sound System", list: ["Premium Sound", "10 speakers"] },
+      DrivingSupportSystem: {
+        name: "Driving support system",
+        list: ["Lane-Keeping Assist", "Adaptive Cruise Control", "Emergency Braking"],
+      },
+      PassengerCompartment: {
+        name: "Passenger compartment",
+        list: ["Heated seats", "Wireless charging", "USB ports"],
+      },
+    },
+    dimensions: {
+      MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1839 mm" },
+      ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "2027 mm" },
+      TotalLength: { title: "Total Length", description: "4905 mm" },
+      TotalHeight: { title: "Total Height", description: "1445 mm" },
+      GroundClearance: { title: "Ground Clearance", description: "150 mm" },
+      Seats: { title: "Seats", description: "5 seats" },
+      Load: { title: "Load", description: "450 liters" },
+      Weight: { title: "Weight", description: "1600 kg" },
+    },
+    charging: { active: false, elements: {} },
+    warranty: {
+      VehicleBasics: { title: "Vehicle basics", description: "3 years or 60,000 km, whichever comes first" },
+      BatteryAndDriveUnit: { title: "Battery and drive unit", description: "Not Applicable" },
+    },
+  },
+  {
+    id: "4",
+    photo: photoBMW118I,
+    model: "BMW 1 Series 118i M Sport",
+    price: "38,500",
+    motorInfo: {
+      motor: { title: "Motor", description: "Petrol" },
+      gearBox: { title: "Gear Box", description: "8-Speed Automatic" },
+      traccion: { title: "Traccion", description: "RWD" },
+      Range: { title: "Range", description: "500 miles" },
+      Consumption: { title: "Consumption", description: "7.2 L/100km" },
+      CO2emissions: { title: "CO2emissions", description: "120 g/km" },
+      aceleration: { title: "aceleration", description: "6.5s" },
+      Power: { title: "Power", description: "150 kW" },
+      TopSpeed: { title: "Top speed", description: "140 mph" },
+    },
+    equipment: {
+      InfotainmentSystem: {
+        name: "Infotainment System",
+        list: ["Touchscreen Display", "Apple CarPlay", "Android Auto", "Bluetooth"],
+      },
+      SoundSystem: { name: "Sound System", list: ["Harman Kardon", "12 speakers"] },
+      DrivingSupportSystem: {
+        name: "Driving support system",
+        list: ["Lane-Departure Warning", "Forward Collision Warning", "Automatic Emergency Braking"],
+      },
+      PassengerCompartment: {
+        name: "Passenger compartment",
+        list: ["Heated seats", "Wireless charging", "USB ports"],
+      },
+    },
+    dimensions: {
+      MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1774 mm" },
+      ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "2027 mm" },
+      TotalLength: { title: "Total Length", description: "4319 mm" },
+      TotalHeight: { title: "Total Height", description: "1420 mm" },
+      GroundClearance: { title: "Ground Clearance", description: "130 mm" },
+      Seats: { title: "Seats", description: "5 seats" },
+      Load: { title: "Load", description: "380 liters" },
+      Weight: { title: "Weight", description: "1450 kg" },
+    },
+    charging: { active: false, elements: {} },
+    warranty: {
+      VehicleBasics: { title: "Vehicle basics", description: "4 years or 80,000 km, whichever comes first" },
+      BatteryAndDriveUnit: { title: "Battery and drive unit", description: "Not Applicable" },
+    },
+  },
+  {
+    id: "5",
+    photo: photoMercedeClassA,
+    model: "Mercedes A-Class A250 AMG Line",
+    price: "42,000",
+    motorInfo: {
+      motor: { title: "Motor", description: "Petrol" },
+      gearBox: { title: "Gear Box", description: "7-Speed Dual-Clutch Automatic" },
+      traccion: { title: "Traccion", description: "AWD" },
+      Range: { title: "Range", description: "450 miles" },
+      Consumption: { title: "Consumption", description: "6.8 L/100km" },
+      CO2emissions: { title: "CO2emissions", description: "110 g/km" },
+      aceleration: { title: "aceleration", description: "5.8s" },
+      Power: { title: "Power", description: "200 kW" },
+      TopSpeed: { title: "Top speed", description: "155 mph" },
+    },
+    equipment: {
+      InfotainmentSystem: {
+        name: "Infotainment System",
+        list: ["MBUX Infotainment System", "Apple CarPlay", "Android Auto", "Bluetooth"],
+      },
+      SoundSystem: { name: "Sound System", list: ["Burmester Surround Sound", "13 speakers"] },
+      DrivingSupportSystem: {
+        name: "Driving support system",
+        list: ["Active Lane-Keeping Assist", "Adaptive Cruise Control", "Traffic Sign Assist"],
+      },
+      PassengerCompartment: {
+        name: "Passenger compartment",
+        list: ["Heated front seats", "Wireless charging", "USB ports"],
+      },
+    },
+    dimensions: {
+      MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1992 mm" },
+      ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "2027 mm" },
+      TotalLength: { title: "Total Length", description: "4419 mm" },
+      TotalHeight: { title: "Total Height", description: "1440 mm" },
+      GroundClearance: { title: "Ground Clearance", description: "120 mm" },
+      Seats: { title: "Seats", description: "5 seats" },
+      Load: { title: "Load", description: "370 liters" },
+      Weight: { title: "Weight", description: "1550 kg" },
+    },
+    charging: { active: false, elements: {} },
+    warranty: {
+      VehicleBasics: { title: "Vehicle basics", description: "3 years or 60,000 km, whichever comes first" },
+      BatteryAndDriveUnit: { title: "Battery and drive unit", description: "Not Applicable" },
+    },
+  },
 
 ]
 
