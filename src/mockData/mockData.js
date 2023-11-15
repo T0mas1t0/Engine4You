@@ -10,7 +10,7 @@ export const Cars = [{
     brand:"Tesla",
     photo:photoTeslaModel3LR,
     model:"Model 3 LR",
-    price:"48.600",
+    price:48600,
     motorInfo:{
         motor:{
             title:"Motor",
@@ -99,7 +99,7 @@ export const Cars = [{
     photo:photoVolvoX30,
     brand:"Volvo",
     model:"EX30",
-    price:"37.800",
+    price:37800,
     motorInfo:{
         motor:{
             title:"Motor",
@@ -187,7 +187,7 @@ export const Cars = [{
     photo: photoGolfGTI,
     brand:"Volkswagen",
     model: "GOLF 2.0 245 GTI",
-    price: "35,000",
+    price: 35000,
     motorInfo: {
         motor: {
             title: "Motor",
@@ -259,7 +259,7 @@ export const Cars = [{
     photo: photoToyotaCamryHybrid,
     brand:"Toyota",
     model: "Camry Hybrid XLE",
-    price: "38,000",
+    price: 38000,
     motorInfo: {
       motor: { title: "Motor", description: "Hybrid" },
       gearBox: { title: "Gear Box", description: "Continuously Variable Transmission (CVT)" },
@@ -307,7 +307,7 @@ export const Cars = [{
     photo: photoBMW118I,
     brand:"BMW",
     model: "BMW 1 Series 118i M Sport",
-    price: "38,500",
+    price: 38500,
     motorInfo: {
       motor: { title: "Motor", description: "Petrol" },
       gearBox: { title: "Gear Box", description: "8-Speed Automatic" },
@@ -355,7 +355,7 @@ export const Cars = [{
     photo: photoMercedeClassA,
     brand:"Mercedes",
     model: "Mercedes A-Class A250 AMG Line",
-    price: "42,000",
+    price: 42000,
     motorInfo: {
       motor: { title: "Motor", description: "Petrol" },
       gearBox: { title: "Gear Box", description: "7-Speed Dual-Clutch Automatic" },

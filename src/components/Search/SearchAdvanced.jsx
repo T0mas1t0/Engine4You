@@ -18,6 +18,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Grid from '@mui/material/Unstable_Grid2';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import {Cars} from '../../mockData/mockData';
 
 export default function SearchAdvanced({open,handleClose}) {
   
@@ -30,6 +31,28 @@ export default function SearchAdvanced({open,handleClose}) {
     setValue(newValue);
   };
 
+  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands) => {
+
+    return cars.filter(car => 
+      minPrice <= car.price &&
+      car.price <= maxPrice &&
+      car.motorInfo.motor.description === targetMotor &&
+      targetBrands.some(brand => brand.title === car.brand)
+    );
+  };
+  
+
+  function SearchCars(){
+    console.log(value[0]);
+    console.log(value[1]);
+    console.log(selectedBrands);
+    console.log(engineType);
+
+    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
+
+      console.log(filteredCars);
+  }
+
   const brandsList = [
   {title:"Tesla"},
   {title:"Volvo"},
@@ -39,6 +62,20 @@ export default function SearchAdvanced({open,handleClose}) {
   {title:"Fiat"},
   {title:"Dacia"},
 ];
+
+  const [selectedBrands, setSelectedBrands] = useState([brandsList[0], brandsList[4]]);
+
+  const handleBrandChange = (event, newValue) => {
+    setSelectedBrands(newValue);
+  };
+
+  const [engineType, setEngineType] = useState('Gasoline');
+
+  const handleEngineTypeChange = (event) => {
+    setEngineType(event.target.value);
+  };
+
+  
 
 
   return (
@@ -51,7 +88,7 @@ export default function SearchAdvanced({open,handleClose}) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          Advanced Search
+          <b>Advanced Search</b>
         </DialogTitle>
         <DialogContent sx={{minHeight:"300px"}}>
             <Box sx={{marginTop:5, marginBottom: 5}}>
@@ -84,6 +121,8 @@ export default function SearchAdvanced({open,handleClose}) {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="row-radio-buttons-group"
+                value={engineType}
+                onChange={handleEngineTypeChange}
               >
                 <FormControlLabel value="Gasoline" control={<Radio />} label="Gasoline" />
                 <FormControlLabel value="Diesel" control={<Radio />} label="Diesel" />
@@ -96,12 +135,12 @@ export default function SearchAdvanced({open,handleClose}) {
 
             <Autocomplete
               multiple
-              
               limitTags={2}
               id="multiple-limit-tags"
               options={brandsList}
               getOptionLabel={(option) => option.title}
-              defaultValue={[brandsList[0], brandsList[4]]}
+              value={selectedBrands}
+              onChange={handleBrandChange}
               renderInput={(params) => (
                 <TextField {...params} label="Brands" placeholder="Favorites" />
               )}
@@ -114,7 +153,7 @@ export default function SearchAdvanced({open,handleClose}) {
           <Button autoFocus onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={() => SearchCars()} autoFocus>
             Search
           </Button>
         </DialogActions>
