@@ -17,7 +17,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ClearIcon from '@mui/icons-material/Clear';
-
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 
 export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
@@ -56,7 +56,18 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
      
       <center>
 
-      <h1>Comparator List</h1>
+      
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <h1 style={{ marginRight: '10px' }}>Comparator List</h1>
+        <NavLink to={"/compare"} sx={{ my: 2, color: 'white', display: 'block', mr:10 }} onClick={toggleDrawer(anchor, false)}>
+        <Button>
+        <ListAltIcon/>
+        </Button>
+            
+        </NavLink>
+        
+      </div>
+      
       </center>
       <Divider />
       <List>
@@ -65,7 +76,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
 
 
           <>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} >
                 
                     <Grid xs={5}>
                     
@@ -85,7 +96,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                       <Stack spacing={0}>
                       <Tooltip title="More info">
                         <Button>
-                        <NavLink key={index} to={"/carPage/"+list[category].id} sx={{ my: 2, color: 'white', display: 'block', mr:10 }}>
+                        <NavLink key={index} to={"/carPage/"+list[category].id} sx={{ my: 2, color: 'white', display: 'block', mr:10 }} onClick={toggleDrawer(anchor, false)}>
                         <VisibilityIcon/>
                         </NavLink>
                         

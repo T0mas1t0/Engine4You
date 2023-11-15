@@ -87,7 +87,7 @@ function Search() {
         <Box sx={{ flexGrow: 1}}>
           <center>
           <Card sx={{ backgroundColor:"#e0e0eb",width:"380px", borderRadius:"35px" }}>
-            <CardContent sx={{height:"350px"}}>
+            <CardContent /*sx={{height:"350px"}}*/>
               <h2>Find your car</h2>
 
               <Autocomplete
