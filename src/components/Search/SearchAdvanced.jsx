@@ -16,8 +16,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Grid from '@mui/material/Unstable_Grid2';
-
-
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
 export default function SearchAdvanced({open,handleClose}) {
   
@@ -29,6 +29,16 @@ export default function SearchAdvanced({open,handleClose}) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const brandsList = [
+  {title:"Tesla"},
+  {title:"Volvo"},
+  {title:"BMW"},
+  {title:"Mercedes"},
+  {title:"Audi"},
+  {title:"Fiat"},
+  {title:"Dacia"},
+];
 
 
   return (
@@ -67,7 +77,7 @@ export default function SearchAdvanced({open,handleClose}) {
 
                 </Grid>
             </Box>
-            <FormControl>
+            <FormControl sx={{marginBottom:5}}>
 
               <FormLabel id="demo-row-radio-buttons-group-label">Engine type</FormLabel>
               <RadioGroup
@@ -84,11 +94,21 @@ export default function SearchAdvanced({open,handleClose}) {
 
             </FormControl>
 
+            <Autocomplete
+              multiple
+              
+              limitTags={2}
+              id="multiple-limit-tags"
+              options={brandsList}
+              getOptionLabel={(option) => option.title}
+              defaultValue={[brandsList[0], brandsList[4]]}
+              renderInput={(params) => (
+                <TextField {...params} label="Brands" placeholder="Favorites" />
+              )}
+              sx={{ width: '500px' }}
+            />
 
 
-          <DialogContentText>
-            Em desenvolvimento....
-          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
