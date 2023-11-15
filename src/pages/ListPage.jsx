@@ -1,35 +1,104 @@
-import React, { useState, useEffect } from 'react';
+import { useMemo,useState } from 'react';
+import {
+  MaterialReactTable,
+  useMaterialReactTable,
+} from 'material-react-table';
 import {Cars} from '../mockData/mockData';
-import carPhoto1 from '../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../assets/VOLVO_EX30.png';
-import carPhoto3 from '../assets/GOLF_2.0_245_GTI.jpg';
-import './List.css';
+import { Box,Stack, IconButton } from '@mui/material';
+import { Edit as EditIcon, Add as AddIcon } from '@mui/icons-material';
+import Tooltip from '@mui/material/Tooltip';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const List = () => {
-    return (
-    <div className='list-container'>
-        <h1>Car List</h1>
-        <table className="table-container">
-          <tbody>
-            {Cars.map((car) => (
-              <tr key={car.id}  className='table-row'>
-                <td className="table-cell">
-                {car.id === "0" && <img src={carPhoto1} alt={car.model} className='table-image' />}
-                {car.id === "1" && <img src={carPhoto2} alt={car.model} className='table-image' />}
-                {car.id === "2" && <img src={carPhoto3} alt={car.model} className='table-image' />}
+//nested data is ok, see accessorKeys in ColumnDef below
+
+
+
+
+const ListPage = () => {
+
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 5, //customize the default page size
+  });
+
+  const [data, setData] = useState(Cars);
+  //should be memoized or stable
+  const columns = useMemo(
+    () => [
+      {
+        accessorKey: 'photo', //access nested data with dot notation
+        header: 'Photo',
+        Cell: ({ cell }) => <img src={cell.getValue()} width={"70%"}/>, 
+        size: 100,  
+      },
+      {
+        accessorKey: 'model',
+        header: 'model',
+        size: 10,
+      },
+      {
+        accessorKey: 'price', //normal accessorKey
+        header: 'price',
+        size: 10,
+      },
+      {
+        accessorKey: 'motorInfo.motor.description', //normal accessorKey
+        header: 'motor',
+        size: 10,
+      },
+      {
+        accessorKey: 'motorInfo.Power.description', //normal accessorKey
+        header: 'power',
+        size: 10,
+      },
+      
+    ],
+    [],
+  );
+
+
+
+  return (
+            <>
+            <div style={{ margin: '2%' }}>
+
+            
+            <MaterialReactTable 
+            
+            columns={columns}
+            data={data}
+            enableRowActions
+            onPaginationChange={setPagination} //hoist pagination state to your state when it changes internally
+            state={{ pagination }} //pass the pagination state to the table
+            renderRowActions={({ row, table }) => (
+              <Box sx={{padding:0,margin:0}}>
+              <Tooltip title= "Inspect car" arrow>
+                <IconButton
+                    color="primary"
+                    onClick={() => {
+                      
+                    }}
+                  >
+                    <VisibilityIcon />
+                  </IconButton>
+                </Tooltip>
                 
-                <div className="table-text" >
-                  <h2>{car.model} </h2>
-                  <p>Price: ${car.price}</p>
-                  {/* Display other information as needed */}
-                </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
-  
-  export default List;
+                <Tooltip title= "Add to Compare" arrow>
+                  <IconButton
+                    color="error"
+                    onClick={() => {
+                      
+                    }}
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            )}
+            
+          />
+          </div>
+          </>);
+};
+
+export default ListPage;
