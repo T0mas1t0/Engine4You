@@ -15,17 +15,16 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import Grid from '@mui/material/Unstable_Grid2';
 
-function valuetext(value) {
-  return `${value}°C`;
-}
+
 
 export default function SearchAdvanced({open,handleClose}) {
   
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [value, setValue] = useState([20, 37]);
+  const [value, setValue] = useState([500, 20000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -45,18 +44,31 @@ export default function SearchAdvanced({open,handleClose}) {
           Advanced Search
         </DialogTitle>
         <DialogContent sx={{minHeight:"300px"}}>
-            <Box sx={{ width: 300,marginTop:5 }}>
-            
-              <Slider
-                getAriaLabel={() => 'Temperature range'}
-                value={value}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
-              />
+            <Box sx={{marginTop:5, marginBottom: 5}}>
+
+            <Grid container spacing={2}>
+              <Grid xs={3} sx={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                min: {value[0]} €
+              </Grid>
+                <Grid xs={6}>
+                      <Slider
+                      getAriaLabel={() => 'Price range'}
+                      value={value}
+                      onChange={handleChange}
+                      min={500}
+                      step={500}
+                      max={100000}
+                      valueLabelDisplay="auto"
+                    />
+                </Grid>
+                <Grid xs={3} sx={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  max: {value[1]} €
+                </Grid>
+
+                </Grid>
             </Box>
             <FormControl>
-            
+
               <FormLabel id="demo-row-radio-buttons-group-label">Engine type</FormLabel>
               <RadioGroup
                 row
@@ -67,7 +79,7 @@ export default function SearchAdvanced({open,handleClose}) {
                 <FormControlLabel value="Diesel" control={<Radio />} label="Diesel" />
                 <FormControlLabel value="Electric" control={<Radio />} label="Electric" />
                 <FormControlLabel value="Plug-in" control={<Radio />} label="Plug-in" />
-                <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />
+                <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />                
               </RadioGroup>
 
             </FormControl>
