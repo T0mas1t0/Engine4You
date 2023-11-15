@@ -28,7 +28,7 @@ function Warranty(props) {
     return (
         <>
 
-        <Item sx={{minHeight:'350px'}} elevation="0">
+        <Item sx={{minHeight:"350px"}}  elevation="0">
             <Grid container spacing={4} sx={{marginTop:'10px'}}>
             
               {Object.keys(info).map((category, index) => (
