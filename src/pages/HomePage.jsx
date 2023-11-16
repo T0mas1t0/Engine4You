@@ -21,22 +21,26 @@ function Home() {
     return (
         <Box sx={{
           flexGrow: 1,
-          paddingTop: "100px",
-          minHeight: "100vh",
-          background: `url(${backgroundImageCar})`,  // Replace with the actual path to your background image
+          paddingTop: "10vh",
+          minHeight: "90vh",
+          height:"100%",
+          background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(${backgroundImageCar})`,  // Replace with the actual path to your background image
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
-          <Grid container spacing={2}>
-            <Grid xs={12} md={4}>
+          <Grid container  spacing={2} sx={{height:'90vh',width:'100%'}}  >
+            <Grid xs={12} sm={12} md={4} lg={4}>
 
               <Search/>
 
             </Grid>
-            <Grid xs={12} md={8}>
+            <Grid xs={12} sm={12} md={8} lg={8} sx={{height:'90vh',width:'100%'}} >
 
-             <CarouselSearch/>
+             <CarouselSearch />
               
             </Grid>
             

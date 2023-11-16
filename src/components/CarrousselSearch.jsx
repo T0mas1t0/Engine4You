@@ -4,19 +4,22 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { NavLink } from "react-router-dom"
 
 import {EffectCoverflow, Pagination, Navigation, Autoplay} from 'swiper/modules';
 
 import {Cars} from "../mockData/mockData";
+import Button from '@mui/material/Button';
 
 export default function CarouselSearch() {
 
     const images=[{photo:Cars[0].photo, id: "0"},{photo:Cars[1].photo, id: "1"},{photo:Cars[2].photo, id: "2"}, {photo:Cars[3].photo, id: "3"}, {photo:Cars[4].photo, id: "4"}];
 
     return (
-        <div>
-            <h1 className="header">Os mais visitados</h1>
+        <div >
+            <h1 id="FindMyCarH2">Os mais visitados</h1>
         <Swiper
+        
         autoplay={{
             delay: 5000,
             disableOnInteraction: false,
@@ -58,8 +61,13 @@ export default function CarouselSearch() {
                         <div className="carousel_hoaver">
                             <h1 className="card-title">{Cars[images[category].id].brand}</h1>
                             <h2 className="card-subtitle">{Cars[images[category].id].model}</h2>
-                           <p style={{paddingRight:"20px"}}>MOtor</p>
-                            <button className="card-btn" style={{paddingRight:"20px"}}>VER MODELO</button>
+                            <div style={{marginLeft:"4%"}}>
+                            <p style={{paddingRight:"20px"}}>{Cars[images[category].id].motorInfo.motor.description}</p>
+                                <NavLink to={"/carPage/"+Cars[images[category].id].id}>
+                                    <Button variant="contained" style={{paddingRight:"20px"}}>VER MODELO</Button>
+                                </NavLink>
+                            </div>
+                            
                         </div>
                     </SwiperSlide>
                   </>
