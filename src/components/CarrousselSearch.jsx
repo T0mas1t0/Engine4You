@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 
 export default function CarouselSearch() {
 
-    const images=[{photo:Cars[0].photo, id: "0"},{photo:Cars[1].photo, id: "1"},{photo:Cars[2].photo, id: "2"}, {photo:Cars[3].photo, id: "3"}, {photo:Cars[4].photo, id: "4"}];
+    const images=[{photo:Cars[0].photo, id: "0"},{photo:Cars[1].photo, id: "1"},{photo:Cars[2].photo, id: "2"},{photo:Cars[7].photo, id: "7"}, {photo:Cars[3].photo, id: "3"}, {photo:Cars[4].photo, id: "4"}];
 
     return (
         <div >
@@ -21,7 +21,7 @@ export default function CarouselSearch() {
         <Swiper
         
         autoplay={{
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
