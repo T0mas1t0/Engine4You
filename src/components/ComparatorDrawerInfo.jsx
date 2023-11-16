@@ -59,13 +59,14 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
       
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <h1 style={{ marginRight: '10px' }}>Comparator List</h1>
-        <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
-        <Button>
-        <ListAltIcon/>
-        </Button>
-            
-        </NavLink>
-        
+        <Tooltip title="See comparison">
+          <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
+            <Button>
+              <ListAltIcon/>
+            </Button>
+              
+          </NavLink>
+        </Tooltip>
       </div>
       
       </center>

@@ -144,7 +144,7 @@ function ListPage({carsData,title}){
               <Tooltip title= "Inspect car" arrow>
                 <IconButton
                     color="primary">
-                    <NavLink key={row.id} to={"/carPage/"+row.id} sx={{ my: 2, color: 'white', display: 'block', mr:10 }}>
+                    <NavLink key={row.id} to={"/carPage/"+row.id}>
                     <VisibilityIcon />
                     </NavLink>
                   </IconButton>

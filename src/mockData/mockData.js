@@ -204,7 +204,7 @@ export const Cars = [{
         },
         Range: {
             title: "Range",
-            description: "Not Applicable"
+            description: "769 km"
         },
         Consumption: { title: "Consumption", description: "10.5 L/100km" },
         CO2emissions: { title: "CO2emissions", description: "150 g/km" },
@@ -265,7 +265,7 @@ export const Cars = [{
       motor: { title: "Motor", description: "Hybrid" },
       gearBox: { title: "Gear Box", description: "Continuously Variable Transmission (CVT)" },
       traccion: { title: "Traccion", description: "FWD" },
-      Range: { title: "Range", description: "600 miles" },
+      Range: { title: "Range", description: "965 km" },
       Consumption: { title: "Consumption", description: "5.5 L/100km" },
       CO2emissions: { title: "CO2emissions", description: "100 g/km" },
       aceleration: { title: "aceleration", description: "7.8s" },
@@ -313,7 +313,7 @@ export const Cars = [{
       motor: { title: "Motor", description: "Petrol" },
       gearBox: { title: "Gear Box", description: "8-Speed Automatic" },
       traccion: { title: "Traccion", description: "RWD" },
-      Range: { title: "Range", description: "500 miles" },
+      Range: { title: "Range", description: "804 km" },
       Consumption: { title: "Consumption", description: "7.2 L/100km" },
       CO2emissions: { title: "CO2emissions", description: "120 g/km" },
       aceleration: { title: "aceleration", description: "6.5s" },
@@ -361,7 +361,7 @@ export const Cars = [{
       motor: { title: "Motor", description: "Petrol" },
       gearBox: { title: "Gear Box", description: "7-Speed Dual-Clutch Automatic" },
       traccion: { title: "Traccion", description: "AWD" },
-      Range: { title: "Range", description: "450 miles" },
+      Range: { title: "Range", description: "724 km" },
       Consumption: { title: "Consumption", description: "6.8 L/100km" },
       CO2emissions: { title: "CO2emissions", description: "110 g/km" },
       aceleration: { title: "aceleration", description: "5.8s" },
