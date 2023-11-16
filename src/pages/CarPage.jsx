@@ -23,7 +23,7 @@ const fabStyle = {
 function CarPage() {
 
     const {id} = useParams();
-    const [car,setCar] = useState(Cars[0]);
+    const [car,setCar] = useState(Cars[id]);
 
     const [open, setOpen] = useState(false);
     const [txt, setText] = useState("");

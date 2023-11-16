@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import Search from '../components/Search/Search';
 import CarouselSearch from '../components/CarrousselSearch';
-import backgroundImageCar from '../assets/01_BUGATTI_W16-Mistral_Japan_0.jpg';
+import backgroundImageCar from '../assets/fundo8.jpg';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,21 +24,18 @@ function Home() {
           paddingTop: "10vh",
           minHeight: "90vh",
           height:"100%",
-          background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url(${backgroundImageCar})`,  // Replace with the actual path to your background image
+          background: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(${backgroundImageCar})`,  // Replace with the actual path to your background image
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
         }}>
-          <Grid container  spacing={2} sx={{height:'90vh',width:'100%'}}  >
-            <Grid xs={12} sm={12} md={4} lg={4}>
+          <Grid container  spacing={2} alignItems="center" >
+            <Grid xs={12} sm={12} md={12} lg={4} sx={{marginBottom:"25vh"}}>
 
               <Search/>
 
             </Grid>
-            <Grid xs={12} sm={12} md={8} lg={8} sx={{height:'90vh',width:'100%'}} >
+            <Grid xs={12} sm={12} md={12} lg={8} sx={{height:'90vh',width:'100%'}} >
 
              <CarouselSearch />
               

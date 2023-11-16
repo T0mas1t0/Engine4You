@@ -17,7 +17,7 @@ export default function CarouselSearch() {
 
     return (
         <div >
-            <h1 id="FindMyCarH2">Os mais visitados</h1>
+            <h1 id="TitleCarosel">Os mais visitados</h1>
         <Swiper
         
         autoplay={{
@@ -59,9 +59,9 @@ export default function CarouselSearch() {
                     <SwiperSlide className='images'>
                         <img src={images[category].photo} alt="slide_image"/>
                         <div className="carousel_hoaver">
-                            <h1 className="card-title">{Cars[images[category].id].brand}</h1>
-                            <h2 className="card-subtitle">{Cars[images[category].id].model}</h2>
-                            <div style={{marginLeft:"4%"}}>
+                            <p className="card-title"><b>{Cars[images[category].id].brand}</b><br/>
+                            {Cars[images[category].id].model}</p>
+                            <div style={{paddingLeft: "30px"}}>
                             <p style={{paddingRight:"20px"}}>{Cars[images[category].id].motorInfo.motor.description}</p>
                                 <NavLink to={"/carPage/"+Cars[images[category].id].id}>
                                     <Button variant="contained" style={{paddingRight:"20px"}}>VER MODELO</Button>

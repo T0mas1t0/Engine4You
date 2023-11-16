@@ -148,7 +148,7 @@ export default function SearchAdvanced({open,handleClose}) {
                 <FormControlLabel value="Electric" control={<Radio />} label="Electric" />
                 <FormControlLabel value="Plug-in" control={<Radio />} label="Plug-in" />
                 <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />
-                <FormControlLabel value="GPL" control={<Radio />} label="GPL" />   
+                <FormControlLabel value="LPG" control={<Radio />} label="LPG" />   
                           
               </RadioGroup>
 
