@@ -22,17 +22,6 @@ import { styled as St, lighten, darken } from '@mui/system';
 import { NavLink } from "react-router-dom"
 
 
-const GroupHeader = St('div')(({ theme }) => ({
-  position: 'sticky',
-  top: '-8px',
-  padding: '4px 10px',
-  color: theme.palette.primary.main,
-  backgroundColor:
-    theme.palette.mode === 'light'
-      ? lighten(theme.palette.primary.light, 0.85)
-      : darken(theme.palette.primary.main, 0.8),
-}));
-
 function Search() {
   const [open, setOpen] = useState(false);
 
@@ -48,11 +37,11 @@ function Search() {
     position: 'sticky',
     top: '-8px',
     padding: '4px 10px',
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     backgroundColor:
       theme.palette.mode === 'light'
-        ? lighten(theme.palette.primary.light, 0.85)
-        : darken(theme.palette.primary.main, 0.8),
+        ? lighten(theme.palette.primary.light, 0.9)
+        : darken(theme.palette.primary.main, 0.2),h
   }));
   
   const GroupItems = styled('ul')({
@@ -83,10 +72,9 @@ function Search() {
 
     return (
       <>
-
         <Box sx={{ flexGrow: 1}}>
           <center>
-          <Card id="FindMyCar">
+          <Card id="FindMyCar" sx={{ maxWidth: 350, margin: 'auto' , border: '6px solid #555', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'}}>
             <CardContent /*sx={{height:"350px"}}*/>
               <h2>Find your car</h2>
 
@@ -113,22 +101,37 @@ function Search() {
               />
             </CardContent>
 
-            <CardActions  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',margin:2 }}>
+            <CardActions  sx={{  display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               
             {
               selectedCar==null || selectedCar=={} || selectedCar==undefined?
-                <Button variant="outlined">
-                  <SearchIcon/>
+                <Button variant="outlined" size="large" sx={{ marginTop: '0px' , width: '250px',minHeight: '40px',
+                color: 'white',
+                backgroundColor: 'black',
+                border: '1px solid white',
+                '&:hover': {
+                  backgroundColor: 'white',
+                  color: 'black',
+                },}}>
+                  Search
                 </Button>
               :
               <NavLink  to={"/carPage/"+selectedCar.id} >
-                <Button variant="outlined" sx={{marginRight:1}}>
-                  <SearchIcon/>
+                <Button variant="contained" color="primary" size="large" sx={{ marginTop: '0px' , width: '250px' }}>
+                  Search
                 </Button>
               </NavLink>
             }
                   
-              <Button variant="outlined" onClick={handleClickOpen}>
+              <Button variant="outlined" size="large" onClick={handleClickOpen} sx={{ marginTop: '10px',minHeight: '40px',
+                width: '250px',
+                color: 'white',
+                backgroundColor: 'black',
+                border: '1px solid white',
+                '&:hover': {
+                  backgroundColor: 'white',
+                  color: 'black',
+                }, }}>
                 Advanced Search
               </Button>
             </CardActions>
