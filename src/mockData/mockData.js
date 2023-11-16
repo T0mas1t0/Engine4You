@@ -5,6 +5,7 @@ import photoToyotaCamryHybrid from '../assets/Camry-Hybrid-Ventura-Toyota.jpg';
 import photoBMW118I from '../assets/BMW_118I_M.jpg';
 import photoMercedeClassA from '../assets/Mercedes_A_CLASS_AMG_2.jpg';
 import TeslaModelY from '../assets/TeslaModelY_LR.png';
+import photoBMWi3 from '../assets/bmw-i3.png'
 
 export const Cars = [{
     id:"0",
@@ -577,5 +578,91 @@ export const Cars = [{
 
     }
 },
+{
+    id: "3",
+    photo: photoBMWi3,
+    brand: "BMW",
+    model: "i3",
+    price: 44900,
+    motorInfo: {
+        motor: {
+            title: "Motor",
+            description: "Electric"
+        },
+        gearBox: {
+            title: "Gear Box",
+            description: "Single-Speed Auto"
+        },
+        traccion: {
+            title: "Traccion",
+            description: "RWD"
+        },
+        Range: {
+            title: "Range",
+            description: "153 miles"
+        },
+        Consumption: { title: "Consumption", description: "18.8 kW/h" },
+        CO2emissions: { title: "CO2emissions", description: "0 g/km" },
+        aceleration: { title: "Acceleration", description: "7.2s" },
+        Power: { title: "Power", description: "170 kW" },
+        TopSpeed: { title: "Top speed", description: "93 mph" },
+    },
+    equipment: {
+        InfotainmentSystem: {
+            name: "Infotainment System",
+            list: ["Navigation Professional", "Apple CarPlay", "Harman Kardon Sound System"]
+        },
+        SoundSystem: {
+            name: "Sound System",
+            list: ["Harman Kardon Premium Sound", "12 speakers"]
+        },
+        DrivingSupportSystem: {
+            name: "Driving support system",
+            list: ["Parking Assistant", "Lane Departure Warning", "Collision Warning"]
+        },
+        PassengerCompartment: {
+            name: "Passenger compartment",
+            list: ["Heated Seats", "Wireless Charging", "USB Ports"]
+        },
+    },
+    dimensions: {
+        MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1775 mm" },
+        ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "2039 mm" },
+        TotalLength: { title: "Total Length", description: "3999 mm" },
+        TotalHeight: { title: "Total Height", description: "1578 mm" },
+        GroundClearance: { title: "Ground Clearance", description: "140 mm" },
+        Seats: { title: "Seats", description: "4 seats" },
+        Load: { title: "Load", description: "260 liters" },
+        Weight: { title: "Weight", description: "1315 kg" },
+    },
+    charging: {
+        active: true,
+        elements: {
+            MaxChargingPower: {
+                name: "Max Charging Power",
+                data: "50 kW"
+            },
+            ChargingSpeed: {
+                name: "Charging Speed",
+                data: "0 to 80% in 45 minutes"
+            },
+            TypeOfPayment: {
+                name: "Type Of Payment",
+                data: "ChargePoint Network"
+            },
+        }
+    },
+    warranty: {
+        VehicleBasics: {
+            title: "Vehicle basics",
+            description: "3 years or 36,000 miles, whichever comes first",
+        },
+        BatteryAndDriveUnit: {
+            title: "Battery and drive unit",
+            description: "8 years or 100,000 miles, whichever comes first",
+        }
+    }
+}
+
 ]
 
