@@ -10,7 +10,6 @@ import ClearIcon from '@mui/icons-material/Clear';
 import Button from '@mui/material/Button';
 import { NavLink } from "react-router-dom"
 
-
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -18,7 +17,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-
 
 
 function ComparePage() {
@@ -72,6 +70,7 @@ function ComparePage() {
     return { max: maxCar, min: minCar };
   }
 
+
     return (
         <>
         <div className="center-container">
@@ -86,21 +85,31 @@ function ComparePage() {
                     <>
                     <Grid xs={3} md={3}>
                     <div style={{background:"#f3f2f1"}}>
-                    <Tooltip title="Remove from list">
-                      <Button onClick={()=>handleRemoveCar(itemIndex)}>
-                        <ClearIcon color="error" />
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Car page">
+                        
+                         
+                          <div>
+                              <Tooltip title="Remove from list">
 
-                      <NavLink key={itemIndex} to={"/carPage/"+item.id}>
-                        <Button>
-                          <VisibilityIcon />
-                        </Button>
-                      </NavLink>
-                      
-                    </Tooltip>
-                    </div>
+                                <Button onClick={()=>handleRemoveCar(itemIndex)} >
+                                  <ClearIcon color="error" />
+                                </Button>
+
+                              </Tooltip>
+
+                              <Tooltip title="Car page">
+
+                                <NavLink key={itemIndex} to={"/carPage/"+item.id}>
+                                  <Button>
+                                    <VisibilityIcon/>
+                                  </Button>
+                                </NavLink>
+                                
+                              </Tooltip>
+
+                              
+                          </div>
+                    
+                        </div>
                         <Item>
                             <CarCompareInfo info={item} starsList={starsList}/>
                         </Item>

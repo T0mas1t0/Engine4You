@@ -142,12 +142,14 @@ function ListPage({carsData,title}){
             renderRowActions={({ row, table }) => (
               <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '9px'}}>
               <Tooltip title= "Inspect car" arrow>
-                <IconButton
+                  <NavLink key={row.id} to={"/carPage/"+row.id}>
+                  <IconButton
                     color="primary">
-                    <NavLink key={row.id} to={"/carPage/"+row.id}>
+                    
                     <VisibilityIcon />
-                    </NavLink>
+                    
                   </IconButton>
+                  </NavLink>
                 </Tooltip>
                 
                 <Tooltip title= "Add to Compare" arrow>
