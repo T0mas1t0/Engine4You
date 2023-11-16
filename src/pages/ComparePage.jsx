@@ -47,7 +47,7 @@ function ComparePage() {
       console.log(starsList.power);
     }
     
-  }, []);
+  }, [compareList]);
 
   function getQualification(cars, property) {
     if (cars.length === 0) {

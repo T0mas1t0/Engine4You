@@ -3,7 +3,8 @@ import { useState ,useEffect} from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
-
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import {Cars} from '../mockData/mockData';
 
@@ -98,6 +99,10 @@ function CarPage() {
             <center>
                 <h1>{car.brand} {car.model} ({car.price} €)</h1>
             </center>
+            <ButtonGroup id="buttonGroup" variant="outlined" aria-label="outlined button group">
+                <Button>2D</Button>
+                <Button>3D</Button>
+            </ButtonGroup>
 
             <Box sx={{ flexGrow: 1, marginTop: 10 }}>
                 <Grid container spacing={2}>
