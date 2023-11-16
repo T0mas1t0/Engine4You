@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import Search from '../components/Search/Search';
 import CarouselSearch from '../components/CarrousselSearch';
+import backgroundImageCar from '../assets/fundo.jpg';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,7 +19,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Home() {
     return (
-        <Box sx={{ flexGrow: 1, marginTop:"100px" }}>
+        <Box sx={{
+          flexGrow: 1,
+          paddingTop: "100px",
+          minHeight: "100vh",
+        }}>
           <Grid container spacing={2}>
             <Grid xs={12} md={4}>
 
