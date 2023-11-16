@@ -5,25 +5,29 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import {EffectCoverflow, Pagination, Navigation} from 'swiper/modules';
+import {EffectCoverflow, Pagination, Navigation, Autoplay} from 'swiper/modules';
 
+import {Cars} from "../mockData/mockData";
 import slide_img from "../assets/model.jpg";
 
 export default function CarouselSearch() {
 
-    const images=[{photo:slide_img},{photo:slide_img},{photo:slide_img},{photo:slide_img},{photo:slide_img}];
+    const images=[{photo:slide_img, id: "0"},{photo:slide_img, id: "1"},{photo:slide_img, id: "2"}, {photo:slide_img, id: "3"}];
 
     return (
-        <div className="container" >
         <Swiper
-        
-
+        autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
         direction='horizontal'
         effect = {'coverflow'}
         grabCursor = {true}
         centeredSlides = {true}
         loop = {true}
-        slidesPerView = {'auto'}
+        spaceBetween={-100}
+        slidesPerView = {2}
         coverflowEffect = {
             {
                 rotate: 0,
@@ -42,14 +46,19 @@ export default function CarouselSearch() {
             
             }
         }
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
         className="swiper_container"
         >
 
             {Object.keys(images).map((category) => (
                     <>
                     <SwiperSlide className='images'>
-                        <img src={images[category].photo} style={{width:'80%'}} alt="slide_image"/>
+                        <img src={images[category].photo} alt="slide_image"/>
+                        <div className="carousel_hoaver">
+                            <h1 className="card-title">Teste</h1>
+                            <p>teste de texto e ver</p>
+                            <button className="card-btn">Ver modelo</button>
+                        </div>
                     </SwiperSlide>
                   </>
             ))}
@@ -65,6 +74,5 @@ export default function CarouselSearch() {
                 </div> 
             </div>
         </Swiper>
-    </div>
 );
 }
