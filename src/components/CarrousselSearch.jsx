@@ -8,13 +8,14 @@ import 'swiper/css/navigation';
 import {EffectCoverflow, Pagination, Navigation, Autoplay} from 'swiper/modules';
 
 import {Cars} from "../mockData/mockData";
-import slide_img from "../assets/model.jpg";
 
 export default function CarouselSearch() {
 
-    const images=[{photo:slide_img, id: "0"},{photo:slide_img, id: "1"},{photo:slide_img, id: "2"}, {photo:slide_img, id: "3"}];
+    const images=[{photo:Cars[0].photo, id: "0"},{photo:Cars[1].photo, id: "1"},{photo:Cars[2].photo, id: "2"}, {photo:Cars[3].photo, id: "3"}, {photo:Cars[4].photo, id: "4"}];
 
     return (
+        <div>
+            <h1 className="header">Os mais visitados</h1>
         <Swiper
         autoplay={{
             delay: 5000,
@@ -55,9 +56,10 @@ export default function CarouselSearch() {
                     <SwiperSlide className='images'>
                         <img src={images[category].photo} alt="slide_image"/>
                         <div className="carousel_hoaver">
-                            <h1 className="card-title">Teste</h1>
-                            <p>teste de texto e ver</p>
-                            <button className="card-btn">Ver modelo</button>
+                            <h1 className="card-title">{Cars[images[category].id].brand}</h1>
+                            <h2 className="card-subtitle">{Cars[images[category].id].model}</h2>
+                           <p style={{paddingRight:"20px"}}>MOtor</p>
+                            <button className="card-btn" style={{paddingRight:"20px"}}>VER MODELO</button>
                         </div>
                     </SwiperSlide>
                   </>
@@ -65,14 +67,16 @@ export default function CarouselSearch() {
 
             
             
-            <div className="slider_controller">
-                <div className="swiper_button_prev slide slide_arrow">
+            <div className="slider-controller">
+                <div className="swiper-button-prev slide slide-arrow">
                     <ion-icon name="arrow-back-outline"></ion-icon>
                 </div>
-                <div className="swiper_button_next slide slide_arrow">
+                <div className="swiper-button-next slide slide-arrow">
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div> 
+                <div className="swiper-pagination"></div>
             </div>
         </Swiper>
+        </div>
 );
 }
