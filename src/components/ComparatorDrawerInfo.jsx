@@ -96,13 +96,13 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                     <Grid xs={3}>
                       <Stack spacing={0}>
                       <Tooltip title="More info">
+                      
                         <Button>
                         <NavLink key={index} to={"/carPage/"+list[category].id} onClick={toggleDrawer(anchor, false)}>
                         <VisibilityIcon/>
                         </NavLink>
-                        
-                        
                         </Button>
+
                       </Tooltip>
                       <Tooltip title="Remove from List">
                       <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>
