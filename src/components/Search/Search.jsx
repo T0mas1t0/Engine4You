@@ -28,35 +28,39 @@ function Search() {
     setOpen(false);
   };
 
-    return (
-      <>
-        <Box sx={{ flexGrow: 1}}>
-          <center>
-          <Card sx={{ backgroundColor:"#e0e0eb", height:"400px",width:"380px" }}>
+  return (
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <center>
+          <Card sx={{ backgroundColor: "#e0e0eb", height: "400px", width: "380px" }}>
+
             <CardContent>
               <TextField
                 label="Search Bar"
                 id="outlined-start-adornment"
-                sx={{ m: 1, width:"90%" }}
+                sx={{ m: 1, width: "90%" }}
                 InputProps={{
-                  startAdornment: 
-                  <IconButton aria-label="delete">
-                    <SearchIcon/>
-                  </IconButton>,
+                  startAdornment:
+                    <IconButton aria-label="delete">
+                      <SearchIcon />
+                    </IconButton>,
                 }}
               />
             </CardContent>
+            <CardActions>
+              <Button variant="outlined" >Search</Button>
+            </CardActions>
             <CardActions>
               <Button variant="outlined" onClick={handleClickOpen}>
                 Advanced
               </Button>
             </CardActions>
           </Card>
-          </center>
-        </Box>
-        <SearchAdvanced open={open} handleClose={handleClose}/>
-        </>
-    );
+        </center>
+      </Box>
+      <SearchAdvanced open={open} handleClose={handleClose} />
+    </>
+  );
 }
 
 export default Search;
