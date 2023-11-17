@@ -3,8 +3,8 @@ import { useState ,useEffect} from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
-import carPhoto1 from '../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../assets/VOLVO_EX30.png';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import {Cars} from '../mockData/mockData';
 
@@ -23,7 +23,9 @@ const fabStyle = {
 function CarPage() {
 
     const {id} = useParams();
-    const [car,setCar] = useState(Cars[0]);
+    const [car,setCar] = useState(Cars[id]);
+
+    const [img2d, setImg2d] = useState(true);
 
     const [open, setOpen] = useState(false);
     const [txt, setText] = useState("");
@@ -37,7 +39,17 @@ function CarPage() {
     setOpen(false);
   };
 
+
+  function get3D(){
+    setImg2d(false);
+  }
+
+  function get2D(){
+    setImg2d(true);
+  }
+
     useEffect(() => {
+        setImg2d(true);
         console.log("ID: "+id);
         setCar(Cars[id]);
         console.log(car);
@@ -56,8 +68,8 @@ function CarPage() {
         }
         else{
             var oldlist = JSON.parse(localStorage.getItem("compareList"));
-            var tmp= [];
-            if(tmp.length==4){
+  
+            if(oldlist.length>=4){
                 setText("A lista encontra-se cheia! (max.: 4 carros) ");
                 setOpen(true);
                 setSeverityType("error");
@@ -97,20 +109,27 @@ function CarPage() {
 
         <div>
             <center>
-                <h1>{car.model} ({car.price} €)</h1>
+                <h1>{car.brand} {car.model} ({car.price} €)</h1>
             </center>
+            <ButtonGroup id="buttonGroup" variant="outlined" aria-label="outlined button group">
+                <Button onClick={get2D} variant={img2d==true?"contained":"outlined"}>2D</Button>
+                <Button onClick={get3D} variant={img2d==false?"contained":"outlined"}>3D</Button>
+            </ButtonGroup>
 
             <Box sx={{ flexGrow: 1, marginTop: 10 }}>
                 <Grid container spacing={2}>
                 <Grid xs={12} md={6} lg={6}>
-                    <center>
-                        {
-                            id==0?
-                            <img src={carPhoto1} width={"80%"}/>
-                            :
-                            <img src={carPhoto2} width={"80%"}/>
-                        }
-                    </center>
+                    {
+                        img2d==true?
+                        <center>
+                            <img id="carPhoto" src={car.photo} />
+                        </center>
+                        :
+                        <div style={{marginLeft: '5vh',alignItems: 'center'}}>
+                            <p>componente 3D em contrução...</p>
+                        </div>
+                        
+                    }
         
                 </Grid>
                 <Grid xs={12} md={6} lg={6}>

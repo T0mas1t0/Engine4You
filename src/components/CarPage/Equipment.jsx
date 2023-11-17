@@ -28,12 +28,7 @@ function Equipment(props) {
     return (
         <>
 
-        <Item sx={{minHeight:'350px'}} elevation="0">
-            <Grid container spacing={2} sx={{marginTop:'10px'}}>
-                <Grid xs={1}></Grid>
-                <Grid xs={1}></Grid>
-                
-            </Grid>
+        <Item sx={{minHeight:"300px",maxHeight:"450px", overflowY: "auto"}} elevation="0">
             <div>
               {Object.keys(info).map((category, index) => (
                 <section key={index}>

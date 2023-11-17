@@ -9,8 +9,6 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 
-import carPhoto1 from '../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../assets/VOLVO_EX30.png';
 import Tooltip from '@mui/material/Tooltip';
 import { NavLink } from "react-router-dom"
 
@@ -19,7 +17,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ClearIcon from '@mui/icons-material/Clear';
-
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 
 export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
@@ -58,7 +56,19 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
      
       <center>
 
-      <h1>Comparator List</h1>
+      
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <h1 style={{ marginRight: '10px' }}>Comparator List</h1>
+        <Tooltip title="See comparison">
+          <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
+            <Button>
+              <ListAltIcon/>
+            </Button>
+              
+          </NavLink>
+        </Tooltip>
+      </div>
+      
       </center>
       <Divider />
       <List>
@@ -67,22 +77,17 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
 
 
           <>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} >
                 
                     <Grid xs={5}>
                     
-                        {
-                            (list[category].photo==="TeslaModel3_LR.png")?
-                            <img src={carPhoto1} height={"90%"} width={"100%"}/>
-                            :
-                            <img src={carPhoto2} height={"90%"} width={"100%"}/>
-                        }
-                    
+                          <img id="carPhoto" src={list[category].photo} />
+                          
                     </Grid>
                     <Grid xs={4}>
 
                       <Stack spacing={0}>
-                        <b>{list[category].model}</b>
+                        <b>{list[category].brand} {list[category].model}</b>
                         <p>{list[category].price} €</p>
                         {list[category].motorInfo.motor.description}
                       </Stack>
@@ -91,13 +96,13 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                     <Grid xs={3}>
                       <Stack spacing={0}>
                       <Tooltip title="More info">
+                      
                         <Button>
-                        <NavLink key={index} to={"/carPage/"+list[category].id} sx={{ my: 2, color: 'white', display: 'block', mr:10 }}>
+                        <NavLink key={index} to={"/carPage/"+list[category].id} onClick={toggleDrawer(anchor, false)}>
                         <VisibilityIcon/>
                         </NavLink>
-                        
-                        
                         </Button>
+
                       </Tooltip>
                       <Tooltip title="Remove from List">
                       <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>

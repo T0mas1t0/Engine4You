@@ -1,11 +1,13 @@
-import React from 'react'
+import {Suspense,lazy} from 'react'
 import { Route, Routes } from "react-router-dom";
 import NavAppBar from './components/NavAppBar';
 import Loading from './pages/Loading';
 //import Loading from "./pages/Loading";
-const LazyHome = React.lazy(() => import("./pages/HomePage"));
-const LazyCarPage = React.lazy(() => import("./pages/CarPage"));
-const LazyComparePage = React.lazy(() => import("./pages/ComparePage"));
+const LazyHome = lazy(() => import("./pages/HomePage"));
+const LazyCarPage = lazy(() => import("./pages/CarPage"));
+const LazyComparePage = lazy(() => import("./pages/ComparePage"));
+const LazyListPage = lazy(() => import("./pages/ListPage"));
+const LazyListAdvanced = lazy(() => import("./pages/ListPageAdvancedSearch"));
 
 
 export default function App() {
@@ -17,25 +19,40 @@ export default function App() {
     <Routes>
       <Route path='/'
         element={
-          <React.Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading />}>
             <LazyHome />
-          </React.Suspense>
+          </Suspense>
         }
       />
       <Route path='/carPage/:id'
         element={
-          <React.Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading />}>
             <LazyCarPage />
-          </React.Suspense>
+          </Suspense>
         }
         />
       <Route path='/compare'
           element={
-            <React.Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading />}>
               <LazyComparePage />
-            </React.Suspense>
+            </Suspense>
           }
       />
+        <Route path='/list'
+          element={
+            <Suspense fallback={<Loading />}>
+              <LazyListPage />
+            </Suspense>
+          }
+      />
+      <Route path='/list/advanced'
+          element={
+            <Suspense fallback={<Loading />}>
+              <LazyListAdvanced />
+            </Suspense>
+          }
+      />
+      
     </Routes>
     </>
 

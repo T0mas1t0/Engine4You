@@ -10,25 +10,94 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
-
-
-function valuetext(value) {
-  return `${value}°C`;
-}
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Grid from '@mui/material/Unstable_Grid2';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import {Cars} from '../../mockData/mockData';
+import { NavLink } from 'react-router-dom';
+import AlertDialog from './DialogAdvancedSearch';
 
 export default function SearchAdvanced({open,handleClose}) {
+
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
   
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [value, setValue] = useState([20, 37]);
+  const [value, setValue] = useState([500, 20000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands) => {
+
+    if(targetMotor=="All"){
+      return cars.filter(car => 
+        minPrice <= car.price &&
+        car.price <= maxPrice &&
+        targetBrands.some(brand => brand.title === car.brand)
+      );
+    }
+    return cars.filter(car => 
+      minPrice <= car.price &&
+      car.price <= maxPrice &&
+      car.motorInfo.motor.description === targetMotor &&
+      targetBrands.some(brand => brand.title === car.brand)
+    );
+  };
+  
+
+  function SearchCars(){
+    console.log(value[0]);
+    console.log(value[1]);
+    console.log(selectedBrands);
+    console.log(engineType);
+
+    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
+
+    localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
+
+    setOpenDialog(true);
+  }
+
+  const brandsList = [
+  {title:"Tesla"},
+  {title:"Volvo"},
+  {title:"BMW"},
+  {title:"Mercedes"},
+  {title:"Toyota"},
+  {title:"Volkswagen"},
+  {title:"Dacia"},
+  {title:"BYD"},
+];
+
+  const [selectedBrands, setSelectedBrands] = useState([brandsList[0], brandsList[4]]);
+
+  const handleBrandChange = (event, newValue) => {
+    setSelectedBrands(newValue);
+  };
+
+  const [engineType, setEngineType] = useState('All');
+
+  const handleEngineTypeChange = (event) => {
+    setEngineType(event.target.value);
+  };
+
+  
+
 
   return (
+    <>
     <Fragment>
       
       <Dialog
@@ -38,32 +107,83 @@ export default function SearchAdvanced({open,handleClose}) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          Advanced Search
+          <b>Advanced Search</b>
         </DialogTitle>
         <DialogContent sx={{minHeight:"300px"}}>
-            <Box sx={{ width: 300,marginTop:5 }}>
-            
-              <Slider
-                getAriaLabel={() => 'Temperature range'}
-                value={value}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
-              />
+            <Box sx={{marginTop:5, marginBottom: 5}}>
+
+            <Grid container spacing={2}>
+              <Grid xs={3} sx={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                min: {value[0]} €
+              </Grid>
+                <Grid xs={6}>
+                      <Slider
+                      getAriaLabel={() => 'Price range'}
+                      value={value}
+                      onChange={handleChange}
+                      min={500}
+                      step={500}
+                      max={150000}
+                      valueLabelDisplay="auto"
+                    />
+                </Grid>
+                <Grid xs={3} sx={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  max: {value[1]} €
+                </Grid>
+
+                </Grid>
             </Box>
-          <DialogContentText>
-            Em desenvolvimento....
-          </DialogContentText>
+            <FormControl sx={{marginBottom:5}}>
+
+              <FormLabel id="demo-row-radio-buttons-group-label">Engine type</FormLabel>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+                value={engineType}
+                onChange={handleEngineTypeChange}
+              >
+                <FormControlLabel value="All" control={<Radio />} label="All" />      
+                <FormControlLabel value="Gasoline" control={<Radio />} label="Gasoline" />
+                <FormControlLabel value="Diesel" control={<Radio />} label="Diesel" />
+                <FormControlLabel value="Electric" control={<Radio />} label="Electric" />
+                <FormControlLabel value="Plug-in" control={<Radio />} label="Plug-in" />
+                <FormControlLabel value="Hybrid" control={<Radio />} label="Hybrid" />
+                <FormControlLabel value="LPG" control={<Radio />} label="LPG" />   
+                          
+              </RadioGroup>
+
+            </FormControl>
+
+            <Autocomplete
+              multiple
+              limitTags={2}
+              id="multiple-limit-tags"
+              options={brandsList}
+              getOptionLabel={(option) => option.title}
+              value={selectedBrands}
+              onChange={handleBrandChange}
+              renderInput={(params) => (
+                <TextField {...params} label="Brands" placeholder="Favorites" />
+              )}
+              sx={{ width: '500px' }}
+            />
+
+
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={() => SearchCars()} autoFocus>
+            
             Search
+            
           </Button>
         </DialogActions>
       </Dialog>
     </Fragment>
+    <AlertDialog open={openDialog} handleClose={handleCloseDialog}/>
+  </>
   );
 }

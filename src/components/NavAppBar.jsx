@@ -14,9 +14,10 @@ import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from "../assets/Logo.jpg"
 import { NavLink } from "react-router-dom"
-import ComparatorDrawerInfo from '../pages/ComparatorDrawerInfo';
 
-const pages = [{name:'Home',url:'/'}, {name:'Car',url:'/carPage/1'}, {name:'Comparator',url:'/compare'}];
+import ComparatorDrawerInfo from './ComparatorDrawerInfo';
+
+const pages = [{name:'Home',url:'/'}, {name: 'List of cars' , url: '/list'}, {name:'Comparator',url:'/compare'}];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -136,10 +137,11 @@ const list = (anchor) => (
 
           </nav>
             <Fragment key={'right'}>
+            
               <Button onClick={toggleDrawer('right', true)}>
                   <ListAltIcon/>
               </Button>
-
+  
               <Drawer
                   anchor={'right'}
                   open={state['right']}
@@ -156,4 +158,4 @@ const list = (anchor) => (
 export default ResponsiveAppBar;
 
 
-//<Badge badgeContent={JSON.parse(localStorage.getItem("compareList")).length} color="primary"></Badge>
+//<Badge badgeContent={JSON.parse(localStorage.getItem("compareList")).length} color="primary">

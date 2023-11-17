@@ -5,16 +5,10 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarCompareInfo from '../components/ComparePage/CarCompareInfo';
 import Tooltip from '@mui/material/Tooltip';
-
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-
-const fabStyle = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-};
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import ClearIcon from '@mui/icons-material/Clear';
+import Button from '@mui/material/Button';
+import { NavLink } from "react-router-dom"
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -25,10 +19,20 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-
 function ComparePage() {
 
   const [compareList,setCompareList] = useState([]);
+  const [starsList,setStarsList] = useState({Power:null,TopSpeed:null});
+
+  function handleRemoveCar(index){
+
+    var oldlist = JSON.parse(localStorage.getItem("compareList"));
+    var tmp = oldlist;
+    tmp.splice(index, 1);
+    localStorage.setItem("compareList",JSON.stringify(tmp));
+    setCompareList(tmp);
+
+  }
 
   useEffect(() => {
 
@@ -37,24 +41,79 @@ function ComparePage() {
     console.log(oldlist);
     if(oldlist!=null){
       setCompareList(oldlist);
+  
+      var tmp = {Power:getQualification(oldlist,"Power"),TopSpeed:getQualification(oldlist,"TopSpeed"),Range:getQualification(oldlist,"Range")}
+      setStarsList(tmp);
+      console.log(starsList.power);
     }
+    
+  }, [compareList]);
 
-  }, []);
+  function getQualification(cars, property) {
+    if (cars.length === 0) {
+      return { max: null, min: null };
+    }
+  
+    let maxCar = cars[0];
+    let minCar = cars[0];
+  
+    for (let i = 1; i < cars.length; i++) {
+      if (cars[i].motorInfo[property].description > maxCar.motorInfo[property].description) {
+        maxCar = cars[i];
+      }
+  
+      if (cars[i].motorInfo[property].description < minCar.motorInfo[property].description) {
+        minCar = cars[i];
+      }
+    }
+  
+    return { max: maxCar, min: minCar };
+  }
+
 
     return (
         <>
-        <center>
+        <div className="center-container">
             <h1>Car Comparator</h1>
-        </center>
-        <Box sx={{ marginTop:"20px"}}>
+            
+        </div>
+        {
+          compareList.length!=0?
+          <Box sx={{ marginTop:"20px"}}>
         
           <Grid container spacing={2}> 
             {
                 compareList.map((item, itemIndex) => (
                     <>
                     <Grid xs={3} md={3}>
+                    <div style={{background:"#f3f2f1"}}>
+                        
+                         
+                          <div>
+                              <Tooltip title="Remove from list">
+
+                                <Button onClick={()=>handleRemoveCar(itemIndex)} >
+                                  <ClearIcon color="error" />
+                                </Button>
+
+                              </Tooltip>
+
+                              <Tooltip title="Car page">
+
+                                <NavLink key={itemIndex} to={"/carPage/"+item.id}>
+                                  <Button>
+                                    <VisibilityIcon/>
+                                  </Button>
+                                </NavLink>
+                                
+                              </Tooltip>
+
+                              
+                          </div>
+                    
+                        </div>
                         <Item>
-                            <CarCompareInfo info={item}/>
+                            <CarCompareInfo info={item} starsList={starsList}/>
                         </Item>
                     </Grid>
                     </>
@@ -64,11 +123,27 @@ function ComparePage() {
           </Grid>
           
         </Box>
-        <Tooltip title="Add Car to Compare" placement="top">
-            <Fab sx={fabStyle} aria-label='Add' variant="extended">
-                <AddIcon />
-            </Fab>
-        </Tooltip>
+        :
+        <div 
+        style={{
+            position: 'fixed',
+            
+            left: 0,
+            width: '100%',
+            height: '80%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: '#ffffff', // Cor de fundo da div
+          }}>
+                  <div style={{justifyContent: 'center'}}>
+                    <h3> Comparation List is empty!</h3>
+                    
+                  </div>
+                  
+        </div>
+        }
+        
             
         </>
       );

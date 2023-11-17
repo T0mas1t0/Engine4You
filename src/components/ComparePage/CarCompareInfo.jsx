@@ -1,43 +1,80 @@
 /* eslint-disable react/prop-types */
 
-import {useState} from 'react';
-import carPhoto1 from '../../assets/TeslaModel3_LR.png';
-import carPhoto2 from '../../assets/VOLVO_EX30.png';
+import {useState,useEffect} from 'react';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 
-function CarCompareInfo({info}) {
+function CarCompareInfo({info,starsList}) {
     const [equipment] = useState(info.equipment);
     const [motorInfo] = useState(info.motorInfo);
     const [dimensions] = useState(info.dimensions);
+
+    const renderStarsInfo = (category, motorInfo, info, starsList) => {
+      if (category === "Power" || category === "TopSpeed" || category==="Range") {
+        if (starsList[category].min.id === info.id) {
+          return (
+            <p>
+              <StarRateIcon color="error" />
+              <b>{motorInfo[category].title}:</b>
+              <br />
+              {motorInfo[category].description}
+            </p>
+          );
+        } else if (starsList[category].max.id === info.id) {
+          return (
+            <p>
+              <StarRateIcon color="success" />
+              <b>{motorInfo[category].title}:</b>
+              <br />
+              {motorInfo[category].description}
+            </p>
+          );
+        } else {
+          return (
+            <p>
+              <StarRateIcon color="warning" />
+              <b>{motorInfo[category].title}:</b>
+              <br />
+              {motorInfo[category].description}
+            </p>
+          );
+        }
+      }
+      else {
+        return (
+          <p>
+            <b>{motorInfo[category].title}:</b>
+            <br />
+            {motorInfo[category].description}
+          </p>
+        );
+      }
+    };
+    
+    
     
 
-    console.log("CompareInfo Page");
-    //console.log(info);
+  
     return (
         <>
             <center>
-                <h1 >{info.model}</h1>
-
-                <div>
-                  {
-                      (info.photo==="TeslaModel3_LR.png")?
-                      <img src={carPhoto1} style={{ height: "auto", width: "100%" }}/>
-                      :
-                      <img src={carPhoto2} style={{ height: "auto", width: "100%" }}/>
-                  }
+                
+            <div >
+                <div style={{height:"100px"}}>
+                  <h2 id="TitlesCompare">{info.brand} {info.model}</h2>
+                  <h3 id="PriceCompare">{info.price} €</h3>
                 </div>
-
+                <div >
+                  <img id="carPhoto" src={info.photo} />
+                </div>
+            </div>
                 
 
-                {Object.keys(motorInfo).map((category) => (
-                    <>
-                  
-                    <p>
-                      <b>{motorInfo[category].title}:</b><br/>{motorInfo[category].description}
-                    </p>
-                  
-                  </>
-                ))}
+            {Object.keys(motorInfo).map((category) => (
+              <>
+                {renderStarsInfo(category, motorInfo, info, starsList)}
+              </>
+            ))}
 
                 {Object.keys(equipment).map((category) => (
                     <>

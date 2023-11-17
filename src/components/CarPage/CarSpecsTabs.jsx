@@ -77,8 +77,8 @@ export default function CarSpecsTabs({car}) {
           <Tab label="Motor" {...a11yProps(0)} />
           <Tab label="Equipment" {...a11yProps(1)} />
           <Tab label="Dimensions" {...a11yProps(2)} />
-          <Tab label="Charging" {...a11yProps(3)} />
-          <Tab label="Warranty" {...a11yProps(4)} />
+          <Tab label="Warranty" {...a11yProps(3)} />
+          {car.charging.active && <Tab label="Charging" {...a11yProps(4)} />}
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -90,16 +90,17 @@ export default function CarSpecsTabs({car}) {
       <CustomTabPanel value={value} index={2}>
         <Dimensions info={car.dimensions}/>
       </CustomTabPanel>
+      
+      <CustomTabPanel value={value} index={3}>
+        <Warranty  info={car.warranty}/>
+      </CustomTabPanel>
       {
         car.charging.active &&
-        <CustomTabPanel value={value} index={3}>
+        <CustomTabPanel value={value} index={4}>
           <Charging info={car.charging.elements}/>
         </CustomTabPanel>
       }
       
-      <CustomTabPanel value={value} index={4}>
-        <Warranty  info={car.warranty}/>
-      </CustomTabPanel>
     </Box>
   );
 }
