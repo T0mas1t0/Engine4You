@@ -17,7 +17,7 @@ export default function App() {
 
       <NavAppBar />
       <Routes>
-        <Route path='Engine4You'
+        <Route path='/'
           element={
             <Suspense fallback={<Loading />}>
               <LazyHome />
