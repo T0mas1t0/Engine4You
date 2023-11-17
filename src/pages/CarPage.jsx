@@ -25,6 +25,8 @@ function CarPage() {
     const {id} = useParams();
     const [car,setCar] = useState(Cars[id]);
 
+    const [img2d, setImg2d] = useState(true);
+
     const [open, setOpen] = useState(false);
     const [txt, setText] = useState("");
     const [severityType, setSeverityType] = useState("");
@@ -37,7 +39,17 @@ function CarPage() {
     setOpen(false);
   };
 
+
+  function get3D(){
+    setImg2d(false);
+  }
+
+  function get2D(){
+    setImg2d(true);
+  }
+
     useEffect(() => {
+        setImg2d(true);
         console.log("ID: "+id);
         setCar(Cars[id]);
         console.log(car);
@@ -100,16 +112,24 @@ function CarPage() {
                 <h1>{car.brand} {car.model} ({car.price} €)</h1>
             </center>
             <ButtonGroup id="buttonGroup" variant="outlined" aria-label="outlined button group">
-                <Button>2D</Button>
-                <Button>3D</Button>
+                <Button onClick={get2D} variant={img2d==true?"contained":"outlined"}>2D</Button>
+                <Button onClick={get3D} variant={img2d==false?"contained":"outlined"}>3D</Button>
             </ButtonGroup>
 
             <Box sx={{ flexGrow: 1, marginTop: 10 }}>
                 <Grid container spacing={2}>
                 <Grid xs={12} md={6} lg={6}>
-                    <center>
-                    <img id="carPhoto" src={car.photo} />
-                    </center>
+                    {
+                        img2d==true?
+                        <center>
+                            <img id="carPhoto" src={car.photo} />
+                        </center>
+                        :
+                        <div style={{marginLeft: '5vh',alignItems: 'center'}}>
+                            <p>componente 3D em contrução...</p>
+                        </div>
+                        
+                    }
         
                 </Grid>
                 <Grid xs={12} md={6} lg={6}>

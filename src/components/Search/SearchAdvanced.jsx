@@ -75,9 +75,10 @@ export default function SearchAdvanced({open,handleClose}) {
   {title:"Volvo"},
   {title:"BMW"},
   {title:"Mercedes"},
-  {title:"Audi"},
-  {title:"Fiat"},
+  {title:"Toyota"},
+  {title:"Volkswagen"},
   {title:"Dacia"},
+  {title:"BYD"},
 ];
 
   const [selectedBrands, setSelectedBrands] = useState([brandsList[0], brandsList[4]]);
@@ -122,7 +123,7 @@ export default function SearchAdvanced({open,handleClose}) {
                       onChange={handleChange}
                       min={500}
                       step={500}
-                      max={100000}
+                      max={150000}
                       valueLabelDisplay="auto"
                     />
                 </Grid>

@@ -3,11 +3,13 @@ import {useState,useEffect} from "react";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
+import Tooltip from '@mui/material/Tooltip';
 
 import motor from '../../assets/motor.png';
 import traccion from '../../assets/Traccion.png';
 import gearBox from '../../assets/caixa_vel.png';
-
+import IconButton from '@mui/material/IconButton';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -49,6 +51,18 @@ function MotorInfo(props) {
                     <Grid container spacing={2}>
                     <Grid xs={4}>
                         <span><b>{info.motor.description}</b></span>
+                        {
+                            info.motor.more!=""?
+                                <Tooltip title={info.motor.more}>
+                                    <IconButton aria-label="delete" size="small">
+                                        <InfoOutlinedIcon fontSize="inherit" />
+                                    </IconButton>
+                                </Tooltip>
+                            :
+                            <>
+                                
+                            </>
+                        }
                     </Grid>
                     <Grid xs={4}>
                         <span><b>{info.gearBox.description}</b></span>

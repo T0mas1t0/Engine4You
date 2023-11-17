@@ -47,12 +47,20 @@ function ListPage({carsData,title}){
         header: 'Photo',
         Cell: ({ cell }) => <img id="carPhoto" src={cell.getValue()}/>, 
         size: 100,  
+        enableGrouping: false,
+      },
+      {
+        accessorKey: 'brand',
+        header: 'Brand',
+        accessorFn: (row) => `${row.brand}`,
+        size: 110,
       },
       {
         accessorKey: 'model',
         header: 'model',
         accessorFn: (row) => `${row.brand} ${row.model}`,
         size: 110,
+        enableGrouping: false,
       },
       {
         accessorKey: 'price', //normal accessorKey
@@ -66,8 +74,21 @@ function ListPage({carsData,title}){
         size: 10,
       },
       {
-        accessorKey: 'motorInfo.Power.description', //normal accessorKey
-        header: 'power',
+        accessorKey: 'Power', //normal accessorKey
+        header: 'Power',
+        accessorFn: (row) => `${row.motorInfo.Power.description}`,
+        size: 10,
+      },
+      {
+        accessorKey: 'Traccion', //normal accessorKey
+        header: 'Traccion',
+        accessorFn: (row) => `${row.motorInfo.traccion.description}`,
+        size: 10,
+      },
+      {
+        accessorKey: 'Range', //normal accessorKey
+        header: 'Range',
+        accessorFn: (row) => `${row.motorInfo.Range.description}`,
         size: 10,
       },
       
@@ -126,12 +147,14 @@ function ListPage({carsData,title}){
 
             <h3>{title}</h3>
             <MaterialReactTable 
-            
+            enableColumnOrdering
+            enableGrouping
             columns={columns}
             data={data}
             enableRowActions
             onPaginationChange={setPagination} //hoist pagination state to your state when it changes internally
             state={{ pagination }} //pass the pagination state to the table
+            initialState={{ columnVisibility: { brand: false,Traccion:false,Range:false} }}
             positionActionsColumn="last"
             displayColumnDefOptions={{
               'mrt-row-actions': {

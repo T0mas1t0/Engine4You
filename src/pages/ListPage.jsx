@@ -7,7 +7,7 @@ function ListPage(){
 
   return(
         <>
-        <List carsData={Cars} title="Cars List"/>
+        <List carsData={Cars} title="List of Cars"/>
         </>
   );
 }

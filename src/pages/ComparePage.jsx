@@ -77,7 +77,9 @@ function ComparePage() {
             <h1>Car Comparator</h1>
             
         </div>
-        <Box sx={{ marginTop:"20px"}}>
+        {
+          compareList.length!=0?
+          <Box sx={{ marginTop:"20px"}}>
         
           <Grid container spacing={2}> 
             {
@@ -121,6 +123,27 @@ function ComparePage() {
           </Grid>
           
         </Box>
+        :
+        <div 
+        style={{
+            position: 'fixed',
+            
+            left: 0,
+            width: '100%',
+            height: '80%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: '#ffffff', // Cor de fundo da div
+          }}>
+                  <div style={{justifyContent: 'center'}}>
+                    <h3> Comparation List is empty!</h3>
+                    
+                  </div>
+                  
+        </div>
+        }
+        
             
         </>
       );
