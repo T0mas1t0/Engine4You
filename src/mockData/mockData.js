@@ -1082,7 +1082,7 @@ export const Cars = [{
     }
 },
 {
-    id: "13",
+    id: "14",
     photo: photoBYDDolphin, // Replace with the actual photo URL for Volvo XC60
     brand: "BYD",
     model: "Dolphin",
@@ -1171,7 +1171,7 @@ export const Cars = [{
     }
 },
 {
-    id: "14",
+    id: "15",
     photo: photoDaciaDusterECOGGPL, // Replace with the actual photo URL for Dacia Duster ECO-G GPL
     brand: "Dacia",
     model: "Duster ECO-G GPL",
