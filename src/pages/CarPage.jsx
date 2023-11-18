@@ -16,7 +16,7 @@ import SimpleSnackbar from "../components/SimpleSnackbar";
 const fabStyle = {
     position: 'fixed',
     bottom: 16,
-    left: 16,
+    right: 16,
   };
 
 

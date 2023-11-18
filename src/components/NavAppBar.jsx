@@ -131,6 +131,7 @@ const list = (anchor) => (
             {pages.map((page) => (
                 <NavLink key={page} to={page.url} sx={{ my: 2, color: 'white', display: 'block', mr:10 }}>{page.name}</NavLink>
             ))}
+            
 
           </Box>
 
