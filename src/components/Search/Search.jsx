@@ -60,16 +60,16 @@ function Search() {
   });
 
   const options = Cars.map((option) => {
-    const firstLetter = option.brand.toUpperCase();
+    const brand = option.brand.toUpperCase();
     return {
-      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      brand: /[0-9]/.test(brand) ? '0-9' : brand,
       ...option,
     };
   });
 
   function getId(nomeModelo) {
-
-    return Cars.find((car) => `${car.brand} ${car.model}` === nomeModelo).id;
+    console.log(nomeModelo);
+    //return Cars.find((car) => `${car.brand} ${car.model}` === nomeModelo).id;
 
   }
 
@@ -93,8 +93,8 @@ function Search() {
               <Autocomplete
                 id="grouped-demo"
                 freeSolo
-                options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
-                groupBy={(option) => option.firstLetter}
+                options={options.sort((a, b) => -b.brand.localeCompare(a.brand))}
+                groupBy={(option) => option.brand}
                 getOptionLabel={(option) => option.brand + " " + option.model}
                 sx={{ m: 1, width: "90%" }}
                 onChange={handleCarSelect}
@@ -104,10 +104,9 @@ function Search() {
                 renderGroup={(params) => (
                   <li key={params.key}>
                     <GroupHeader>{params.group}</GroupHeader>
-                    <NavLink to={"/carPage/" + getId(params.children[0].key)} sx={{ textDecoration: "none !important", my: 2, color: 'white', display: 'block', mr: 10 }}>
-                      <GroupItems style={{ textDecoration: "none", display: 'inline-block', color: 'black' }}>{params.children}</GroupItems>
-                    </NavLink>
-
+                    <GroupItems onClick={()=>getId(params)} style={{ textDecoration: "none", display: 'inline-block', color: 'black' }}>
+                     {params.children}
+                    </GroupItems>
                   </li>
                 )}
               />
@@ -142,4 +141,4 @@ function Search() {
 
 export default Search;
 
-//
+//<NavLink to={"/carPage/" + getId(params.children[0].key)} sx={{ textDecoration: "none !important", my: 2, color: 'white', display: 'block', mr: 10 }}>

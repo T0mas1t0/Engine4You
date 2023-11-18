@@ -1218,6 +1218,10 @@ export const Cars = [{
             list: ["Roof Rails", "LED Daytime Running Lights", "Alloy Wheels"]
         },
     },
+    charging:{
+        active:false,
+        elements:{}
+    },
     dimensions: {
         MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1750 mm" },
         ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "2000 mm" },

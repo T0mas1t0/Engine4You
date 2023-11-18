@@ -80,8 +80,6 @@ function CarPage() {
 
 
     function addToCompare(carToAdd){
-        
-        
 
         var list = localStorage.getItem("compareList");
         if(list==null){

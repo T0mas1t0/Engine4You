@@ -95,6 +95,7 @@ const list = (anchor) => (
                 display: { xs: 'block', md: 'none' },
               }}
             >
+    
             <nav id="navBar">
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
