@@ -30,12 +30,12 @@ function Home() {
           backgroundRepeat: 'no-repeat',
         }}>
           <Grid container  spacing={2} alignItems="center" >
-            <Grid xs={12} sm={12} md={12} lg={4} sx={{marginBottom:"25vh"}}>
+            <Grid xs={12} sm={12} md={12} lg={3} sx={{marginBottom:"25vh"}}>
 
               <Search/>
 
             </Grid>
-            <Grid xs={12} sm={12} md={12} lg={8} sx={{height:'90vh',width:'100%'}} >
+            <Grid xs={12} sm={12} md={12} lg={9} sx={{height:'90vh',width:'100%'}} >
 
              <CarouselSearch />
               

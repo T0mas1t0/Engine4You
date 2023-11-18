@@ -1,46 +1,18 @@
-/* eslint-disable react/prop-types */
-import { useMemo,useState,useEffect } from 'react';
+import { useMemo } from 'react';
 import {
-  MaterialReactTable
+  MRT_Table, //import alternative sub-component if we do not want toolbars
+  useMaterialReactTable,
 } from 'material-react-table';
+import { MenuItem } from '@mui/material';
 import { Box, IconButton } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
-import Tooltip from '@mui/material/Tooltip';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import Tooltip from '@mui/material/Tooltip';
 import { NavLink } from "react-router-dom";
-import SimpleSnackbar from "./SimpleSnackbar";
 
-//nested data is ok, see accessorKeys in ColumnDef below
-
-
-function List_OtherCars({carsData,title}){
-
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 5, //customize the default page size
-  });
-
-  const [open, setOpen] = useState(false);
-  const [txt, setText] = useState("");
-  const [severityType, setSeverityType] = useState("");
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const [data, setData] = useState(carsData);
-
-  useEffect(() => {
-    setData(carsData);
-  }, [carsData]);
-
-  
-  //should be memoized or stable
+export function List_OtherCars({data,title,addToCompare}){
   const columns = useMemo(
+    //column definitions...
     () => [
       {
         accessorKey: 'photo', //access nested data with dot notation
@@ -48,12 +20,6 @@ function List_OtherCars({carsData,title}){
         Cell: ({ cell }) => <img id="carPhoto" src={cell.getValue()}/>, 
         size: 100,  
         enableGrouping: false,
-      },
-      {
-        accessorKey: 'brand',
-        header: 'Brand',
-        accessorFn: (row) => `${row.brand}`,
-        size: 110,
       },
       {
         accessorKey: 'model',
@@ -68,128 +34,67 @@ function List_OtherCars({carsData,title}){
         Cell: ({ cell }) => <span>{cell.getValue()+" €"}</span>, 
         size: 10,
       },
-      {
-        accessorKey: 'motorInfo.motor.description', //normal accessorKey
-        header: 'motor',
-        size: 10,
-      },
-      {
-        accessorKey: 'Power', //normal accessorKey
-        header: 'Power',
-        accessorFn: (row) => `${row.motorInfo.Power.description}`,
-        size: 10,
-      },
-      {
-        accessorKey: 'Traccion', //normal accessorKey
-        header: 'Traccion',
-        accessorFn: (row) => `${row.motorInfo.traccion.description}`,
-        size: 10,
-      },
-      {
-        accessorKey: 'Range', //normal accessorKey
-        header: 'Range',
-        accessorFn: (row) => `${row.motorInfo.Range.description}`,
-        size: 10,
-      },
       
     ],
     [],
+    //end
   );
 
-  function addToCompare(car){
-    var list = localStorage.getItem("compareList");
-    if(list==null){
-        console.log(car);
-        localStorage.setItem("compareList",JSON.stringify([car]));
-    }
-    else{
-        var oldlist = JSON.parse(localStorage.getItem("compareList"));
-        if(oldlist.length>=4){
-            setText("A lista encontra-se cheia! (max.: 4 carros) ");
-            setOpen(true);
-            setSeverityType("error");
-        }
-        else{
-            if(verifyList(oldlist,car)){
-                setText("Adicionado à Lista de comparação com Sucesso!");
-                setOpen(true);
-                setSeverityType("success");
-                oldlist.push(car);
-                localStorage.setItem("compareList",JSON.stringify(oldlist));
-            }
-            else{
-                setText("Carro já se encontra na lista!");
-                setOpen(true);
-                setSeverityType("error");
-            }
-        }
-        
-    }
-    console.log(car);
-  }
+  const table = useMaterialReactTable({
+    columns,
+    data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+    enableColumnActions: false,
+    enableColumnFilters: false,
+    enablePagination: false,
+    enableSorting: false,
+    enableRowActions: true,
+    positionActionsColumn: 'last',
+    mrtTheme: (theme) => ({
+      baseBackgroundColor: theme.palette.background.default, //change default background color
+    }),
+    muiTableBodyRowProps: { hover: false },
+    muiTableProps: {
+      sx: {
+        border: '1px solid rgba(81, 81, 81, .5)',
+      },
+    },
+    muiTableHeadCellProps: {
+      sx: {
+        border: '0.px solid rgba(81, 81, 81, .5)',
+        fontStyle: 'italic',
+        fontWeight: 'normal',
+      },
+    },
+    muiTableBodyCellProps: {
+      sx: {
+        //border: '0.2px solid rgba(81, 81, 81, .5)',
+      },
+    },
+    renderRowActions: ({ row }) => (
+      <Box>
+      <Tooltip title= "Inspect car" arrow>
+        <NavLink key={row.id} to={"/carPage/"+row.original.id}>
+            <IconButton color="primary">
+              <VisibilityIcon />
+            </IconButton>
+        </NavLink>
+      </Tooltip>
+      <Tooltip title= "Add to Compare" arrow>
+        <IconButton color="error" onClick={() => addToCompare(row.original)}>
+          <AddIcon />
+        </IconButton>
+      </Tooltip>
+      </Box>
+    ),
+  });
 
-  function verifyList(oldlist,car){
-    for(var i = 0;i<oldlist.length;i++){
-        if(oldlist[i].id==car.id){
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-
-
-
+  //using MRT_Table instead of MaterialReactTable if we do not need any of the toolbar components or features
   return (
-            <>
-            <div style={{ margin: '2%' }}>
+    <>
 
-            <h3>{title}</h3>
-            <MaterialReactTable 
-            enableColumnOrdering
-            enableGrouping
-            columns={columns}
-            data={data}
-            enableRowActions
-            onPaginationChange={setPagination} //hoist pagination state to your state when it changes internally
-            state={{ pagination }} //pass the pagination state to the table
-            initialState={{ columnVisibility: { brand: false,Traccion:false,Range:false} }}
-            positionActionsColumn="last"
-            displayColumnDefOptions={{
-              'mrt-row-actions': {
-                header: 'Actions', //change header text
-                size: 0.1, //make actions column wider
-              },
-            }}
-            renderRowActions={({ row, table }) => (
-              <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '9px'}}>
-              <Tooltip title= "Inspect car" arrow>
-                  <NavLink key={row.id} to={"/carPage/"+row.id}>
-                  <IconButton
-                    color="primary">
-                    
-                    <VisibilityIcon />
-                    
-                  </IconButton>
-                  </NavLink>
-                </Tooltip>
-                
-                <Tooltip title= "Add to Compare" arrow>
-                  <IconButton
-                    color="error"
-                    onClick={() => addToCompare(row.original)}
-                  >
-                    <AddIcon />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            )}
-            
-          />
-          </div>
-          <SimpleSnackbar text={txt} handleClose={handleClose} open={open} severityType={severityType}/>
-          </>);
-};
+      <MRT_Table table={table}  sx={{width:"40%"}}/>
+    </>
+    );
+}
 
 export default List_OtherCars;

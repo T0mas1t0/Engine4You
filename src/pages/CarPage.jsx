@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import {Cars} from '../mockData/mockData';
-import List from '../components/List';
+import List_OtherCars from '../components/List_OtherCars';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { useParams } from 'react-router-dom';
@@ -48,23 +48,45 @@ function CarPage() {
     setImg2d(true);
   }
 
+    // State para armazenar os carros sugeridos
+    const [suggestedCars, setSuggestedCars] = useState([]);
+
+    // Função para filtrar os carros sugeridos com base no carro selecionado
+    function filterSuggestedCars(){
+
+    const filteredCars = Cars.filter((otherCar) => otherCar.brand !== car.brand);
+
+    // Seleciona aleatoriamente 5 carros da lista filtrada
+    const randomCars = filteredCars
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4);
+
+    setSuggestedCars(randomCars);
+    }
+
     useEffect(() => {
         setImg2d(true);
         console.log("ID: "+id);
         setCar(Cars[id]);
         console.log(car);
-    
+        // Rolando para o topo da página
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // opcional: animação suave de rolagem
+        });
+        filterSuggestedCars();
+        
       }, [car,id]);
 
 
-    function addToCompare(){
+    function addToCompare(carToAdd){
         
         
 
         var list = localStorage.getItem("compareList");
         if(list==null){
-            console.log(car);
-            localStorage.setItem("compareList",JSON.stringify([car]));
+            console.log(carToAdd);
+            localStorage.setItem("compareList",JSON.stringify([carToAdd]));
         }
         else{
             var oldlist = JSON.parse(localStorage.getItem("compareList"));
@@ -75,11 +97,11 @@ function CarPage() {
                 setSeverityType("error");
             }
             else{
-                if(verifyList(oldlist)){
+                if(verifyList(oldlist,carToAdd.id)){
                     setText("Adicionado à Lista de comparação com Sucesso!");
                     setOpen(true);
                     setSeverityType("success");
-                    oldlist.push(car);
+                    oldlist.push(carToAdd);
                     localStorage.setItem("compareList",JSON.stringify(oldlist));
                 }
                 else{
@@ -90,12 +112,12 @@ function CarPage() {
             }
             
         }
-        console.log(car);
+
     }
 
-    function verifyList(oldlist){
+    function verifyList(oldlist,id){
         for(var i = 0;i<oldlist.length;i++){
-            if(oldlist[i].id==car.id){
+            if(oldlist[i].id==id){
                 return false;
             }
         }
@@ -142,14 +164,14 @@ function CarPage() {
                         <h5>Other Cars</h5>
                     </Grid>
                     <Grid xs={12} align="center">
-                    <List carsData={[]} title="dgsd"/>
+                    <List_OtherCars data={suggestedCars} title="Similar Cars" addToCompare={addToCompare}/>
                     </Grid>
                     
                 </Grid>
             </Box>
         </div>
 
-        <Fab sx={fabStyle} variant="extended" onClick={addToCompare}>
+        <Fab sx={fabStyle} variant="extended" onClick={()=>addToCompare(car)}>
             <AddIcon sx={{ mr: 1 }} />
             Add to compare
         </Fab>

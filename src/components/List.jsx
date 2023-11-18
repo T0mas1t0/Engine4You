@@ -5,8 +5,9 @@ import {
 } from 'material-react-table';
 import { Box, IconButton } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
-import Tooltip from '@mui/material/Tooltip';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import Tooltip from '@mui/material/Tooltip';
+
 import { NavLink } from "react-router-dom";
 import SimpleSnackbar from "./SimpleSnackbar";
 
