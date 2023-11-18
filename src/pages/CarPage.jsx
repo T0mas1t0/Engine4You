@@ -5,9 +5,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import {Cars} from '../mockData/mockData';
-
+import List from '../components/List';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { useParams } from 'react-router-dom';
@@ -135,6 +135,16 @@ function CarPage() {
                 <Grid xs={12} md={6} lg={6}>
                     <CarSpecsTabs car={car}/>
                 </Grid>
+                </Grid>
+                <Grid container spacing={2} alignItems="center" sx={{marginTop:"15vh"}}>
+                    <Grid xs={12} align="center">
+                        <KeyboardDoubleArrowDownIcon/>
+                        <h5>Other Cars</h5>
+                    </Grid>
+                    <Grid xs={12} align="center">
+                    <List carsData={[]} title="dgsd"/>
+                    </Grid>
+                    
                 </Grid>
             </Box>
         </div>

@@ -13,7 +13,7 @@ import SimpleSnackbar from "./SimpleSnackbar";
 //nested data is ok, see accessorKeys in ColumnDef below
 
 
-function List({carsData,title}){
+function List_OtherCars({carsData,title}){
 
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -192,4 +192,4 @@ function List({carsData,title}){
           </>);
 };
 
-export default List;
+export default List_OtherCars;
