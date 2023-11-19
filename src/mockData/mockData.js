@@ -291,7 +291,7 @@ export const Cars = [{
       CO2emissions: { title: "CO2emissions", description: "100 g/km" },
       aceleration: { title: "aceleration", description: "7.8s" },
       Power: { title: "Power", description: "178 kW" },
-      TopSpeed: { title: "Top speed", description: "125 mph" },
+      TopSpeed: { title: "Top speed", description: "201 km/h" },
     },
     equipment: {
       InfotainmentSystem: {
@@ -339,7 +339,7 @@ export const Cars = [{
       CO2emissions: { title: "CO2emissions", description: "120 g/km" },
       aceleration: { title: "aceleration", description: "6.5s" },
       Power: { title: "Power", description: "150 kW" },
-      TopSpeed: { title: "Top speed", description: "140 mph" },
+      TopSpeed: { title: "Top speed", description: "225 km/h" },
     },
     equipment: {
       InfotainmentSystem: {
@@ -387,7 +387,7 @@ export const Cars = [{
       CO2emissions: { title: "CO2emissions", description: "110 g/km" },
       aceleration: { title: "aceleration", description: "5.8s" },
       Power: { title: "Power", description: "200 kW" },
-      TopSpeed: { title: "Top speed", description: "155 mph" },
+      TopSpeed: { title: "Top speed", description: "250 km/h" },
     },
     equipment: {
       InfotainmentSystem: {
@@ -628,7 +628,7 @@ export const Cars = [{
         CO2emissions: { title: "CO2emissions", description: "0 g/km" },
         aceleration: { title: "Acceleration", description: "7.2s" },
         Power: { title: "Power", description: "170 kW" },
-        TopSpeed: { title: "Top speed", description: "93 mph" },
+        TopSpeed: { title: "Top speed", description: "150 km/h" },
     },
     equipment: {
         InfotainmentSystem: {
