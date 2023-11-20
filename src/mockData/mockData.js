@@ -13,6 +13,7 @@ import photoToyotaRAV4 from '../assets/Toyota_RAV4.png';
 import photoVolvoXC60 from '../assets/ Volvo_EX60.png';
 import photoBYDDolphin from '../assets/BYD_Dolphin.png';
 import photoDaciaDusterECOGGPL from '../assets/photoDusterDacia.png'
+import photoAudiTT from '../assets/photoAudiTT.png'
 
 
 const motorKind = {
@@ -1245,7 +1246,7 @@ export const Cars = [{
 }, 
 {
     id: "16", 
-    photo: "AudiTTPhotoURL", 
+    photo: photoAudiTT, 
     brand: "Audi",
     model: "TT",
     price: 50201, 

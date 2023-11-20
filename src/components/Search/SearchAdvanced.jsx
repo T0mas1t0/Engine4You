@@ -78,6 +78,7 @@ export default function SearchAdvanced({open,handleClose}) {
   {title:"Toyota"},
   {title:"Volkswagen"},
   {title:"Dacia"},
+  {title:"Audi"},
   {title:"BYD"},
 ];
 
