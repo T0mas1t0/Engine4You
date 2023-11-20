@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Model } from "./Scene";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls,Stars } from "@react-three/drei";
 
 
 
@@ -11,13 +11,26 @@ const WebgiViewer = () => {
         <div style={{
             width: '80vh', height: '50vh', border: "1px solid  black "
         }}>
-            <Canvas clasName="canvas">
+            <Canvas className="canvas" camera = {{ position: [-8.0113620381,1.0677800043,-5.8887964948]  , fov: 50}}>
                 <OrbitControls enableZoom={true} />
                 <ambientLight intensity={0.5} />
-                <directionalLight position={[-2, 5, 2]} />
+                <directionalLight position={[-10,5, 10]} />
+                <directionalLight position={[10,5, -10]} />
+                <directionalLight position={[10,-5, 10]} />
+                <directionalLight position={[-10,-5, 10]} />
+                <directionalLight position={[10,-5, -10]} />
+                <directionalLight position={[-10,-5, -10]} />
+                <directionalLight position={[-20,30, -20]} />
+                <directionalLight position={[-20,30, -20]} />
+
                 <Suspense fallback={null}>
                     <Model />
+                    
                 </Suspense>
+
+                
+                <OrbitControls enableZoom={true} />
+
             </Canvas>
         </div>
     );
