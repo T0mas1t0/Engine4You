@@ -1242,6 +1242,96 @@ export const Cars = [{
             description: "5 years or 100,000 km, whichever comes first",
         }
     }
+}, 
+{
+    id: "16", // Replace with a unique identifier
+    photo: "AudiTTPhotoURL", // Replace with the actual photo URL for Audi TT
+    brand: "Audi",
+    model: "TT",
+    price: 50201, // Replace with the actual price
+    motorInfo: {
+        motor: {
+            title: "Motor",
+            description: motorKind.gasoline,
+            more: "2.0L Turbocharged Inline-4"
+        },
+        gearBox: {
+            title: "Gear Box",
+            description: "7-Speed S tronic Dual-Clutch Transmission"
+        },
+        traccion: {
+            title: "Traccion",
+            description: "AWD"
+        },
+        Range: {
+            title: "Range",
+            description: "500 km"
+        },
+        Consumption: {
+            title: "Consumption",
+            description: "8.5 liters/100 km"
+        },
+        CO2emissions: {
+            title: "CO2 emissions",
+            description: "180 g/km"
+        },
+        aceleration: {
+            title: "Acceleration",
+            description: "5.5"
+        },
+        Power: {
+            title: "Power",
+            description: "220 kW"
+        },
+        TopSpeed: {
+            title: "Top speed",
+            description: "250 km/h"
+        },
+    },
+    equipment: {
+        InfotainmentSystem: {
+            name: "Infotainment System",
+            list: ["10.1-inch Touchscreen", "Apple CarPlay", "Android Auto"]
+        },
+        SoundSystem: {
+            name: "Sound System",
+            list: ["Bang & Olufsen Premium Sound", "12 Speakers"]
+        },
+        DrivingSupportSystem: {
+            name: "Driving support system",
+            list: ["Adaptive Cruise Control", "Lane Departure Warning", "Parking Assistance"]
+        },
+        PassengerCompartment: {
+            name: "Passenger compartment",
+            list: ["Leather Upholstery", "Heated Front Seats", "Ambient Lighting"]
+        },
+    },
+    dimensions: {
+        MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1842mm" },
+        ExtendedMirrors: { title: "Width (Extended Mirrors)", description: "1952mm" },
+        TotalLength: { title: "Total Length", description: "4191 mm" },
+        TotalHeight: { title: "Total Height", description: "1353 mm" },
+        GroundClearance: { title: "Ground Clearance", description: "135 mm" },
+        Seats: { title: "Seats", description: "2 seats" },
+        Load: { title: "Cargo Capacity", description: "305 liters" },
+        Weight: { title: "Curb Weight", description: "1400 kg" },
+    },
+    charging: {
+        active: false, 
+        elements: {
+           
+        }
+    },
+    warranty: {
+        VehicleBasics: {
+            title: "Vehicle basics",
+            description: "3 years or 60,000 km, whichever comes first",
+        },
+        Powertrain: {
+            title: "Powertrain",
+            description: "5 years or 100,000 km, whichever comes first",
+        }
+    }
 }
 
 ]
