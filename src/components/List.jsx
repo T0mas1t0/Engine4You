@@ -5,15 +5,16 @@ import {
 } from 'material-react-table';
 import { Box, IconButton } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
-import Tooltip from '@mui/material/Tooltip';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import Tooltip from '@mui/material/Tooltip';
+
 import { NavLink } from "react-router-dom";
 import SimpleSnackbar from "./SimpleSnackbar";
 
 //nested data is ok, see accessorKeys in ColumnDef below
 
 
-function ListPage({carsData,title}){
+function List({carsData,title}){
 
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -192,4 +193,4 @@ function ListPage({carsData,title}){
           </>);
 };
 
-export default ListPage;
+export default List;

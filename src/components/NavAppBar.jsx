@@ -95,6 +95,7 @@ const list = (anchor) => (
                 display: { xs: 'block', md: 'none' },
               }}
             >
+    
             <nav id="navBar">
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -130,6 +131,7 @@ const list = (anchor) => (
             {pages.map((page) => (
                 <NavLink key={page} to={page.url} sx={{ my: 2, color: 'white', display: 'block', mr:10 }}>{page.name}</NavLink>
             ))}
+            
 
           </Box>
 

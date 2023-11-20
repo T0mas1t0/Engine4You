@@ -24,20 +24,18 @@ function Home() {
           paddingTop: "10vh",
           minHeight: "90vh",
           height:"100%",
-          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImageCar})`,  // Replace with the actual path to your background image
-          //background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${backgroundImageCar})`,  // Replace with the actual path to your background image
-          
+          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImageCar})`,  // Replace with the actual path to your background image          
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
           <Grid container  spacing={2} alignItems="center" >
-            <Grid xs={12} sm={12} md={12} lg={4} sx={{marginBottom:"25vh"}}>
+            <Grid xs={12} sm={12} md={12} lg={3} sx={{marginBottom:"25vh"}}>
 
               <Search/>
 
             </Grid>
-            <Grid xs={12} sm={12} md={12} lg={8} sx={{height:'90vh',width:'100%'}} >
+            <Grid xs={12} sm={12} md={12} lg={9} sx={{height:'90vh',width:'100%'}} >
 
              <CarouselSearch />
               
