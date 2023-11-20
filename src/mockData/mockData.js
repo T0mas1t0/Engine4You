@@ -1198,7 +1198,7 @@ export const Cars = [{
         Consumption: { title: "Consumption", description: "7.2 liters/100 km (LPG)" },
         CO2emissions: { title: "CO2emissions", description: "125 g/km" },
         aceleration: { title: "Acceleration", description: "11.9" },
-        Power: { title: "Power", description: "73.5 kW" },
+        Power: { title: "Power", description: "74 kW" },
         TopSpeed: { title: "Top speed", description: "166 km/h" },
     },
     equipment: {

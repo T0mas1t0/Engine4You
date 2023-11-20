@@ -53,16 +53,20 @@ function ComparePage() {
     if (cars.length === 0) {
       return { max: null, min: null };
     }
+    if(cars.length === 1){
+      return { max: cars[0], min: cars[0] };
+    }
   
     let maxCar = cars[0];
     let minCar = cars[0];
   
     for (let i = 1; i < cars.length; i++) {
-      if (cars[i].motorInfo[property].description > maxCar.motorInfo[property].description) {
+      console.log();
+      if (parseInt(cars[i].motorInfo[property].description.split(" ")[0]) > parseInt(maxCar.motorInfo[property].description.split(" ")[0])) {
         maxCar = cars[i];
       }
-  
-      if (cars[i].motorInfo[property].description < minCar.motorInfo[property].description) {
+
+      if (parseInt(cars[i].motorInfo[property].description.split(" ")[0]) < parseInt(minCar.motorInfo[property].description.split(" ")[0])) {
         minCar = cars[i];
       }
     }

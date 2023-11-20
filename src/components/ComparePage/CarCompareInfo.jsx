@@ -5,25 +5,31 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 
 
 function CarCompareInfo({info,starsList}) {
-    const [equipment] = useState(info.equipment);
-    const [motorInfo] = useState(info.motorInfo);
-    const [dimensions] = useState(info.dimensions);
+    const [equipment,setEquipment] = useState(info.equipment);
+    const [motorInfo,setMotorInfo] = useState(info.motorInfo);
+    const [dimensions,setDimensions] = useState(info.dimensions);
+
+    useEffect(() => {
+      setEquipment(info.equipment);
+      setMotorInfo(info.motorInfo);
+      setDimensions(info.dimensions);
+    }, [info,starsList]);
 
     const renderStarsInfo = (category, motorInfo, info, starsList) => {
       if (category === "Power" || category === "TopSpeed" || category==="Range") {
-        if (starsList[category].min.id === info.id) {
+        if (starsList[category].max.id === info.id) {
           return (
             <p>
-              <StarRateIcon color="error" />
+              <StarRateIcon color="success" />
               <b>{motorInfo[category].title}:</b>
               <br />
               {motorInfo[category].description}
             </p>
           );
-        } else if (starsList[category].max.id === info.id) {
+        } else if (starsList[category].min.id === info.id) {
           return (
             <p>
-              <StarRateIcon color="success" />
+              <StarRateIcon color="error" />
               <b>{motorInfo[category].title}:</b>
               <br />
               {motorInfo[category].description}
