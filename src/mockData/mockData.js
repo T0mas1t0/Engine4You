@@ -291,7 +291,7 @@ export const Cars = [{
       CO2emissions: { title: "CO2emissions", description: "100 g/km" },
       aceleration: { title: "aceleration", description: "7.8s" },
       Power: { title: "Power", description: "178 kW" },
-      TopSpeed: { title: "Top speed", description: "125 mph" },
+      TopSpeed: { title: "Top speed", description: "201 km/h" },
     },
     equipment: {
       InfotainmentSystem: {
@@ -339,7 +339,7 @@ export const Cars = [{
       CO2emissions: { title: "CO2emissions", description: "120 g/km" },
       aceleration: { title: "aceleration", description: "6.5s" },
       Power: { title: "Power", description: "150 kW" },
-      TopSpeed: { title: "Top speed", description: "140 mph" },
+      TopSpeed: { title: "Top speed", description: "225 km/h" },
     },
     equipment: {
       InfotainmentSystem: {
@@ -387,7 +387,7 @@ export const Cars = [{
       CO2emissions: { title: "CO2emissions", description: "110 g/km" },
       aceleration: { title: "aceleration", description: "5.8s" },
       Power: { title: "Power", description: "200 kW" },
-      TopSpeed: { title: "Top speed", description: "155 mph" },
+      TopSpeed: { title: "Top speed", description: "250 km/h" },
     },
     equipment: {
       InfotainmentSystem: {
@@ -628,7 +628,7 @@ export const Cars = [{
         CO2emissions: { title: "CO2emissions", description: "0 g/km" },
         aceleration: { title: "Acceleration", description: "7.2s" },
         Power: { title: "Power", description: "170 kW" },
-        TopSpeed: { title: "Top speed", description: "93 mph" },
+        TopSpeed: { title: "Top speed", description: "150 km/h" },
     },
     equipment: {
         InfotainmentSystem: {
@@ -787,7 +787,7 @@ export const Cars = [{
         CO2emissions: { title: "CO2emissions", description: "123 g/km" },
         aceleration: { title: "Acceleration", description: "9.4s (0-60 mph)" },
         Power: { title: "Power", description: "79 kW" },
-        TopSpeed: { title: "Top speed", description: "N/A" },
+        TopSpeed: { title: "Top speed", description: "180 km/h" },
     },
     equipment: {
         InfotainmentSystem: {
@@ -860,7 +860,7 @@ export const Cars = [{
         CO2emissions: { title: "CO2emissions", description: "173 g/km" },
         aceleration: { title: "Acceleration", description: "8.1s (0-60 mph)" },
         Power: { title: "Power", description: "151 kW" },
-        TopSpeed: { title: "Top speed", description: "N/A" },
+        TopSpeed: { title: "Top speed", description: "180 km/h" },
     },
     equipment: {
         InfotainmentSystem: {
@@ -947,7 +947,7 @@ export const Cars = [{
         CO2emissions: { title: "CO2emissions", description: "155 g/km" },
         aceleration: { title: "Acceleration", description: "6.4s (0-60 mph)" },
         Power: { title: "Power", description: "186 kW" },
-        TopSpeed: { title: "Top speed", description: "N/A" },
+        TopSpeed: { title: "Top speed", description: "240 km/h" },
     },
     equipment: {
         InfotainmentSystem: {
@@ -1082,7 +1082,7 @@ export const Cars = [{
     }
 },
 {
-    id: "13",
+    id: "14",
     photo: photoBYDDolphin, // Replace with the actual photo URL for Volvo XC60
     brand: "BYD",
     model: "Dolphin",
@@ -1171,7 +1171,7 @@ export const Cars = [{
     }
 },
 {
-    id: "14",
+    id: "15",
     photo: photoDaciaDusterECOGGPL, // Replace with the actual photo URL for Dacia Duster ECO-G GPL
     brand: "Dacia",
     model: "Duster ECO-G GPL",
@@ -1217,6 +1217,10 @@ export const Cars = [{
             name: "Exterior Features",
             list: ["Roof Rails", "LED Daytime Running Lights", "Alloy Wheels"]
         },
+    },
+    charging:{
+        active:false,
+        elements:{}
     },
     dimensions: {
         MirrorsFolded: { title: "Width (Mirrors Folded)", description: "1750 mm" },
