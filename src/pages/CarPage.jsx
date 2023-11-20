@@ -147,7 +147,8 @@ function CarPage() {
                                     </center>
                                     :
                                     <div style={{ marginLeft: '5vh', alignItems: 'center' }}>
-                                        <WebgiViewer />
+                                        3D under construction...
+                                        {/*<WebgiViewer />*/}
                                     </div>
 
                             }
@@ -157,16 +158,16 @@ function CarPage() {
                             <CarSpecsTabs car={car} />
                         </Grid>
                     </Grid>
-                    <Grid container spacing={2} alignItems="center" sx={{marginTop:"15vh"}}>
-                    <Grid xs={12} align="center">
-                        <KeyboardDoubleArrowDownIcon/>
-                        <h5>Other Cars</h5>
+                    <Grid container spacing={2} alignItems="center" sx={{ marginTop: "15vh" }}>
+                        <Grid xs={12} align="center">
+                            <KeyboardDoubleArrowDownIcon />
+                            <h5>Other Cars</h5>
+                        </Grid>
+                        <Grid xs={12} align="center">
+                            <List_OtherCars data={suggestedCars} title="Similar Cars" addToCompare={addToCompare} />
+                        </Grid>
+
                     </Grid>
-                    <Grid xs={12} align="center">
-                    <List_OtherCars data={suggestedCars} title="Similar Cars" addToCompare={addToCompare}/>
-                    </Grid>
-                    
-                </Grid>
                 </Box>
             </div>
 
