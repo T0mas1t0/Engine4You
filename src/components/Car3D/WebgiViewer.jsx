@@ -9,7 +9,7 @@ const WebgiViewer = () => {
 
     return (
         <div style={{
-            width: '100%', height: 'auto', border: "10px solid  red "
+            width: '80vh', height: '50vh', border: "1px solid  black "
         }}>
             <Canvas clasName="canvas">
                 <OrbitControls enableZoom={true} />

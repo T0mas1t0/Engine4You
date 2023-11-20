@@ -10,7 +10,7 @@ export function Model(props) {
   const { nodes, materials } = useGLTF('/scene.gltf')
   return (
     <group {...props} dispose={null}>
-      <group position={[0, -0.035, 0.251]} scale={165.486}>
+      <group position={[0, -0.035, 0.251]} scale={145.486}>
         <group scale={0.002}>
           <group rotation={[-Math.PI / 2, 0, 0]}>
             <group position={[-4.428, 5.164, -0.536]}>
