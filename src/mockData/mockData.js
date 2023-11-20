@@ -262,7 +262,7 @@ export const Cars = [{
         Weight: { title: "Weight", description: "1400 kg" },
     },
     charging: {
-        active: false, // Not applicable for gasoline cars
+        active: false, 
         elements: {}
     },
     warranty: {
@@ -746,7 +746,7 @@ export const Cars = [{
     },
     charging: {
         active: false,
-        elements: {} // No charging information for hybrid vehicles
+        elements: {} 
     },
     warranty: {
         VehicleBasics: {
@@ -761,7 +761,7 @@ export const Cars = [{
 },
 {
     id: "10",
-    photo: photoToyotaYaris, // Replace with the actual photo URL for Toyota Yaris
+    photo: photoToyotaYaris, 
     brand: "Toyota",
     model: "Yaris",
     price: 19280,
@@ -819,7 +819,7 @@ export const Cars = [{
     },
     charging: {
         active: false,
-        elements: {} // Non-hybrid, gasoline-powered car
+        elements: {}
     },
     warranty: {
         VehicleBasics: {
@@ -834,7 +834,7 @@ export const Cars = [{
 },
 {
     id: "11",
-    photo: photoToyotaRAV4, // Replace with the actual photo URL for Toyota RAV4
+    photo: photoToyotaRAV4, 
     brand: "Toyota",
     model: "RAV4",
     price: 47810,
@@ -921,7 +921,7 @@ export const Cars = [{
 },
 {
     id: "12",
-    photo: photoVolvoXC60, // Replace with the actual photo URL for Volvo XC60
+    photo: photoVolvoXC60, 
     brand: "Volvo",
     model: "XC60",
     price: 50400,
@@ -979,7 +979,7 @@ export const Cars = [{
     },
     charging: {
         active: false,
-        elements: {} // Non-electric car
+        elements: {} 
     },
     warranty: {
         VehicleBasics: {
@@ -994,7 +994,7 @@ export const Cars = [{
 },
 {
     id: "13",
-    photo: TeslaModelSPlaid, // Replace with the actual photo URL for Volvo XC60
+    photo: TeslaModelSPlaid, 
     brand: "Tesla",
     model: "Model S Plaid",
     price: 111990,
@@ -1083,7 +1083,7 @@ export const Cars = [{
 },
 {
     id: "14",
-    photo: photoBYDDolphin, // Replace with the actual photo URL for Volvo XC60
+    photo: photoBYDDolphin, 
     brand: "BYD",
     model: "Dolphin",
     price: 29990,
@@ -1172,7 +1172,7 @@ export const Cars = [{
 },
 {
     id: "15",
-    photo: photoDaciaDusterECOGGPL, // Replace with the actual photo URL for Dacia Duster ECO-G GPL
+    photo: photoDaciaDusterECOGGPL, 
     brand: "Dacia",
     model: "Duster ECO-G GPL",
     price: 19000,
@@ -1244,11 +1244,11 @@ export const Cars = [{
     }
 }, 
 {
-    id: "16", // Replace with a unique identifier
-    photo: "AudiTTPhotoURL", // Replace with the actual photo URL for Audi TT
+    id: "16", 
+    photo: "AudiTTPhotoURL", 
     brand: "Audi",
     model: "TT",
-    price: 50201, // Replace with the actual price
+    price: 50201, 
     motorInfo: {
         motor: {
             title: "Motor",
