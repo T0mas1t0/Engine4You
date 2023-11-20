@@ -1,29 +1,30 @@
 
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import CarSpecsTabs from '../components/CarPage/CarSpecsTabs';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
-import {Cars} from '../mockData/mockData';
+import { Cars } from '../mockData/mockData';
 
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { useParams } from 'react-router-dom';
 import SimpleSnackbar from "../components/SimpleSnackbar";
+import WebgiViewer from "../components/Car3D/WebgiViewer";
 
 const fabStyle = {
     position: 'fixed',
     bottom: 16,
     left: 16,
-  };
+};
 
 
 function CarPage() {
 
-    const {id} = useParams();
-    const [car,setCar] = useState(Cars[id]);
+    const { id } = useParams();
+    const [car, setCar] = useState(Cars[id]);
 
     const [img2d, setImg2d] = useState(true);
 
@@ -32,74 +33,71 @@ function CarPage() {
     const [severityType, setSeverityType] = useState("");
 
     const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+
+    function get3D() {
+        setImg2d(false);
     }
 
-    setOpen(false);
-  };
-
-
-  function get3D(){
-    setImg2d(false);
-  }
-
-  function get2D(){
-    setImg2d(true);
-  }
+    function get2D() {
+        setImg2d(true);
+    }
 
     useEffect(() => {
         setImg2d(true);
-        console.log("ID: "+id);
+        console.log("ID: " + id);
         setCar(Cars[id]);
         console.log(car);
-    
-      }, [car,id]);
+
+    }, [car, id]);
 
 
-    function addToCompare(){
-        
-        
-
+    function addToCompare() {
         var list = localStorage.getItem("compareList");
-        if(list==null){
+        if (list == null) {
             console.log(car);
-            localStorage.setItem("compareList",JSON.stringify([car]));
+            localStorage.setItem("compareList", JSON.stringify([car]));
         }
-        else{
+        else {
             var oldlist = JSON.parse(localStorage.getItem("compareList"));
-  
-            if(oldlist.length>=4){
+
+            if (oldlist.length >= 4) {
                 setText("A lista encontra-se cheia! (max.: 4 carros) ");
                 setOpen(true);
                 setSeverityType("error");
             }
-            else{
-                if(verifyList(oldlist)){
+            else {
+                if (verifyList(oldlist)) {
                     setText("Adicionado à Lista de comparação com Sucesso!");
                     setOpen(true);
                     setSeverityType("success");
                     oldlist.push(car);
-                    localStorage.setItem("compareList",JSON.stringify(oldlist));
+                    localStorage.setItem("compareList", JSON.stringify(oldlist));
                 }
-                else{
+                else {
                     setText("Carro já se encontra na lista!");
                     setOpen(true);
                     setSeverityType("error");
                 }
             }
-            
+
         }
         console.log(car);
     }
 
-    function verifyList(oldlist){
-        for(var i = 0;i<oldlist.length;i++){
-            if(oldlist[i].id==car.id){
+    function verifyList(oldlist) {
+        for (var i = 0; i < oldlist.length; i++) {
+            if (oldlist[i].id == car.id) {
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -107,45 +105,45 @@ function CarPage() {
     return (
         <>
 
-        <div>
-            <center>
-                <h1>{car.brand} {car.model} ({car.price} €)</h1>
-            </center>
-            <ButtonGroup id="buttonGroup" variant="outlined" aria-label="outlined button group">
-                <Button onClick={get2D} variant={img2d==true?"contained":"outlined"}>2D</Button>
-                <Button onClick={get3D} variant={img2d==false?"contained":"outlined"}>3D</Button>
-            </ButtonGroup>
+            <div>
+                <center>
+                    <h1>{car.brand} {car.model} ({car.price} €)</h1>
+                </center>
+                <ButtonGroup id="buttonGroup" variant="outlined" aria-label="outlined button group">
+                    <Button onClick={get2D} variant={img2d == true ? "contained" : "outlined"}>2D</Button>
+                    <Button onClick={get3D} variant={img2d == false ? "contained" : "outlined"}>3D</Button>
+                </ButtonGroup>
 
-            <Box sx={{ flexGrow: 1, marginTop: 10 }}>
-                <Grid container spacing={2}>
-                <Grid xs={12} md={6} lg={6}>
-                    {
-                        img2d==true?
-                        <center>
-                            <img id="carPhoto" src={car.photo} />
-                        </center>
-                        :
-                        <div style={{marginLeft: '5vh',alignItems: 'center'}}>
-                            <p>componente 3D em contrução...</p>
-                        </div>
-                        
-                    }
-        
-                </Grid>
-                <Grid xs={12} md={6} lg={6}>
-                    <CarSpecsTabs car={car}/>
-                </Grid>
-                </Grid>
-            </Box>
-        </div>
+                <Box sx={{ flexGrow: 1, marginTop: 10 }}>
+                    <Grid container spacing={2}>
+                        <Grid xs={12} md={6} lg={6}>
+                            {
+                                img2d == true ?
+                                    <center>
+                                        <img id="carPhoto" src={car.photo} />
+                                    </center>
+                                    :
+                                    <div style={{ marginLeft: '5vh', alignItems: 'center' }}>
+                                        <WebgiViewer />
+                                    </div>
 
-        <Fab sx={fabStyle} variant="extended" onClick={addToCompare}>
-            <AddIcon sx={{ mr: 1 }} />
-            Add to compare
-        </Fab>
-        <SimpleSnackbar text={txt} handleClose={handleClose} open={open} severityType={severityType}/>
+                            }
+
+                        </Grid>
+                        <Grid xs={12} md={6} lg={6}>
+                            <CarSpecsTabs car={car} />
+                        </Grid>
+                    </Grid>
+                </Box>
+            </div>
+
+            <Fab sx={fabStyle} variant="extended" onClick={addToCompare}>
+                <AddIcon sx={{ mr: 1 }} />
+                Add to compare
+            </Fab>
+            <SimpleSnackbar text={txt} handleClose={handleClose} open={open} severityType={severityType} />
         </>
-  );
+    );
 }
 
 export default CarPage;
