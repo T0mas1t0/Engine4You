@@ -48,7 +48,10 @@ function List({carsData,title}){
         header: 'Photo',
         Cell: ({ cell }) => <img id="carPhoto" src={cell.getValue()}/>, 
         size: 100,  
+        enableSorting: false,
         enableGrouping: false,
+        enableColumnFilter:false,
+
       },
       {
         accessorKey: 'brand',
@@ -77,6 +80,7 @@ function List({carsData,title}){
       {
         accessorKey: 'Power', //normal accessorKey
         header: 'Power',
+        enableSorting: false,
         accessorFn: (row) => `${row.motorInfo.Power.description}`,
         size: 10,
       },
@@ -92,6 +96,12 @@ function List({carsData,title}){
         accessorFn: (row) => `${row.motorInfo.Range.description}`,
         size: 10,
       },
+      {
+        accessorKey: 'Seats', //normal accessorKey
+        header: 'Seats',
+        accessorFn: (row) => `${row.dimensions.Seats.description}`,
+        size: 10,
+      },
       
     ],
     [],
@@ -100,7 +110,7 @@ function List({carsData,title}){
   function addToCompare(car){
     var list = localStorage.getItem("compareList");
     if(list==null){
-        console.log(car);
+        //console.log(car);
         localStorage.setItem("compareList",JSON.stringify([car]));
     }
     else{
@@ -126,7 +136,7 @@ function List({carsData,title}){
         }
         
     }
-    console.log(car);
+    //console.log(car);
   }
 
   function verifyList(oldlist,car){
@@ -166,7 +176,7 @@ function List({carsData,title}){
             renderRowActions={({ row, table }) => (
               <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '9px'}}>
               <Tooltip title= "Inspect car" arrow>
-                  <NavLink key={row.id} to={"/carPage/"+row.id}>
+                  <NavLink key={row.id} to={"/carPage/"+row.original.id}>
                   <IconButton
                     color="primary">
                     

@@ -17,7 +17,7 @@ export default function CarouselSearch() {
 
     return (
         <div >
-            <h1 id="TitleCarosel">Os mais visitados</h1>
+            <h1 id="TitleCarosel">The most visited</h1>
         <Swiper
         
         autoplay={{
@@ -64,7 +64,7 @@ export default function CarouselSearch() {
                             <div style={{paddingLeft: "30px"}}>
                             <p style={{paddingRight:"20px"}}>{Cars[images[category].id].motorInfo.motor.description}</p>
                                 <NavLink to={"/carPage/"+Cars[images[category].id].id}>
-                                    <Button variant="contained" style={{paddingRight:"20px"}}>VER MODELO</Button>
+                                    <Button variant="contained" style={{paddingRight:"20px"}}>SEE MODEL</Button>
                                 </NavLink>
                             </div>
                             

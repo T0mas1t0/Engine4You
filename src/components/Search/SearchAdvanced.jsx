@@ -21,7 +21,9 @@ import TextField from '@mui/material/TextField';
 import {Cars} from '../../mockData/mockData';
 import { NavLink } from 'react-router-dom';
 import AlertDialog from './DialogAdvancedSearch';
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 export default function SearchAdvanced({open,handleClose}) {
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -29,31 +31,68 @@ export default function SearchAdvanced({open,handleClose}) {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+
+  const [seats, setSeats] = useState(-1);
+
+  const handleChangeSeats = (event) => {
+    setSeats(event.target.value);
+  };
   
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [value, setValue] = useState([500, 20000]);
+  const [value, setValue] = useState([500, 35000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands) => {
+  function getSeats(seats,car){
+    if(seats!=-1){
+      return parseInt(car.dimensions.Seats.description.split(" ")[0]) == seats
+    }
+    else {
+      return true;
+    }
+  }
+  
+  function getTraccion(traccion,car){
+    if(traccion != "ALL"){
+      return  car.motorInfo.traccion.description == traccion
+    }
+    else {
+      return true;
+    }
+  }
 
-    if(targetMotor=="All"){
+  function getTargetBrands(targetBrands,car,num){
+    if(num==0){
+      return true;
+    }
+    return targetBrands.some(brand => brand.title === car.brand);
+
+  }
+
+  function getTargetMotor(targetMotor,car){
+      if(targetMotor=="All"){
+        return true;
+        
+      }
+      return car.motorInfo.motor.description === targetMotor;
+  }
+
+  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands,num,seats,traccion) => {
+
       return cars.filter(car => 
         minPrice <= car.price &&
         car.price <= maxPrice &&
-        targetBrands.some(brand => brand.title === car.brand)
+        getTraccion(traccion,car) &&
+        getSeats(seats,car) &&
+        getTargetBrands(targetBrands,car,num) &&
+        getTargetMotor(targetMotor,car)
+        
       );
-    }
-    return cars.filter(car => 
-      minPrice <= car.price &&
-      car.price <= maxPrice &&
-      car.motorInfo.motor.description === targetMotor &&
-      targetBrands.some(brand => brand.title === car.brand)
-    );
+
   };
   
 
@@ -61,13 +100,14 @@ export default function SearchAdvanced({open,handleClose}) {
     console.log(value[0]);
     console.log(value[1]);
     console.log(selectedBrands);
+    const num = selectedBrands.length;
     console.log(engineType);
-
-    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
+    
+    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands,num,seats,traccion);
 
     localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
 
-    setOpenDialog(true);
+    //setOpenDialog(true);
   }
 
   const brandsList = [
@@ -92,6 +132,12 @@ export default function SearchAdvanced({open,handleClose}) {
 
   const handleEngineTypeChange = (event) => {
     setEngineType(event.target.value);
+  };
+
+  const [traccion, setTraccion] = useState("ALL");
+
+  const handleChangeTraccion = (event) => {
+    setTraccion(event.target.value);
   };
 
   
@@ -165,22 +211,64 @@ export default function SearchAdvanced({open,handleClose}) {
               value={selectedBrands}
               onChange={handleBrandChange}
               renderInput={(params) => (
-                <TextField {...params} label="Brands" placeholder="Favorites" />
+                <TextField {...params} label="Brands *" placeholder="Favorites" />
               )}
               sx={{ width: '500px' }}
             />
-
+            <p> * Remove the selected brands to search without brand restriction</p>
+            
+            <Box sx={{ display: 'flex', justifyContent: 'space-between',marginTop:"15px",width: '500px' }}>
+              <FormControl sx={{width:"220px"}}>
+                <InputLabel id="demo-simple-select-label">Seats</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={seats}
+                  label="Seats"
+                  onChange={handleChangeSeats}
+                >
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={6}>6</MenuItem>
+                  <MenuItem value={7}>7</MenuItem>
+                  <MenuItem value={-1}>ALL</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{width:"220px"}} >
+                <InputLabel id="demo-simple-select-label">Traccion</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={traccion}
+                  label="Traccion"
+                  onChange={handleChangeTraccion}
+                >
+                  <MenuItem value={"AWD"}>AWD</MenuItem>
+                  <MenuItem value={"FWD"}>FWD</MenuItem>
+                  <MenuItem value={"RWD"}>RWD</MenuItem>
+                  <MenuItem value={"ALL"}>ALL</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={() => SearchCars()} autoFocus>
+         
+         <NavLink  onClick={() => SearchCars()} to="/list/advanced">
+         <Button autoFocus>
             
             Search
             
           </Button>
+         </NavLink>
+          
+         
+         
         </DialogActions>
       </Dialog>
     </Fragment>

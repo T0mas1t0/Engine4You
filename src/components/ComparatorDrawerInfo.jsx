@@ -58,15 +58,8 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
 
       
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <h1 style={{ marginRight: '10px' }}>Comparator List</h1>
-        <Tooltip title="See comparison">
-          <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
-            <Button>
-              <ListAltIcon/>
-            </Button>
-              
-          </NavLink>
-        </Tooltip>
+        <h1 style={{ marginRight: '10px' }}>Car Comparator List</h1>
+
       </div>
       
       </center>
@@ -117,6 +110,12 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
                 </>
         ))}
       </List>
+      <Divider />
+      
+      <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
+        <Button variant="contained" sx={{marginLeft:"15px",marginTop:"15px"}}>See detailed comparison</Button>
+      </NavLink>
+      
     </Box>
     </>
 
