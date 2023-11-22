@@ -32,7 +32,7 @@ export default function SearchAdvanced({open,handleClose}) {
     setOpenDialog(false);
   };
 
-  const [seats, setSeats] = useState(5);
+  const [seats, setSeats] = useState(-1);
 
   const handleChangeSeats = (event) => {
     setSeats(event.target.value);
@@ -41,7 +41,7 @@ export default function SearchAdvanced({open,handleClose}) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [value, setValue] = useState([500, 20000]);
+  const [value, setValue] = useState([500, 35000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -134,7 +134,7 @@ export default function SearchAdvanced({open,handleClose}) {
     setEngineType(event.target.value);
   };
 
-  const [traccion, setTraccion] = useState("AWD");
+  const [traccion, setTraccion] = useState("ALL");
 
   const handleChangeTraccion = (event) => {
     setTraccion(event.target.value);
