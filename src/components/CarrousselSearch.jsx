@@ -17,7 +17,7 @@ export default function CarouselSearch() {
 
     return (
         <div >
-            <h1 id="TitleCarosel">Os mais visitados</h1>
+            <h1 id="TitleCarosel">The most visited</h1>
         <Swiper
         
         autoplay={{

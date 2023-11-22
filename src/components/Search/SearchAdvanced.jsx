@@ -39,21 +39,40 @@ export default function SearchAdvanced({open,handleClose}) {
     setValue(newValue);
   };
 
-  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands) => {
+  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands,num) => {
 
     if(targetMotor=="All"){
+      if(num == 0){
+        console.log("entrei aqui 1");
+        return cars.filter(car => 
+          minPrice <= car.price &&
+          car.price <= maxPrice 
+        );
+      }
+      else
+        return cars.filter(car => 
+          minPrice <= car.price &&
+          car.price <= maxPrice &&
+          targetBrands.some(brand => brand.title === car.brand)
+        );
+    }
+
+    if(num == 0){
+      console.log("entrei aqui 2");
+      return cars.filter(car => 
+        minPrice <= car.price &&
+        car.price <= maxPrice 
+      );
+    }
+    else{
       return cars.filter(car => 
         minPrice <= car.price &&
         car.price <= maxPrice &&
+        car.motorInfo.motor.description === targetMotor &&
         targetBrands.some(brand => brand.title === car.brand)
       );
     }
-    return cars.filter(car => 
-      minPrice <= car.price &&
-      car.price <= maxPrice &&
-      car.motorInfo.motor.description === targetMotor &&
-      targetBrands.some(brand => brand.title === car.brand)
-    );
+    
   };
   
 
@@ -61,13 +80,14 @@ export default function SearchAdvanced({open,handleClose}) {
     console.log(value[0]);
     console.log(value[1]);
     console.log(selectedBrands);
+    const num = selectedBrands.length;
     console.log(engineType);
-
-    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands);
+    
+    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands,num);
 
     localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
 
-    setOpenDialog(true);
+    //setOpenDialog(true);
   }
 
   const brandsList = [
@@ -176,11 +196,17 @@ export default function SearchAdvanced({open,handleClose}) {
           <Button autoFocus onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={() => SearchCars()} autoFocus>
+         
+         <NavLink  onClick={() => SearchCars()} to="/list/advanced">
+         <Button autoFocus>
             
             Search
             
           </Button>
+         </NavLink>
+          
+         
+         
         </DialogActions>
       </Dialog>
     </Fragment>

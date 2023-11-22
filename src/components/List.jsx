@@ -48,7 +48,10 @@ function List({carsData,title}){
         header: 'Photo',
         Cell: ({ cell }) => <img id="carPhoto" src={cell.getValue()}/>, 
         size: 100,  
+        enableSorting: false,
         enableGrouping: false,
+        enableColumnFilter:false,
+
       },
       {
         accessorKey: 'brand',
@@ -77,6 +80,7 @@ function List({carsData,title}){
       {
         accessorKey: 'Power', //normal accessorKey
         header: 'Power',
+        enableSorting: false,
         accessorFn: (row) => `${row.motorInfo.Power.description}`,
         size: 10,
       },
@@ -100,7 +104,7 @@ function List({carsData,title}){
   function addToCompare(car){
     var list = localStorage.getItem("compareList");
     if(list==null){
-        console.log(car);
+        //console.log(car);
         localStorage.setItem("compareList",JSON.stringify([car]));
     }
     else{
@@ -126,7 +130,7 @@ function List({carsData,title}){
         }
         
     }
-    console.log(car);
+    //console.log(car);
   }
 
   function verifyList(oldlist,car){
