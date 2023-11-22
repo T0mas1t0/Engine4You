@@ -211,11 +211,11 @@ export default function SearchAdvanced({open,handleClose}) {
               value={selectedBrands}
               onChange={handleBrandChange}
               renderInput={(params) => (
-                <TextField {...params} label="Brands" placeholder="Favorites" />
+                <TextField {...params} label="Brands *" placeholder="Favorites" />
               )}
               sx={{ width: '500px' }}
             />
-
+            <p> * Remove the selected brands to search without brand restriction</p>
             
             <Box sx={{ display: 'flex', justifyContent: 'space-between',marginTop:"15px",width: '500px' }}>
               <FormControl sx={{width:"220px"}}>
