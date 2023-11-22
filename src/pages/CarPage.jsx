@@ -147,7 +147,7 @@ function CarPage() {
                                     </center>
                                     :
                                     <div style={{ marginLeft: '5vh', alignItems: 'center' }}>
-                                        <WebgiViewer />
+                                        /*<WebgiViewer />*/
                                     </div>
 
                             }
