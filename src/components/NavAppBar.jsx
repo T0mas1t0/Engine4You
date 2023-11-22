@@ -10,14 +10,14 @@ import Container from '@mui/material/Container';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-import Badge from '@mui/material/Badge';
+import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from "../assets/Logo.jpg"
 import { NavLink } from "react-router-dom"
 
 import ComparatorDrawerInfo from './ComparatorDrawerInfo';
 
-const pages = [{name:'Home',url:'/'}, {name: 'List of cars' , url: '/list'}, {name:'Comparator',url:'/compare'}];
+const pages = [{name:'Home',url:'/'}, {name: 'List of cars' , url: '/list'}, {name:'Car Comparator',url:'/compare'}];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -139,11 +139,11 @@ const list = (anchor) => (
 
           </nav>
             <Fragment key={'right'}>
-            
-              <Button onClick={toggleDrawer('right', true)}>
-                  <ListAltIcon/>
-              </Button>
-  
+              <Tooltip title="comparison list">
+                <Button onClick={toggleDrawer('right', true)}>
+                    <ListAltIcon/>
+                </Button>
+              </Tooltip>
               <Drawer
                   anchor={'right'}
                   open={state['right']}

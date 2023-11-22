@@ -96,6 +96,12 @@ function List({carsData,title}){
         accessorFn: (row) => `${row.motorInfo.Range.description}`,
         size: 10,
       },
+      {
+        accessorKey: 'Seats', //normal accessorKey
+        header: 'Seats',
+        accessorFn: (row) => `${row.dimensions.Seats.description}`,
+        size: 10,
+      },
       
     ],
     [],
@@ -170,7 +176,7 @@ function List({carsData,title}){
             renderRowActions={({ row, table }) => (
               <Box sx={{display: 'flex', flexWrap: 'nowrap', gap: '9px'}}>
               <Tooltip title= "Inspect car" arrow>
-                  <NavLink key={row.id} to={"/carPage/"+row.id}>
+                  <NavLink key={row.id} to={"/carPage/"+row.original.id}>
                   <IconButton
                     color="primary">
                     

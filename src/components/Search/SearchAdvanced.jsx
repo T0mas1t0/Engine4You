@@ -21,13 +21,21 @@ import TextField from '@mui/material/TextField';
 import {Cars} from '../../mockData/mockData';
 import { NavLink } from 'react-router-dom';
 import AlertDialog from './DialogAdvancedSearch';
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 export default function SearchAdvanced({open,handleClose}) {
 
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
+  };
+
+  const [seats, setSeats] = useState(5);
+
+  const handleChangeSeats = (event) => {
+    setSeats(event.target.value);
   };
   
   const theme = useTheme();
@@ -39,40 +47,52 @@ export default function SearchAdvanced({open,handleClose}) {
     setValue(newValue);
   };
 
-  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands,num) => {
+  function getSeats(seats,car){
+    if(seats!=-1){
+      return parseInt(car.dimensions.Seats.description.split(" ")[0]) == seats
+    }
+    else {
+      return true;
+    }
+  }
+  
+  function getTraccion(traccion,car){
+    if(traccion != "ALL"){
+      return  car.motorInfo.traccion.description == traccion
+    }
+    else {
+      return true;
+    }
+  }
 
-    if(targetMotor=="All"){
-      if(num == 0){
-        console.log("entrei aqui 1");
-        return cars.filter(car => 
-          minPrice <= car.price &&
-          car.price <= maxPrice 
-        );
+  function getTargetBrands(targetBrands,car,num){
+    if(num==0){
+      return true;
+    }
+    return targetBrands.some(brand => brand.title === car.brand);
+
+  }
+
+  function getTargetMotor(targetMotor,car){
+      if(targetMotor=="All"){
+        return true;
+        
       }
-      else
-        return cars.filter(car => 
-          minPrice <= car.price &&
-          car.price <= maxPrice &&
-          targetBrands.some(brand => brand.title === car.brand)
-        );
-    }
+      return car.motorInfo.motor.description === targetMotor;
+  }
 
-    if(num == 0){
-      console.log("entrei aqui 2");
-      return cars.filter(car => 
-        minPrice <= car.price &&
-        car.price <= maxPrice 
-      );
-    }
-    else{
+  const filterCars = (cars, minPrice ,maxPrice, targetMotor, targetBrands,num,seats,traccion) => {
+
       return cars.filter(car => 
         minPrice <= car.price &&
         car.price <= maxPrice &&
-        car.motorInfo.motor.description === targetMotor &&
-        targetBrands.some(brand => brand.title === car.brand)
+        getTraccion(traccion,car) &&
+        getSeats(seats,car) &&
+        getTargetBrands(targetBrands,car,num) &&
+        getTargetMotor(targetMotor,car)
+        
       );
-    }
-    
+
   };
   
 
@@ -83,7 +103,7 @@ export default function SearchAdvanced({open,handleClose}) {
     const num = selectedBrands.length;
     console.log(engineType);
     
-    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands,num);
+    const filteredCars = filterCars(Cars,value[0], value[1], engineType, selectedBrands,num,seats,traccion);
 
     localStorage.setItem("AdvancedSearch",JSON.stringify(filteredCars));
 
@@ -112,6 +132,12 @@ export default function SearchAdvanced({open,handleClose}) {
 
   const handleEngineTypeChange = (event) => {
     setEngineType(event.target.value);
+  };
+
+  const [traccion, setTraccion] = useState("AWD");
+
+  const handleChangeTraccion = (event) => {
+    setTraccion(event.target.value);
   };
 
   
@@ -190,6 +216,42 @@ export default function SearchAdvanced({open,handleClose}) {
               sx={{ width: '500px' }}
             />
 
+            
+            <Box sx={{ display: 'flex', justifyContent: 'space-between',marginTop:"15px",width: '500px' }}>
+              <FormControl sx={{width:"220px"}}>
+                <InputLabel id="demo-simple-select-label">Seats</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={seats}
+                  label="Seats"
+                  onChange={handleChangeSeats}
+                >
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={6}>6</MenuItem>
+                  <MenuItem value={7}>7</MenuItem>
+                  <MenuItem value={-1}>ALL</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{width:"220px"}} >
+                <InputLabel id="demo-simple-select-label">Traccion</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={traccion}
+                  label="Traccion"
+                  onChange={handleChangeTraccion}
+                >
+                  <MenuItem value={"AWD"}>AWD</MenuItem>
+                  <MenuItem value={"FWD"}>FWD</MenuItem>
+                  <MenuItem value={"RWD"}>RWD</MenuItem>
+                  <MenuItem value={"ALL"}>ALL</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
         </DialogContent>
         <DialogActions>
