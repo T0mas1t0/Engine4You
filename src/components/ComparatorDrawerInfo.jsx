@@ -58,7 +58,7 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
 
       
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <h1 style={{ marginRight: '10px' }}>Comparator List</h1>
+        <h1 style={{ marginRight: '10px' }}>Car Comparator List</h1>
 
       </div>
       

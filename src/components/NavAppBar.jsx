@@ -9,6 +9,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
+import Badge from '@mui/material/Badge';
+
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -34,10 +36,24 @@ function ResponsiveAppBar() {
     right: false,
   });
 
+  
+
+  function setComparationList(){
+    setComparatorList(JSON.parse(localStorage.getItem("compareList")));
+
+  }
+
   useEffect(() => {
-    setComparatorList([]);
+    
+    setComparationList();
+
+    
 
   }, []);
+
+
+
+  
 
 const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -139,10 +155,12 @@ const list = (anchor) => (
 
           </nav>
             <Fragment key={'right'}>
-              <Tooltip title="comparison list">
-                <Button onClick={toggleDrawer('right', true)}>
-                    <ListAltIcon/>
-                </Button>
+              <Tooltip title="Car comparator list">
+                
+                  <Button onClick={toggleDrawer('right', true)}>
+                      <ListAltIcon/>
+                  </Button>
+           
               </Tooltip>
               <Drawer
                   anchor={'right'}
