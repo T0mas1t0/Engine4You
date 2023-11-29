@@ -1,0 +1,1 @@
+import{j as t}from"./index-2ccffc7c.js";import{C as r}from"./mockData-012e1890.js";import{L as s}from"./List-04b9cfc5.js";import"./SimpleSnackbar-1d56700f.js";import"./Autocomplete-28419f8c.js";function p(){return t.jsx(t.Fragment,{children:t.jsx(s,{carsData:r,title:"List of Cars"})})}export{p as default};
