@@ -148,8 +148,8 @@ function CarPage() {
                                     </center>
                                     :
                                     <div style={{ marginLeft: '5vh', alignItems: 'center' }}>
-                                        3D under construction...
-                                        {/*<WebgiViewer />*/}
+
+                                        <WebgiViewer />
 
                                     </div>
 
