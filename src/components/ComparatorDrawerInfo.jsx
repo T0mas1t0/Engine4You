@@ -1,7 +1,7 @@
 
 /* eslint-disable react/prop-types */
 
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 
 import Button from '@mui/material/Button';
@@ -20,111 +20,115 @@ import ClearIcon from '@mui/icons-material/Clear';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 
 
-export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
+export default function ComparatorDrawerInfo({ anchor, toggleDrawer }) {
 
   const [list, setList] = useState([]);
 
-  function handleRemoveCar(index){
+  function handleRemoveCar(index) {
 
     var oldlist = JSON.parse(localStorage.getItem("compareList"));
     var tmp = oldlist;
     tmp.splice(index, 1);
-    localStorage.setItem("compareList",JSON.stringify(tmp));
+    localStorage.setItem("compareList", JSON.stringify(tmp));
     setList(tmp);
 
   }
 
-  
+
   useEffect(() => {
-    var list = localStorage.getItem("compareList");
-    if(list!=null){
-      setList(JSON.parse(list));
+    var listLS = localStorage.getItem("compareList");
+    console.log("listLS");
+    console.log(listLS);
+    console.log("list");
+    console.log(list);
+    if (listLS != null) {
+      setList(JSON.parse(listLS));
     }
 
 
-  }, []);
+  }, [list]);
 
 
   return (
     <>
-    <Box
-      sx={{ width: "600px" }}
-      
-      //onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-     
-      <center>
+      <Box
+        sx={{ width: "600px" }}
 
-      
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <h1 style={{ marginRight: '10px' }}>Car Comparator List</h1>
+        //onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
+      >
 
-      </div>
-      
-      </center>
-      <Divider />
-      <List>
-      {
-        list==[]?
-        Object.keys(list).map((category, index) => (
+        <center>
 
 
-            <>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <h1 style={{ marginRight: '10px' }}>Car Comparator List</h1>
+
+          </div>
+
+        </center>
+        <Divider />
+        <List>
+          {
+            list.length > 0 && list != undefined ?
+              Object.keys(list).map((category, index) => (
+
+
+                <>
                   <Grid container spacing={2} >
-                  
-                      <Grid xs={5}>
-                      
-                            <img id="carPhoto" src={list[category].photo} />
-                            
-                      </Grid>
-                      <Grid xs={4}>
 
-                        <Stack spacing={0}>
-                          <b>{list[category].brand} {list[category].model}</b>
-                          <p>{list[category].price} €</p>
-                          {list[category].motorInfo.motor.description}
-                        </Stack>
-                      
-                      </Grid>
-                      <Grid xs={3}>
-                        <Stack spacing={0}>
+                    <Grid xs={5}>
+
+                      <img id="carPhoto" src={list[category].photo} />
+
+                    </Grid>
+                    <Grid xs={4}>
+
+                      <Stack spacing={0}>
+                        <b>{list[category].brand} {list[category].model}</b>
+                        <p>{list[category].price} €</p>
+                        {list[category].motorInfo.motor.description}
+                      </Stack>
+
+                    </Grid>
+                    <Grid xs={3}>
+                      <Stack spacing={0}>
                         <Tooltip title="More info">
-                        
+
                           <Button>
-                          <NavLink key={index} to={"/carPage/"+list[category].id} onClick={toggleDrawer(anchor, false)}>
-                          <VisibilityIcon/>
-                          </NavLink>
+                            <NavLink key={index} to={"/carPage/" + list[category].id} onClick={toggleDrawer(anchor, false)}>
+                              <VisibilityIcon />
+                            </NavLink>
                           </Button>
 
                         </Tooltip>
                         <Tooltip title="Remove from List">
-                        <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>
+                          <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon /></Button>
                         </Tooltip>
-                        
-                        </Stack>
-                      </Grid>
-                      
+
+                      </Stack>
+                    </Grid>
+
                   </Grid>
 
-                  
-                  </>
-            ))
-        :
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <h4>There are no cars to compare!!</h4>
-        </div>
-        
-      }
-        
-      </List>
-      <Divider />
-      
-      <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
-        <Button variant="contained" sx={{marginLeft:"15px",marginTop:"15px"}}>See detailed comparison</Button>
-      </NavLink>
-      
-    </Box>
+
+                </>
+              ))
+              :
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <h4>There are no cars to compare!!</h4>
+              </div>
+
+          }
+
+        </List>
+        <Divider />
+
+        <NavLink to={"/compare"} onClick={toggleDrawer(anchor, false)}>
+          <Button variant="contained" sx={{ marginLeft: "15px", marginTop: "15px" }}>See detailed comparison</Button>
+        </NavLink>
+
+      </Box>
     </>
 
 
