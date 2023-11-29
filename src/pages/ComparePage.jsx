@@ -141,7 +141,7 @@ function ComparePage() {
             background: '#ffffff', // Cor de fundo da div
           }}>
                   <div style={{justifyContent: 'center'}}>
-                    <h3> Comparation List is empty!</h3>
+                    <h3> There are no cars to compare!!</h3>
                     
                   </div>
                   
