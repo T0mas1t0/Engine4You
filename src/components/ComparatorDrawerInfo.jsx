@@ -65,50 +65,58 @@ export default function ComparatorDrawerInfo({anchor,toggleDrawer}) {
       </center>
       <Divider />
       <List>
-      
-        {Object.keys(list).map((category, index) => (
+      {
+        list==[]?
+        Object.keys(list).map((category, index) => (
 
 
-          <>
-                <Grid container spacing={2} >
-                
-                    <Grid xs={5}>
-                    
-                          <img id="carPhoto" src={list[category].photo} />
-                          
-                    </Grid>
-                    <Grid xs={4}>
-
-                      <Stack spacing={0}>
-                        <b>{list[category].brand} {list[category].model}</b>
-                        <p>{list[category].price} €</p>
-                        {list[category].motorInfo.motor.description}
-                      </Stack>
-                    
-                    </Grid>
-                    <Grid xs={3}>
-                      <Stack spacing={0}>
-                      <Tooltip title="More info">
+            <>
+                  <Grid container spacing={2} >
+                  
+                      <Grid xs={5}>
                       
-                        <Button>
-                        <NavLink key={index} to={"/carPage/"+list[category].id} onClick={toggleDrawer(anchor, false)}>
-                        <VisibilityIcon/>
-                        </NavLink>
-                        </Button>
+                            <img id="carPhoto" src={list[category].photo} />
+                            
+                      </Grid>
+                      <Grid xs={4}>
 
-                      </Tooltip>
-                      <Tooltip title="Remove from List">
-                      <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>
-                      </Tooltip>
+                        <Stack spacing={0}>
+                          <b>{list[category].brand} {list[category].model}</b>
+                          <p>{list[category].price} €</p>
+                          {list[category].motorInfo.motor.description}
+                        </Stack>
                       
-                      </Stack>
-                    </Grid>
-                    
-                </Grid>
-      
-                
-                </>
-        ))}
+                      </Grid>
+                      <Grid xs={3}>
+                        <Stack spacing={0}>
+                        <Tooltip title="More info">
+                        
+                          <Button>
+                          <NavLink key={index} to={"/carPage/"+list[category].id} onClick={toggleDrawer(anchor, false)}>
+                          <VisibilityIcon/>
+                          </NavLink>
+                          </Button>
+
+                        </Tooltip>
+                        <Tooltip title="Remove from List">
+                        <Button color="error" onClick={() => handleRemoveCar(index)}><ClearIcon/></Button>
+                        </Tooltip>
+                        
+                        </Stack>
+                      </Grid>
+                      
+                  </Grid>
+
+                  
+                  </>
+            ))
+        :
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <h4>There are no cars to compare!!</h4>
+        </div>
+        
+      }
+        
       </List>
       <Divider />
       
