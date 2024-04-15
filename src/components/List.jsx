@@ -201,6 +201,6 @@ function List({carsData,title}){
           </div>
           <SimpleSnackbar text={txt} handleClose={handleClose} open={open} severityType={severityType}/>
           </>);
-};
+}
 
 export default List;
