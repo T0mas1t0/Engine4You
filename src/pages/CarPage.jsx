@@ -81,7 +81,8 @@ function CarPage() {
 
 
     function addToCompare(carToAdd) {
-
+        console.log("addToCompare");
+        console.log(carToAdd);
         var list = localStorage.getItem("compareList");
         if (list == null) {
             console.log(carToAdd);
@@ -114,9 +115,9 @@ function CarPage() {
 
     }
 
-    function verifyList(oldlist) {
+    function verifyList(oldlist, id) {
         for (var i = 0; i < oldlist.length; i++) {
-            if (oldlist[i].id == car.id) {
+            if (oldlist[i].id == id) {
                 return false;
             }
         }
@@ -147,8 +148,9 @@ function CarPage() {
                                     </center>
                                     :
                                     <div style={{ marginLeft: '5vh', alignItems: 'center' }}>
-                                        3D under construction...
-                                        {/*<WebgiViewer />*/}
+
+                                        <WebgiViewer />
+
                                     </div>
 
                             }
